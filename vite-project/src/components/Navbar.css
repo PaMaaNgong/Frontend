@@ -1,0 +1,33 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #900000;
+    padding: 20px 40px;
+    color: white;
+  }
+  
+  .left-button {
+    /* สไตล์ของปุ่มทางด้านซ้าย */
+  }
+  
+  .brand {
+    /* สไตล์ของคำว่า FreeCPE */
+  }
+  
+  .nav-link-r {
+    margin-right: 20px;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .nav-link-l {
+    margin-right: 20px;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .nav-link-r img {
+    width: 120px; /* กำหนดความกว้างของรูปภาพ */
+    height: 80px; /* กำหนดความสูงของรูปภาพ */
+  }
