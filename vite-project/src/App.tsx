@@ -3,6 +3,7 @@ import './App.css';
 import SearchBar from './components/SearchBar';
 import SearchResultsList from './components/SearchResultsList';
 import Navbar from './components/Navbar';
+import Search from './components/Search'
 
 
 const App: React.FC = () => {
@@ -11,10 +12,11 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <Navbar />
-      <div className="search-bar-container">
+      <Search />
+      {/* <div className="search-bar-container">
         <SearchBar setResults={setResults} />
         {results && results.length > 0 && <SearchResultsList results={results} />}
-      </div>
+      </div> */}
     </div>
   );
 };
