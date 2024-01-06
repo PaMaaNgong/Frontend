@@ -4,6 +4,7 @@ import { FiMenu } from "react-icons/fi";
 import { IoCloseOutline } from "react-icons/io5";
 import profileIcon from './icon/image 4.png';
 import reviewIcon from './icon/image 5.png';
+import SearchBar from "./Searchbar";
 
 interface NavbarProps {}
 
@@ -78,6 +79,7 @@ const Navbar: React.FC<NavbarProps> = () => {
 
         {/* last section */}
         <section className="flex items-center gap-3">
+        <SearchBar />
           {/* Review icon link */}
           <a href="/review" className="text-3xl">
             <img src={reviewIcon} alt="Review Icon" className="w-25 h-8" />
