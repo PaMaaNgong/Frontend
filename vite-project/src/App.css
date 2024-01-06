@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .App {
   background-color: rgba(245, 235, 224, 0.4);
   width: 100vw;
