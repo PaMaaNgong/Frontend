@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import SearchBar from './components/SearchBar';
 import SearchResultsList from './components/SearchResultsList';
-import Navbar from './components/Navbar';
+// import Navbar from './components/Navbar';
 
 
 const App: React.FC = () => {
@@ -10,7 +10,7 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      <Navbar />
+      {/*<Navbar />*/}
       <div className="search-bar-container">
         <SearchBar setResults={setResults} />
         {results && results.length > 0 && <SearchResultsList results={results} />}

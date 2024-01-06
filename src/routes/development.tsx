@@ -1,11 +1,9 @@
 import {RouteObject} from "react-router-dom";
-import App from "../App";
+import previews from "./previews";
+
 
 const routes: RouteObject[] = [
-    {
-        path: "/",
-        element: <App/>
-    }
+    ...previews
 ]
 
 export default routes;
