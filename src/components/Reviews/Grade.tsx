@@ -2,30 +2,56 @@ import React, { useState } from "react";
 import "./Grade.css";
 import RadioButton from "./RadioButton";
 
-interface GradeProps {}
+interface GradeProps {
+  grade: string | null;
+  setGrade: Function;
+  examFormat: string | null;
+  setExamFormat: Function;
+}
 
-const Grade: React.FC<GradeProps> = () => {
+const Grade: React.FC<GradeProps> = ({
+  grade,
+  setGrade,
+  examFormat,
+  setExamFormat,
+}) => {
   const grades = ["W", "F", "D", "D+", "C", "C+", "B", "B+", "A"];
-  const [selectedValue, setSelectedValue] = useState<string | null>(null);
   const [selectedNone, setSelectedNone] = useState<boolean>(false);
   const [selectedMidterm, setSelectedMidterm] = useState<boolean>(false);
   const [selectedFinal, setSelectedFinal] = useState<boolean>(false);
+
+  const findExamFormat = () => {
+    if (selectedNone) {
+      setExamFormat("None");
+    } else if (selectedMidterm && !selectedFinal) {
+      setExamFormat("Midterm");
+    } else if (!selectedMidterm && selectedFinal) {
+      setExamFormat("Final");
+    } else if (selectedMidterm && selectedFinal) {
+      setExamFormat("Midterm&Final");
+    } else {
+      setExamFormat("Null");
+    }
+  };
+
+  findExamFormat();
+
   return (
     <div className="flex flex-col gap-3">
-      <legend>Grade (Optional)</legend>
+      <div className="text-2xl">Grade (Optional)</div>
       <div className="flex flex-row gap-0">
-        {grades.map((grade, index) => (
+        {grades.map((g, index) => (
           <RadioButton
-            label={grade}
-            selected={selectedValue === grade}
-            onSelect={() => setSelectedValue(grade)}
+            label={g}
+            selected={grade === g}
+            onSelect={() => setGrade(g)}
           />
         ))}
       </div>
-      <legend>Grading Method</legend>
+      <div className="text-2xl">Grading Method</div>
       <div className="flex flex-row gap-3">
         <button
-          className={`radio-button ${selectedNone ? "selected" : ""}`}
+          className={`radio-button ${selectedNone ? "selected" : ""} text-xl`}
           onClick={() => {
             if (selectedNone) {
               setSelectedNone(false);
@@ -40,7 +66,7 @@ const Grade: React.FC<GradeProps> = () => {
         </button>
         <div className="ui-segment">
           <button
-            className={`option ${selectedMidterm ? "active" : ""}`}
+            className={`option ${selectedMidterm ? "active" : ""} text-xl`}
             onClick={() => {
               if (selectedMidterm) {
                 setSelectedMidterm(false);
@@ -54,7 +80,7 @@ const Grade: React.FC<GradeProps> = () => {
           </button>
 
           <button
-            className={`option ${selectedFinal ? "active" : ""}`}
+            className={`option ${selectedFinal ? "active" : ""} text-xl`}
             onClick={() => {
               if (selectedFinal) {
                 setSelectedFinal(false);

@@ -1,0 +1,23 @@
+.btn {
+  align-items: center;
+  justify-content: center;
+  width: 125px;
+  height: 50px;
+  padding: 0px 0px;
+  border-radius: 8px;
+  margin: 0px;
+}
+
+.btn.cancel {
+  color: white;
+  background: crimson;
+  border-color: crimson;
+  /* border: 2px solid #ffffff; */
+}
+
+.btn.submit {
+  color: white;
+  background: rgb(34, 139, 90);
+  border-color: rgb(34, 139, 90);
+  /* border: 2px solid #ffffff; */
+}

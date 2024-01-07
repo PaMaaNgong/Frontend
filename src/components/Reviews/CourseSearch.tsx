@@ -3,16 +3,19 @@ import "./CourseSearch.css";
 
 interface CourseSearchProps {
   courseNo: string;
+  setCourseNo: Function;
+  courseName: string;
 }
 
-const CourseSearch: React.FC<CourseSearchProps> = ({ courseNo }) => {
+const CourseSearch: React.FC<CourseSearchProps> = ({
+  courseNo,
+  setCourseNo,
+  courseName,
+}) => {
   return (
     <div className="flex flex-row gap-5">
       <div className="basis-1/2">
-        <label
-          htmlFor="C_no"
-          className="block text-sm font-medium leading-6 text-gray-900"
-        >
+        <label htmlFor="C_no" className="text-2xl">
           Course No.
         </label>
         <div className="relative mt-2 rounded-md shadow-sm">
@@ -20,16 +23,17 @@ const CourseSearch: React.FC<CourseSearchProps> = ({ courseNo }) => {
             type="text"
             name="C_no"
             id="C_no"
-            className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            className="w-full rounded-md py-1.5 pl-7 pr-20 ring-1 ring-inset ring-gray-300 placeholder:text-gray-500 text-xl"
             placeholder="001xxx"
+            onChange={(e) => setCourseNo(e.target.value)}
+            value={courseNo}
+            maxLength={10}
           />
         </div>
       </div>
       <div className="basis-1/2">
-        <div className="block text-sm font-medium leading-6 text-gray-900">
-          Course Name
-        </div>
-        <div className="relative mt-2 rounded-md">Eng 3</div>
+        <div className="text-2xl">Course Name</div>
+        <div className="mt-2 text-xl">{courseName}</div>
       </div>
     </div>
   );
