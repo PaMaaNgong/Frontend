@@ -1,0 +1,31 @@
+.rating {
+  position: relative;
+  width: 180px;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3em;
+  padding: 5px;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 0 2px #b3acac;
+}
+
+.star-rating {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.1em;
+  font-size: 32px;
+}
+
+.star {
+  cursor: pointer;
+  color: #ddd;
+  transition: color 0.3s ease-in-out;
+}
+
+.star.active {
+  color: #ffcc00; /* Change this color to your desired highlight color */
+}
