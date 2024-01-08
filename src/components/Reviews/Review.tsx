@@ -6,6 +6,7 @@ import CourseYear from "./CourseYear";
 import Grade from "./Grade";
 import TextBox from "./TextBox";
 import { Link } from "react-router-dom";
+import CourseInfo from "./CourseInfo";
 
 const Review: React.FC = () => {
   const [courseNo, setCourseNo] = useState<string>("");
