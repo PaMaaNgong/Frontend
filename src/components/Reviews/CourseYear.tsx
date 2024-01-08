@@ -15,15 +15,19 @@ const CourseYear: React.FC<CourseYearProps> = ({
   setCourseYear,
 }) => {
   return (
-    <div className="flex flex-row gap-4">
+    <div className="flex flex-row gap-4 pl-3">
       <div>
-        <label htmlFor="semester" className="text-2xl pr-4">
+        <label
+          htmlFor="semester"
+          className="text-2xl text-blue-900 font-bold pr-4"
+        >
           Semester
         </label>
         <select
           id="semester"
           name="semester"
-          className="pl-1 pr-1 text-2xl"
+          className="shadow-sm pl-3 pr-1 py-1 text-2xl bg-gray-50 rounded-xl"
+          style={{ cursor: "pointer" }}
           value={courseSemester}
           onChange={(e) => setCourseSemester(e.target.value)}
         >
@@ -33,23 +37,24 @@ const CourseYear: React.FC<CourseYearProps> = ({
           <option>3</option>
         </select>
       </div>
-      <div className="text-2xl">/</div>
+      <div className="py-1 text-2xl text-blue-900 font-bold">/</div>
       <div>
-        <label htmlFor="year" className="text-2xl pr-4">
+        <label htmlFor="year" className="text-2xl text-blue-900 font-bold pr-4">
           Year
         </label>
         <select
           id="year"
           name="year"
-          className="pl-1 pr-1 text-2xl"
+          className="shadow-sm pl-3 pr-1 py-1 text-2xl bg-gray-50 rounded-xl"
+          style={{ cursor: "pointer" }}
           value={courseYear}
           onChange={(e) => setCourseYear(e.target.value)}
         >
-          <option>-</option>
-          <option>66</option>
-          <option>65</option>
-          <option>64</option>
-          <option>63</option>
+          <option>----</option>
+          <option>2566</option>
+          <option>2565</option>
+          <option>2564</option>
+          <option>2563</option>
         </select>
       </div>
     </div>

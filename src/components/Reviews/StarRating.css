@@ -1,31 +1,33 @@
 .rating {
   position: relative;
-  width: 300px;
+  /* width: 330px; */
+  /* height: 90px; */
+  width: 400px;
+  height: 90px;
   background: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0.3em;
-  padding: 5px;
   overflow: hidden;
-  border-radius: 20px;
-  box-shadow: 0 0 2px #b3acac;
+  border-radius: 50px;
+  background-color: rgb(249 250 251);
+  /* box-shadow: 0 0 2px #b3acac; */
 }
 
 .star-rating {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 0.1em;
-  font-size: 32px;
+  gap: 1.1em;
 }
 
 .star {
+  padding-bottom: 10px;
   cursor: pointer;
-  color: #ddd;
-  transition: color 0.3s ease-in-out;
+  color: rgb(209 213 219);
+  transition: color 0.5s ease-in-out;
 }
 
 .star.active {
-  color: #ffcc00; /* Change this color to your desired highlight color */
+  color: #ffcc00;
 }

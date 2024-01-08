@@ -18,12 +18,12 @@ const StarRating: React.FC<StarRatingProps> = ({
 
   return (
     <div className="flex justify-center py-5">
-      <div className="rating">
+      <div className="rating shadow">
         <div className="star-rating">
           {[...Array(totalStars)].map((_, index) => (
             <span
               key={index}
-              className={`star ${index < starRating ? "active" : ""} text-5xl`}
+              className={`star ${index < starRating ? "active" : ""} text-6xl`}
               onClick={() => handleStarClick(index)}
             >
               ★

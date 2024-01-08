@@ -5,6 +5,7 @@ import CourseSearch from "./CourseSearch";
 import CourseYear from "./CourseYear";
 import Grade from "./Grade";
 import TextBox from "./TextBox";
+import { Link } from "react-router-dom";
 
 const Review: React.FC = () => {
   const [courseNo, setCourseNo] = useState<string>("");
@@ -19,11 +20,31 @@ const Review: React.FC = () => {
   const [examFormatValue, setExamFormatValue] = useState<string>("");
   const [exerFormatValue, setExerFormatValue] = useState<string>("");
 
+  const reviewState = {
+    CourseNo: courseNo,
+    CourseSemester: courseSemester,
+    CourseYear: courseYear,
+    StarRating: starRating,
+    Grade: grade,
+    ExamFormat: examFormat,
+    ContentValue: contentValue,
+    ClassroomEnvValue: classroomEnvValue,
+    ExamFormatValue: examFormatValue,
+    ExerFormatValue: exerFormatValue,
+  };
+  // console.log(reviewState);
+
   return (
     <div className="flex justify-center py-10">
-      <div className="flex flex-col gap-5" style={{ height: 700, width: 1280 }}>
+      <div
+        className="flex flex-col gap-4 border-blue-900 border-2"
+        style={{ height: 800, width: 1280 }}
+      >
         <div className="flex flex-row gap-10">
-          <div className="flex flex-col gap-5" style={{ width: 610 }}>
+          <div
+            className="flex flex-col gap-5 border-r-4 border-blue-900"
+            style={{ width: 570 }}
+          >
             <CourseSearch
               courseNo={courseNo}
               setCourseNo={setCourseNo}
@@ -47,7 +68,7 @@ const Review: React.FC = () => {
               setExamFormat={setExamFormat}
             />
           </div>
-          <div className="flex flex-col gap-5" style={{ width: 610 }}>
+          <div className="flex flex-col gap-2" style={{ width: 660 }}>
             <TextBox
               title="Content"
               subTitle="เนื้อหา,เรียนแล้วรู้สึกยังไง"
@@ -68,17 +89,23 @@ const Review: React.FC = () => {
             />
             <TextBox
               title="Excerise Format"
-              subTitle="รูแบบแบบฝึกหัด"
+              subTitle="รูปแบบแบบฝึกหัด"
               setValue={setExerFormatValue}
               value={exerFormatValue}
             />
           </div>
         </div>
         <div className="flex flex-row">
-          <div className="basis-9/12"></div>
-          <div className="flex flex-row gap-3">
-            <button className="btn cancel text-2xl">Cancel</button>
-            <button className="btn submit text-2xl">Submit</button>
+          <div className="basis-8/12 mr-4"></div>
+          <div className="pl-14 flex flex-row gap-4">
+            <button className="shadow-md w-40 h-16 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg text-2xl">
+              Cancel
+            </button>
+            <button className="shadow-md w-40 h-16 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg text-2xl">
+              <Link to="/reviews/submited" state={reviewState}>
+                Submit
+              </Link>
+            </button>
           </div>
         </div>
       </div>
