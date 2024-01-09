@@ -14,7 +14,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({
 }) => (
   <div>
     <button
-      className={`radio-button ${selected ? "selected" : ""} text-xl`}
+      className={`radio-button ${selected ? "selected" : ""}`}
       onClick={onSelect}
     >
       {label}

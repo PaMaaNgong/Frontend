@@ -49,12 +49,12 @@ const Review: React.FC = () => {
   return (
     <div
       className="flex flex-col gap-4 border-blue-900 border-2"
-      style={{ height: 800, width: 1280 }}
+      style={{ height: 900, width: 1600 }}
     >
-      <div className="flex flex-row gap-10">
+      <div className="flex flex-row gap-10  pt-4">
         <div
-          className="flex flex-col gap-5 border-r-4 border-blue-900"
-          style={{ width: 570 }}
+          className="flex flex-col gap-5 ml-3.5 border-r-4 border-blue-900"
+          style={{ width: 720 }}
         >
           <CourseSearch
             courseNo={courseNo}
@@ -80,7 +80,7 @@ const Review: React.FC = () => {
             setExamFormat={setExamFormat}
           />
         </div>
-        <div className="flex flex-col gap-2" style={{ width: 660 }}>
+        <div className="flex flex-col gap-2 pl-2">
           <TextBox
             title="Content"
             subTitle="เนื้อหา,เรียนแล้วรู้สึกยังไง"
@@ -107,16 +107,15 @@ const Review: React.FC = () => {
           />
         </div>
       </div>
-      <div className="flex flex-row">
-        <div className="basis-8/12 mr-4"></div>
-        <div className="pl-14 flex flex-row gap-4">
-          <button className="shadow-md w-40 h-16 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg text-2xl">
+      <div className="flex justify-end">
+        <div className="flex flex-row gap-4 pr-8">
+          <button className="shadow-md w-48 h-20 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg text-3xl">
             Cancel
           </button>
           <button
-            className={`shadow-md w-40 h-16 ${
+            className={`shadow-md w-48 h-20 ${
               isDataCorrect ? "bg-green-600 hover:bg-green-700" : "bg-gray-400"
-            } text-white font-bold py-2 px-4 rounded-lg text-2xl`}
+            } text-white font-bold py-2 px-4 rounded-lg text-3xl`}
           >
             {isDataCorrect ? (
               <Link to="/reviews/submited" state={reviewState}>

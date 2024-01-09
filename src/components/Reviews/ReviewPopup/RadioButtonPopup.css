@@ -1,4 +1,4 @@
-.radio-button {
+.radio-button-popup {
   border-radius: 28px;
   border: 0px;
   font-size: 24px;
@@ -13,7 +13,7 @@
   transition: background-color 0.3s, color 0.3s;
 }
 
-.radio-button.selected {
+.radio-button-popup.selected {
   /* bg-blue-900 */
   background: rgb(30 58 138);
   color: #fff;

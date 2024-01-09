@@ -16,18 +16,25 @@ const TextBox: React.FC<TextBoxProps> = ({
   return (
     <div className="flex flex-col gap-0">
       <div>
-        <label htmlFor={title} className="text-2xl text-blue-900 font-bold">
+        <label htmlFor={title} className="text-3xl text-blue-900 font-bold">
           {title}
         </label>
-        <span className="text-2xl">{"  "}</span>
-        <span className="text-2xl text-blue-900">{subTitle}</span>
+        <span className="text-3xl">{"  "}</span>
+        <span className="text-3xl text-blue-900">{subTitle}</span>
       </div>
-      <div className="relative mt-2">
+      <div className="relative mt-3">
         <textarea
           value={value}
           onChange={(e) => setValue(e.target.value)}
-          className="block h-40 rounded-2xl text-2xl shadow py-0.25 pl-2 pr-1 ring-1 ring-inset ring-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
-          style={{ width: 650, height: 130, minHeight: 130, maxHeight: 130 }}
+          className="block rounded-2xl shadow py-0.25 pl-3.5 pr-1 ring-1 ring-inset ring-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
+          style={{
+            width: 780,
+            height: 140,
+            minHeight: 140,
+            maxHeight: 140,
+            fontSize: 28,
+            lineHeight: 1.23,
+          }}
           maxLength={512}
         />
       </div>

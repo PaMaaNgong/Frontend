@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./Grade.css";
+import "./GradePopup.css";
 import RadioButton from "./RadioButton";
 
 interface GradeProps {
@@ -56,7 +56,7 @@ const Grade: React.FC<GradeProps> = ({
       </div>
       <div className="shadow flex flex-row gap-0 w-fit rounded-full bg-gray-50">
         <button
-          className={`radio-button-custom ${
+          className={`radio-button-custom-popup ${
             selectedNone ? "selected" : ""
           } text-xl`}
           onClick={() => {
@@ -71,7 +71,7 @@ const Grade: React.FC<GradeProps> = ({
         >
           None
         </button>
-        <div className="ui-segment">
+        <div className="ui-segment-popup">
           <button
             className={`option ${selectedMidterm ? "active" : ""} text-xl`}
             onClick={() => {

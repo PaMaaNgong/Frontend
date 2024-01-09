@@ -39,8 +39,8 @@ const Grade: React.FC<GradeProps> = ({
   }, [selectedNone, selectedMidterm, selectedFinal]);
 
   return (
-    <div className="flex flex-col gap-6 pl-3 pt-5">
-      <div className="text-2xl text-blue-900 font-bold">Grade (Optional)</div>
+    <div className="flex flex-col gap-7 pl-3 pt-5">
+      <div className="text-3xl text-blue-900 font-bold">Grade (Optional)</div>
       <div className="shadow flex flex-row gap-0 w-fit rounded-full bg-gray-50">
         {grades.map((g, index) => (
           <RadioButton
@@ -51,14 +51,12 @@ const Grade: React.FC<GradeProps> = ({
           />
         ))}
       </div>
-      <div className="text-2xl text-blue-900 font-bold pt-5">
+      <div className="text-3xl text-blue-900 font-bold pt-5">
         Grading Method
       </div>
       <div className="shadow flex flex-row gap-0 w-fit rounded-full bg-gray-50">
         <button
-          className={`radio-button-custom ${
-            selectedNone ? "selected" : ""
-          } text-xl`}
+          className={`radio-button-custom ${selectedNone ? "selected" : ""}`}
           onClick={() => {
             if (selectedNone) {
               setSelectedNone(false);
@@ -73,7 +71,7 @@ const Grade: React.FC<GradeProps> = ({
         </button>
         <div className="ui-segment">
           <button
-            className={`option ${selectedMidterm ? "active" : ""} text-xl`}
+            className={`option ${selectedMidterm ? "active" : ""}`}
             onClick={() => {
               if (selectedMidterm) {
                 setSelectedMidterm(false);
@@ -87,7 +85,7 @@ const Grade: React.FC<GradeProps> = ({
           </button>
 
           <button
-            className={`option ${selectedFinal ? "active" : ""} text-xl`}
+            className={`option ${selectedFinal ? "active" : ""}`}
             onClick={() => {
               if (selectedFinal) {
                 setSelectedFinal(false);

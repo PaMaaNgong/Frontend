@@ -1,4 +1,4 @@
-.radio-button-custom {
+.radio-button-custom-popup {
   border-radius: 28px;
   border: 0px;
   font-size: 24px;
@@ -13,13 +13,13 @@
   transition: background-color 0.3s, color 0.3s;
 }
 
-.radio-button-custom.selected {
+.radio-button-custom-popup.selected {
   /* bg-blue-900 */
   background: rgb(30 58 138);
   color: #fff;
 }
 
-.ui-segment {
+.ui-segment-popup {
   color: black;
   /* border: 1.25px solid rgb(30 58 138); */
   border-radius: 28px;
@@ -27,10 +27,10 @@
   /* font-family: "Lato", Georgia, Serif; */
 }
 
-.ui-segment.active {
+.ui-segment-popup.active {
   border: 2px solid rgb(30 58 138);
 }
-.ui-segment button.option {
+.ui-segment-popup button.option {
   font-size: 24px;
   font-weight: 500;
   background: rgb(249 250 251);
@@ -42,28 +42,28 @@
   transition: background-color 0.3s, color 0.3s;
 }
 
-.ui-segment button.option:last-child {
+.ui-segment-popup button.option:last-child {
   border-top-right-radius: 24px;
   border-bottom-right-radius: 24px;
   border-left: 1.5px solid rgb(249 250 251);
 }
 
-.ui-segment button.option:first-child {
+.ui-segment-popup button.option:first-child {
   border-top-left-radius: 24px;
   border-bottom-left-radius: 24px;
   border-right: 1.5px solid rgb(249 250 251);
 }
 
-.ui-segment button.option.active {
+.ui-segment-popup button.option.active {
   /* bg-blue-900 */
   background: rgb(30 58 138);
   color: #fff;
 }
 
-.ui-segment button.option.active:last-child {
+.ui-segment-popup button.option.active:last-child {
   border-left: 1.5px solid white;
 }
 
-.ui-segment button.option.active:first-child {
+.ui-segment-popup button.option.active:first-child {
   border-right: 1.5px solid white;
 }

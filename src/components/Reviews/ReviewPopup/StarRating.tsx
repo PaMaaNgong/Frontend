@@ -1,5 +1,5 @@
 import React from "react";
-import "./StarRating.css";
+import "./StarRatingPopup.css";
 
 interface StarRatingProps {
   totalStars: number;
@@ -18,12 +18,14 @@ const StarRating: React.FC<StarRatingProps> = ({
 
   return (
     <div className="flex justify-center py-5">
-      <div className="rating shadow">
-        <div className="star-rating">
+      <div className="rating-popup shadow">
+        <div className="star-rating-popup">
           {[...Array(totalStars)].map((_, index) => (
             <span
               key={index}
-              className={`star ${index < starRating ? "active" : ""} text-6xl`}
+              className={`star-popup ${
+                index < starRating ? "active" : ""
+              } text-6xl`}
               onClick={() => handleStarClick(index)}
             >
               ★

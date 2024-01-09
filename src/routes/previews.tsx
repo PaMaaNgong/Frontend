@@ -15,7 +15,14 @@ const routes: RouteObject[] = [
   },
   {
     path: "/reviews/reviewpopup",
-    element: <ReviewPopup />,
+    element: (
+      <div style={{ width: 1910, height: 980 }}>
+        <div style={{ height: 110 }}></div>
+        <div className="flex justify-center">
+          <ReviewPopup />
+        </div>
+      </div>
+    ),
   },
   {
     path: "/reviews/submited",
