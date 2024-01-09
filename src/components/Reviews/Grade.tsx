@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Grade.css";
 import RadioButton from "./RadioButton";
 
@@ -34,7 +34,9 @@ const Grade: React.FC<GradeProps> = ({
     }
   };
 
-  findExamFormat();
+  useEffect(() => {
+    findExamFormat();
+  }, [selectedNone, selectedMidterm, selectedFinal]);
 
   return (
     <div className="flex flex-col gap-6 pl-3 pt-5">
@@ -42,6 +44,7 @@ const Grade: React.FC<GradeProps> = ({
       <div className="shadow flex flex-row gap-0 w-fit rounded-full bg-gray-50">
         {grades.map((g, index) => (
           <RadioButton
+            key={g}
             label={g}
             selected={grade === g}
             onSelect={() => setGrade(g)}
