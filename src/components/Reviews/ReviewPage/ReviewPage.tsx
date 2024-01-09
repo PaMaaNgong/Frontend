@@ -4,7 +4,7 @@ import Review from "./Review";
 interface ReviewPageProps {}
 
 const ReviewPage: React.FC<ReviewPageProps> = ({}) => (
-  <div className="flex justify-center py-10">
+  <div className="flex justify-center pt-24">
     <Review />
   </div>
 );

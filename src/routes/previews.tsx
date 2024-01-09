@@ -1,8 +1,8 @@
 import { RouteObject } from "react-router-dom";
 import CoursePreview from "../components/Courses/preview";
-import Review from "../components/Reviews/Review";
 import Submited from "../components/Reviews/Submited";
-import ReviewPage from "../components/Reviews/ReviewPage";
+import ReviewPage from "../components/Reviews/ReviewPage/ReviewPage";
+import ReviewPopup from "../components/Reviews/ReviewPopup/ReviewPopup";
 
 const routes: RouteObject[] = [
   {
@@ -14,8 +14,8 @@ const routes: RouteObject[] = [
     element: <ReviewPage />,
   },
   {
-    path: "/reviews/component/review",
-    element: <Review />,
+    path: "/reviews/reviewpopup",
+    element: <ReviewPopup />,
   },
   {
     path: "/reviews/submited",

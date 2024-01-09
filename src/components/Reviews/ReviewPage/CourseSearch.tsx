@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Autocomplete from "@mui/material/Autocomplete";
-import CourseInfo from "./CourseInfo";
+import CourseInfo from "../CourseInfo";
 
 interface CourseSearchProps {
   courseNo: string;
