@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import "./Review.css";
+import React, { useEffect, useState } from "react";
 import StarRating from "./StarRating";
 import CourseSearch from "./CourseSearch";
 import CourseYear from "./CourseYear";
@@ -10,15 +9,16 @@ import { Link } from "react-router-dom";
 const Review: React.FC = () => {
   const [courseNo, setCourseNo] = useState<string>("");
   const [courseName, setCourseName] = useState<string>("");
-  const [courseSemester, setCourseSemester] = useState<string>("-");
-  const [courseYear, setCourseYear] = useState<string>("-");
   const [starRating, setStarRating] = useState<number>(0);
+  const [courseSemester, setCourseSemester] = useState<string>("-");
+  const [courseYear, setCourseYear] = useState<string>("----");
   const [grade, setGrade] = useState<string | null>(null);
-  const [examFormat, setExamFormat] = useState<string | null>(null);
+  const [examFormat, setExamFormat] = useState<string>("Null");
   const [contentValue, setContentValue] = useState<string>("");
   const [classroomEnvValue, setClassroomEnvValue] = useState<string>("");
   const [examFormatValue, setExamFormatValue] = useState<string>("");
   const [exerFormatValue, setExerFormatValue] = useState<string>("");
+  const [isDataCorrect, setIsDataCorrect] = useState<boolean>(false);
 
   const reviewState = {
     CourseNo: courseNo,
@@ -33,6 +33,18 @@ const Review: React.FC = () => {
     ExerFormatValue: exerFormatValue,
   };
   // console.log(reviewState);
+
+  useEffect(() => {
+    if (
+      courseNo !== "" &&
+      starRating !== 0 &&
+      courseSemester !== "-" &&
+      courseYear !== "----" &&
+      examFormat !== "Null"
+    )
+      setIsDataCorrect(true);
+    else setIsDataCorrect(false);
+  }, [courseNo, starRating, courseSemester, courseYear, examFormat]);
 
   return (
     <div
@@ -101,10 +113,18 @@ const Review: React.FC = () => {
           <button className="shadow-md w-40 h-16 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg text-2xl">
             Cancel
           </button>
-          <button className="shadow-md w-40 h-16 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg text-2xl">
-            <Link to="/reviews/submited" state={reviewState}>
-              Submit
-            </Link>
+          <button
+            className={`shadow-md w-40 h-16 ${
+              isDataCorrect ? "bg-green-600 hover:bg-green-700" : "bg-gray-400"
+            } text-white font-bold py-2 px-4 rounded-lg text-2xl`}
+          >
+            {isDataCorrect ? (
+              <Link to="/reviews/submited" state={reviewState}>
+                Submit
+              </Link>
+            ) : (
+              <>Submit</>
+            )}
           </button>
         </div>
       </div>

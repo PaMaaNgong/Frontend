@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "./CourseSearch.css";
 import Autocomplete from "@mui/material/Autocomplete";
 import CourseInfo from "./CourseInfo";
 

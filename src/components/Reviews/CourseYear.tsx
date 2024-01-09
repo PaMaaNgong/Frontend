@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./CourseSearch.css";
 
 interface CourseYearProps {
   courseSemester: string;

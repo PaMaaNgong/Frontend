@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./TextBox.css";
 
 interface TextBoxProps {
   title: string;

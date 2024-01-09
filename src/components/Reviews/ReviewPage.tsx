@@ -1,5 +1,4 @@
 import React from "react";
-import "./ReviewPage.css";
 import Review from "./Review";
 
 interface ReviewPageProps {}
