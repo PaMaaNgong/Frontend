@@ -1,8 +1,8 @@
 import { RouteObject } from "react-router-dom";
 import CoursePreview from "../components/Courses/preview";
 import Submited from "../components/Reviews/Submited";
-import ReviewPage from "../components/Reviews/ReviewPage/ReviewPage";
-import ReviewPopup from "../components/Reviews/ReviewPopup/ReviewPopup";
+import ReviewPage from "../components/Reviews/ReviewPage";
+import ReviewPopup from "../components/Reviews/ReviewPopup";
 
 const routes: RouteObject[] = [
   {
@@ -19,7 +19,10 @@ const routes: RouteObject[] = [
       <div style={{ width: 1910, height: 980 }}>
         <div style={{ height: 110 }}></div>
         <div className="flex justify-center">
-          <ReviewPopup />
+          <ReviewPopup
+            courseNo="207115-001"
+            courseName="Physics Laboratory for Engineering and Agro-Industry Students 1"
+          />
         </div>
       </div>
     ),

@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
-import StarRating from "./StarRating";
-import CourseSearch from "./CourseSearch";
-import CourseYear from "./CourseYear";
-import Grade from "./Grade";
-import TextBox from "./TextBox";
+import StarRating from "./ReviewPopup/StarRating";
+import CourseSearch from "./ReviewPopup/CourseSearch";
+import CourseYear from "./ReviewPopup/CourseYear";
+import Grade from "./ReviewPopup/Grade";
+import TextBox from "./ReviewPopup/TextBox";
 import { Link } from "react-router-dom";
 
-const ReviewPopup: React.FC = () => {
-  const [courseNo, setCourseNo] = useState<string>("");
-  const [courseName, setCourseName] = useState<string>("");
+interface ReviewPopupProps {
+  courseNo: string;
+  courseName: string;
+}
+
+const ReviewPopup: React.FC<ReviewPopupProps> = ({ courseNo, courseName }) => {
   const [starRating, setStarRating] = useState<number>(0);
   const [courseSemester, setCourseSemester] = useState<string>("-");
   const [courseYear, setCourseYear] = useState<string>("----");
@@ -56,12 +59,7 @@ const ReviewPopup: React.FC = () => {
           className="flex flex-col gap-5 border-r-4 border-blue-900"
           style={{ width: 570 }}
         >
-          <CourseSearch
-            courseNo={courseNo}
-            setCourseNo={setCourseNo}
-            courseName={courseName}
-            setCourseName={setCourseName}
-          />
+          <CourseSearch courseNo={courseNo} courseName={courseName} />
           <StarRating
             totalStars={5}
             starRating={starRating}
