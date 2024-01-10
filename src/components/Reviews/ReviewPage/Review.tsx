@@ -13,7 +13,7 @@ const Review: React.FC = () => {
   const [courseSemester, setCourseSemester] = useState<string>("-");
   const [courseYear, setCourseYear] = useState<string>("----");
   const [grade, setGrade] = useState<string | null>(null);
-  const [examFormat, setExamFormat] = useState<string>("Null");
+  const [examMethod, setExamMethod] = useState<string>("Null");
   const [contentValue, setContentValue] = useState<string>("");
   const [classroomEnvValue, setClassroomEnvValue] = useState<string>("");
   const [examFormatValue, setExamFormatValue] = useState<string>("");
@@ -26,7 +26,7 @@ const Review: React.FC = () => {
     CourseYear: courseYear,
     StarRating: starRating,
     Grade: grade,
-    ExamFormat: examFormat,
+    ExamMethod: examMethod,
     ContentValue: contentValue,
     ClassroomEnvValue: classroomEnvValue,
     ExamFormatValue: examFormatValue,
@@ -40,11 +40,11 @@ const Review: React.FC = () => {
       starRating !== 0 &&
       courseSemester !== "-" &&
       courseYear !== "----" &&
-      examFormat !== "Null"
+      examMethod !== "Null"
     )
       setIsDataCorrect(true);
     else setIsDataCorrect(false);
-  }, [courseNo, starRating, courseSemester, courseYear, examFormat]);
+  }, [courseNo, starRating, courseSemester, courseYear, examMethod]);
 
   return (
     <div
@@ -76,8 +76,8 @@ const Review: React.FC = () => {
           <Grade
             grade={grade}
             setGrade={setGrade}
-            examFormat={examFormat}
-            setExamFormat={setExamFormat}
+            examMethod={examMethod}
+            setExamMethod={setExamMethod}
           />
         </div>
         <div className="flex flex-col gap-2 pl-2">

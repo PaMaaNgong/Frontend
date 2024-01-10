@@ -5,37 +5,37 @@ import RadioButton from "./RadioButton";
 interface GradeProps {
   grade: string | null;
   setGrade: Function;
-  examFormat: string | null;
-  setExamFormat: Function;
+  examMethod: string | null;
+  setExamMethod: Function;
 }
 
 const Grade: React.FC<GradeProps> = ({
   grade,
   setGrade,
-  examFormat,
-  setExamFormat,
+  examMethod,
+  setExamMethod,
 }) => {
   const grades = ["W", "F", "D", "D+", "C", "C+", "B", "B+", "A"];
   const [selectedNone, setSelectedNone] = useState<boolean>(false);
   const [selectedMidterm, setSelectedMidterm] = useState<boolean>(false);
   const [selectedFinal, setSelectedFinal] = useState<boolean>(false);
 
-  const findExamFormat = () => {
+  const findExamMethod = () => {
     if (selectedNone) {
-      setExamFormat("None");
+      setExamMethod("None");
     } else if (selectedMidterm && !selectedFinal) {
-      setExamFormat("Midterm");
+      setExamMethod("Midterm");
     } else if (!selectedMidterm && selectedFinal) {
-      setExamFormat("Final");
+      setExamMethod("Final");
     } else if (selectedMidterm && selectedFinal) {
-      setExamFormat("Midterm&Final");
+      setExamMethod("Midterm&Final");
     } else {
-      setExamFormat("Null");
+      setExamMethod("Null");
     }
   };
 
   useEffect(() => {
-    findExamFormat();
+    findExamMethod();
   }, [selectedNone, selectedMidterm, selectedFinal]);
 
   return (
