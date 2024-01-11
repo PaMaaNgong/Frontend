@@ -7,7 +7,7 @@ const URL = "http://localhost:3000/v1";
 interface GetCoursesProps {}
 
 const GetCourses: React.FC<GetCoursesProps> = ({}) => {
-  const [courseInfo, setCourseInfo] = useState<any>(courseInfoDB);
+  const [courseInfo, setCourseInfo] = useState<any>([]);
 
   const callGetCourse = async (limit: number, offset: number) => {
     try {
@@ -15,10 +15,12 @@ const GetCourses: React.FC<GetCoursesProps> = ({}) => {
         `${URL}/courses?limit=${limit}&offset=${offset}`
       );
       if (resp.data.ok) {
-        const newValue = [...courseInfo, ...resp.data.courses];
-        setCourseInfo(newValue);
-        // const courseNo = resp.data.map((course) => course.id)
         // console.log(resp.data);
+        const updateValue = resp.data.map((course: any) => {
+          return { CourseNo: course.id, CourseName: course.name_en };
+        });
+        const newValue = [...courseInfo, ...updateValue];
+        setCourseInfo(newValue);
       }
     } catch (err: any) {
       console.log(err.response.data.mesasge);

@@ -1,5 +1,5 @@
 import React from "react";
-import Review from "./ReviewPage/Review";
+import Review from "./ReviewPageComponent/Review";
 
 interface ReviewPageProps {}
 

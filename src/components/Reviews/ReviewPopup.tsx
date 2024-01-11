@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import StarRating from "./ReviewPopup/StarRating";
-import CourseSearch from "./ReviewPopup/CourseSearch";
-import CourseYear from "./ReviewPopup/CourseYear";
-import Grade from "./ReviewPopup/Grade";
-import TextBox from "./ReviewPopup/TextBox";
+import StarRating from "./ReviewPopupComponent/StarRating";
+import CourseSearch from "./ReviewPopupComponent/CourseSearch";
+import CourseYear from "./ReviewPopupComponent/CourseYear";
+import Grade from "./ReviewPopupComponent/Grade";
+import TextBox from "./ReviewPopupComponent/TextBox";
 import { Link } from "react-router-dom";
 
 interface ReviewPopupProps {
