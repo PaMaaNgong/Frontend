@@ -47,7 +47,10 @@ const Grade: React.FC<GradeProps> = ({
             key={g}
             label={g}
             selected={grade === g}
-            onSelect={() => setGrade(g)}
+            onSelect={() => {
+              if (grade === g) setGrade("-");
+              else setGrade(g);
+            }}
           />
         ))}
       </div>

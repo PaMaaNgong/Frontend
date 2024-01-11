@@ -5,6 +5,9 @@ import CourseYear from "./CourseYear";
 import Grade from "./Grade";
 import TextBox from "./TextBox";
 import { Link } from "react-router-dom";
+import axios from "axios";
+
+const URL = "";
 
 const Review: React.FC = () => {
   const [courseNo, setCourseNo] = useState<string>("");
@@ -12,7 +15,7 @@ const Review: React.FC = () => {
   const [starRating, setStarRating] = useState<number>(0);
   const [courseSemester, setCourseSemester] = useState<string>("-");
   const [courseYear, setCourseYear] = useState<string>("----");
-  const [grade, setGrade] = useState<string | null>(null);
+  const [grade, setGrade] = useState<string>("-");
   const [examMethod, setExamMethod] = useState<string>("Null");
   const [contentValue, setContentValue] = useState<string>("");
   const [classroomEnvValue, setClassroomEnvValue] = useState<string>("");
@@ -45,6 +48,15 @@ const Review: React.FC = () => {
       setIsDataCorrect(true);
     else setIsDataCorrect(false);
   }, [courseNo, starRating, courseSemester, courseYear, examMethod]);
+
+  const callPostReview = async () => {
+    try {
+      const resp = await axios.post(`${URL}/reviews`, reviewState);
+      if (resp.data.ok) alert("review suscessed");
+    } catch (err: any) {
+      alert(err.response.data.message);
+    }
+  };
 
   return (
     <div

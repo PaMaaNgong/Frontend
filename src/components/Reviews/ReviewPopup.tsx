@@ -15,7 +15,7 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({ courseNo, courseName }) => {
   const [starRating, setStarRating] = useState<number>(0);
   const [courseSemester, setCourseSemester] = useState<string>("-");
   const [courseYear, setCourseYear] = useState<string>("----");
-  const [grade, setGrade] = useState<string | null>(null);
+  const [grade, setGrade] = useState<string>("-");
   const [examMethod, setExamMethod] = useState<string>("Null");
   const [contentValue, setContentValue] = useState<string>("");
   const [classroomEnvValue, setClassroomEnvValue] = useState<string>("");
