@@ -17,7 +17,7 @@ const Navbar: React.FC<NavbarProps> = () => {
       link: "#"
     },
     {
-      label: "Mejor Elective",
+      label: "Major Elective",
       link: "#"
     },
     {
