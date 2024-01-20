@@ -30,10 +30,9 @@ const SearchBar: React.FC<SearchBarProps> = ({ setResults }) => {
 
   return (
     <div className="search-bar-container rounded-full ">
-      <div className="input-wrapper rounded-full">
+      <div className=" w-full input-wrapper rounded-full">
         <input
-          className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-500"
-          // Adjusted width using "w-64"
+          className="w-full px-4 py-1 border-30 rounded-lg focus:outline-none focus:ring-2 focus:ring-black-500 placeholder-gray-500"
           type="text"
           placeholder="Type to search..."
           value={input}
