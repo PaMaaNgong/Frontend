@@ -1,13 +1,14 @@
 import React from "react";
 import Review from "./ReviewPageComponent/Review";
+import ReviewNavbar from "./ReviewPageComponent/ReviewNavbar";
 
 interface ReviewPageProps {}
 
 const ReviewPage: React.FC<ReviewPageProps> = ({}) => {
   return (
     <div>
-      <div style={{ height: 104 }}></div>
-      <div className="flex justify-center">
+      <ReviewNavbar />
+      <div className="flex justify-center pt-3">
         <Review />
       </div>
     </div>

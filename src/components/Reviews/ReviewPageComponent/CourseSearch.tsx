@@ -38,7 +38,7 @@ const CourseSearch: React.FC<CourseSearchProps> = ({
       <div className="basis-4/12">
         <label
           htmlFor="C_no"
-          className="pl-0.5 text-3xl text-blue-900 font-bold"
+          className="pl-0.5 text-2xl text-blue-900 font-bold"
         >
           Course No.
         </label>
@@ -59,7 +59,7 @@ const CourseSearch: React.FC<CourseSearchProps> = ({
               sx={{
                 display: "inline-block",
                 "& input": {
-                  width: 180,
+                  width: 150,
                 },
               }}
               options={courseNoInfo}
@@ -69,7 +69,7 @@ const CourseSearch: React.FC<CourseSearchProps> = ({
                     type="text"
                     {...params.inputProps}
                     placeholder="001xxx-001"
-                    className="w-9/12 border-b-2 border-gray-700 shadow-sm pt-2 pl-1.5 placeholder:text-gray-500 text-3xl font-medium"
+                    className="w-9/12 border-b-2 border-gray-700 shadow-sm pt-2 pl-1.5 placeholder:text-gray-500 text-2xl font-medium"
                     maxLength={10}
                   />
                 </div>
@@ -79,9 +79,9 @@ const CourseSearch: React.FC<CourseSearchProps> = ({
         </div>
       </div>
       <div className="basis-8/12">
-        <div className="text-3xl text-blue-900 font-bold">Course Name</div>
+        <div className="text-2xl text-blue-900 font-bold">Course Name</div>
         <div
-          className={`h-32 pt-5 text-3xl text-gray-1000 font-medium ${
+          className={`h-24 pt-5 text-2xl text-gray-1000 font-medium ${
             hasCourseName ? "" : "text-red-600"
           }`}
         >

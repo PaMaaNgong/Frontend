@@ -18,14 +18,14 @@ const CourseYear: React.FC<CourseYearProps> = ({
       <div>
         <label
           htmlFor="semester"
-          className="text-3xl text-blue-900 font-bold pr-4"
+          className="text-2xl text-blue-900 font-bold pr-4"
         >
           Semester
         </label>
         <select
           id="semester"
           name="semester"
-          className="shadow-sm pl-3 pr-1 py-1 text-3xl font-medium bg-gray-50 rounded-2xl"
+          className="shadow-sm pl-3 pr-1 py-1 text-2xl font-medium bg-gray-50 rounded-xl"
           style={{ cursor: "pointer" }}
           value={courseSemester}
           onChange={(e) => setCourseSemester(e.target.value)}
@@ -36,15 +36,15 @@ const CourseYear: React.FC<CourseYearProps> = ({
           <option>3</option>
         </select>
       </div>
-      <div className="py-1 text-3xl text-blue-900 font-bold">/</div>
+      <div className="py-1 text-2xl text-blue-900 font-bold">/</div>
       <div>
-        <label htmlFor="year" className="text-3xl text-blue-900 font-bold pr-4">
+        <label htmlFor="year" className="text-2xl text-blue-900 font-bold pr-4">
           Year
         </label>
         <select
           id="year"
           name="year"
-          className="shadow-sm pl-3 pr-1 py-1 text-3xl font-medium bg-gray-50 rounded-2xl"
+          className="shadow-sm pl-3 pr-1 py-1 text-2xl font-medium bg-gray-50 rounded-xl"
           style={{ cursor: "pointer" }}
           value={courseYear}
           onChange={(e) => setCourseYear(e.target.value)}

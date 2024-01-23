@@ -54,9 +54,9 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({ courseNo, courseName }) => {
       className="flex flex-col gap-4 border-blue-900 border-2"
       style={{ height: 800, width: 1280 }}
     >
-      <div className="flex flex-row gap-10">
+      <div className="flex flex-row gap-10  pt-4">
         <div
-          className="flex flex-col gap-5 border-r-4 border-blue-900"
+          className="flex flex-col gap-5 ml-3.5 border-r-4 border-blue-900"
           style={{ width: 570 }}
         >
           <CourseSearch courseNo={courseNo} courseName={courseName} />
@@ -78,7 +78,7 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({ courseNo, courseName }) => {
             setExamMethod={setExamMethod}
           />
         </div>
-        <div className="flex flex-col gap-2" style={{ width: 660 }}>
+        <div className="flex flex-col gap-2 pl-2" style={{ width: 660 }}>
           <TextBox
             title="Content"
             subTitle="เนื้อหา,เรียนแล้วรู้สึกยังไง"

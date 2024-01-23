@@ -6,7 +6,6 @@ import Grade from "./Grade";
 import TextBox from "./TextBox";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { List } from "react-native-paper";
 
 const URL = "https://whale-app-3xvcg.ondigitalocean.app/v1";
 
@@ -64,13 +63,13 @@ const Review: React.FC = () => {
 
   return (
     <div
-      className="flex flex-col gap-4 border-blue-900 border-2"
-      style={{ height: 900, width: 1600 }}
+      className="flex flex-col gap-3 border-blue-900 border-0 font-['kanit']"
+      style={{ height: 800, width: 1280 }}
     >
-      <div className="flex flex-row gap-10  pt-4">
+      <div className="flex flex-row gap-3 pt-4">
         <div
           className="flex flex-col gap-5 ml-3.5 border-r-4 border-blue-900"
-          style={{ width: 720 }}
+          style={{ width: 570 }}
         >
           <CourseSearch
             courseNo={courseNo}
@@ -96,7 +95,7 @@ const Review: React.FC = () => {
             setExamMethod={setExamMethod}
           />
         </div>
-        <div className="flex flex-col gap-2 pl-2">
+        <div className="flex flex-col gap-2 pl-2" style={{ width: 660 }}>
           <TextBox
             title="Content"
             subTitle="เนื้อหา,เรียนแล้วรู้สึกยังไง"
@@ -125,13 +124,13 @@ const Review: React.FC = () => {
       </div>
       <div className="flex justify-end">
         <div className="flex flex-row gap-4 pr-8">
-          <button className="shadow-md w-48 h-20 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg text-3xl">
+          <button className="shadow-md w-36 h-14 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg text-2xl">
             Cancel
           </button>
           <button
-            className={`shadow-md w-48 h-20 ${
+            className={`shadow-md w-36 h-14 ${
               isDataCorrect ? "bg-green-600 hover:bg-green-700" : "bg-gray-400"
-            } text-white font-bold py-2 px-4 rounded-lg text-3xl`}
+            } text-white font-bold py-2 px-4 rounded-lg text-2xl`}
             onClick={callPostReview}
           >
             {isDataCorrect ? (
