@@ -19,6 +19,9 @@ const Submited: React.FC<SubmitedProps> = ({}) => {
   const exerFormatValue = data["ExerFormatValue"];
   // console.log(data);
 
+  console.log(typeof data); // object
+  console.log(typeof data_JSON); // string
+
   return (
     <div>
       <p>JSON: {data_JSON}</p>

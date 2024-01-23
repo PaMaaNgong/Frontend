@@ -1,5 +1,5 @@
 import React from "react";
-import "./RadioButton.css";
+import "./RadioButtonPopup.css";
 
 interface RadioButtonProps {
   label: string;
@@ -14,7 +14,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({
 }) => (
   <div>
     <button
-      className={`radio-button ${selected ? "selected" : ""} text-xl`}
+      className={`radio-button-popup ${selected ? "selected" : ""} text-xl`}
       onClick={onSelect}
     >
       {label}

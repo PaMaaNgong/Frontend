@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./CourseSearch.css";
 
 interface CourseYearProps {
   courseSemester: string;
@@ -26,7 +25,7 @@ const CourseYear: React.FC<CourseYearProps> = ({
         <select
           id="semester"
           name="semester"
-          className="shadow-sm pl-3 pr-1 py-1 text-2xl bg-gray-50 rounded-xl"
+          className="shadow-sm pl-3 pr-1 py-1 text-2xl font-medium bg-gray-50 rounded-xl"
           style={{ cursor: "pointer" }}
           value={courseSemester}
           onChange={(e) => setCourseSemester(e.target.value)}
@@ -45,7 +44,7 @@ const CourseYear: React.FC<CourseYearProps> = ({
         <select
           id="year"
           name="year"
-          className="shadow-sm pl-3 pr-1 py-1 text-2xl bg-gray-50 rounded-xl"
+          className="shadow-sm pl-3 pr-1 py-1 text-2xl font-medium bg-gray-50 rounded-xl"
           style={{ cursor: "pointer" }}
           value={courseYear}
           onChange={(e) => setCourseYear(e.target.value)}
