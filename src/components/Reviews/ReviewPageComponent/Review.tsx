@@ -6,8 +6,9 @@ import Grade from "./Grade";
 import TextBox from "./TextBox";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { List } from "react-native-paper";
 
-const URL = "";
+const URL = "https://whale-app-3xvcg.ondigitalocean.app/v1";
 
 const Review: React.FC = () => {
   const [courseNo, setCourseNo] = useState<string>("");
@@ -16,7 +17,7 @@ const Review: React.FC = () => {
   const [courseSemester, setCourseSemester] = useState<string>("-");
   const [courseYear, setCourseYear] = useState<string>("----");
   const [grade, setGrade] = useState<string>("-");
-  const [examMethod, setExamMethod] = useState<string>("Null");
+  const [examMethod, setExamMethod] = useState<Array<string> | null>(null);
   const [contentValue, setContentValue] = useState<string>("");
   const [classroomEnvValue, setClassroomEnvValue] = useState<string>("");
   const [examFormatValue, setExamFormatValue] = useState<string>("");
@@ -24,16 +25,15 @@ const Review: React.FC = () => {
   const [isDataCorrect, setIsDataCorrect] = useState<boolean>(false);
 
   const reviewState = {
-    CourseNo: courseNo,
-    CourseSemester: courseSemester,
-    CourseYear: courseYear,
-    StarRating: starRating,
-    Grade: grade,
-    ExamMethod: examMethod,
-    ContentValue: contentValue,
-    ClassroomEnvValue: classroomEnvValue,
-    ExamFormatValue: examFormatValue,
-    ExerFormatValue: exerFormatValue,
+    rating: starRating,
+    grade: grade,
+    content: `${contentValue} `,
+    classroom_environment: `${classroomEnvValue} `,
+    examination_format: `${examFormatValue} `,
+    exercise_format: `${exerFormatValue} `,
+    grading_method: examMethod,
+    semester: courseSemester,
+    year: Number(courseYear),
   };
   // console.log(reviewState);
 
@@ -43,15 +43,19 @@ const Review: React.FC = () => {
       starRating !== 0 &&
       courseSemester !== "-" &&
       courseYear !== "----" &&
-      examMethod !== "Null"
+      examMethod !== null
     )
       setIsDataCorrect(true);
     else setIsDataCorrect(false);
   }, [courseNo, starRating, courseSemester, courseYear, examMethod]);
 
   const callPostReview = async () => {
+    console.log(reviewState);
     try {
-      const resp = await axios.post(`${URL}/reviews`, reviewState);
+      const resp = await axios.post(
+        `${URL}/course/${courseNo}/reviews`,
+        reviewState
+      );
       if (resp.data.ok) alert("review suscessed");
     } catch (err: any) {
       alert(err.response.data.message);
@@ -128,12 +132,13 @@ const Review: React.FC = () => {
             className={`shadow-md w-48 h-20 ${
               isDataCorrect ? "bg-green-600 hover:bg-green-700" : "bg-gray-400"
             } text-white font-bold py-2 px-4 rounded-lg text-3xl`}
+            onClick={callPostReview}
           >
             {isDataCorrect ? (
-              <Link to="/reviews/submited" state={reviewState}>
-                Submit
-              </Link>
+              // <Link to="/reviews/submited" state={reviewState}>
+              <>Submit</>
             ) : (
+              // </Link>
               <>Submit</>
             )}
           </button>

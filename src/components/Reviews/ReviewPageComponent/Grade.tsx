@@ -5,7 +5,7 @@ import RadioButton from "./RadioButton";
 interface GradeProps {
   grade: string | null;
   setGrade: Function;
-  examMethod: string | null;
+  examMethod: Array<string> | null;
   setExamMethod: Function;
 }
 
@@ -22,15 +22,15 @@ const Grade: React.FC<GradeProps> = ({
 
   const findExamMethod = () => {
     if (selectedNone) {
-      setExamMethod("None");
+      setExamMethod([]);
     } else if (selectedMidterm && !selectedFinal) {
-      setExamMethod("Midterm");
+      setExamMethod(["midterm"]);
     } else if (!selectedMidterm && selectedFinal) {
-      setExamMethod("Final");
+      setExamMethod(["final"]);
     } else if (selectedMidterm && selectedFinal) {
-      setExamMethod("Midterm&Final");
+      setExamMethod(["midterm", "final"]);
     } else {
-      setExamMethod("Null");
+      setExamMethod(null);
     }
   };
 
