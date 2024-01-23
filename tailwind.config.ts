@@ -7,6 +7,9 @@ export default {
       colors: {
         customRed: '#9B2226',
       },
+      fontFamily: {
+        kanit: ['Kanit', 'sans-serif'],
+      },
     },
   },
   plugins: [],

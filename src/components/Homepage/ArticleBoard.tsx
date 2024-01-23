@@ -22,11 +22,11 @@ const ArticleBoard: React.FC = () => {
   const getIconUrl = (type: string) => {
     switch (type) {
       case 'me':
-        return 'src/components/Homepage/icon/image 17.png';
+        return 'src/components/Homepage/icon/image 29.png';
       case 'ge':
-        return 'src/components/Homepage/icon/image 16.png';
+        return 'src/components/Homepage/icon/image 28.png';
       case 'fr':
-        return 'src/components/Homepage/icon/image 15.png';
+        return 'src/components/Homepage/icon/image 27.png';
       default:
         return ''; // หรือค่าเริ่มต้นหากไม่ตรงกับใดๆ
     }
@@ -84,7 +84,7 @@ const ArticleBoard: React.FC = () => {
    <div className="container my-12 mx-auto px-8 md:px-12 w-full">
       {/* Container ภายนอกสำหรับ scrollbar */}
         {/* Container ภายในสำหรับ cards */}
-        <div className="flex flex-wrap -mx-1 lg:-mx-4">
+        <div className="flex flex-wrap -mx-1 lg:-mx-4 font-['kanit']">
           {articles.map((article, index) => (
             <ArticleCard
               key={index}

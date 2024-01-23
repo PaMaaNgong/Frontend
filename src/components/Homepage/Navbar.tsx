@@ -3,7 +3,7 @@ import clsx from "clsx";
 import { FiMenu } from "react-icons/fi";
 import { IoCloseOutline } from "react-icons/io5";
 import profileIcon from './icon/image 4.png';
-import reviewIcon from './icon/image 5.png';
+import reviewIcon from './icon/image 26.png';
 import SearchBar from "./Searchbar";
 
 interface NavbarProps {}
@@ -32,8 +32,8 @@ const Navbar: React.FC<NavbarProps> = () => {
 
   return (
     <main>
-      <nav className={clsx("flex justify-between px-8 items-center py-3")}>
-        <div className="flex items-center gap-8 ">
+      <nav className={clsx("flex justify-between px-8 items-center py-3 font-['kanit'] bg-[#9B2226]")}>
+        <div className="flex items-center gap-8">
           <section className="flex items-center gap-4">
             {/* menu */}
             <FiMenu
@@ -41,14 +41,14 @@ const Navbar: React.FC<NavbarProps> = () => {
               className="text-3xl cursor-pointer lg:hidden"
             />
             {/* logo */}
-            <a href="/" className="text-3xl font-mono">
+            <a href="/" className="text-3xl font-mono text-white">
               FreeCPE
             </a>
           </section>
           {navlinks.map((link, index) => (
             <a
               key={index}
-              className="hidden lg:block text-gray-400 hover:text-black"
+              className="hidden lg:block text-white hover:text-yellow-100"
               href={link.link}
             >
               {link.label}
@@ -76,10 +76,12 @@ const Navbar: React.FC<NavbarProps> = () => {
             ))}
           </section>
         </div>
-
+        <div className="w-[750px] gap-3">
+        <SearchBar />
+        </div>
+        
         {/* last section */}
         <section className="flex items-center gap-3">
-        <SearchBar />
           {/* Review icon link */}
           <a href="/review" className="text-3xl">
             <img src={reviewIcon} alt="Review Icon" className="w-25 h-8" />

@@ -27,7 +27,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ imageUrl, courseCode, courseN
               <h1 className="mb-0 text-lg">{courseCode}</h1>
             </header>
             <footer className="mt-0">
-              {truncateString(courseName, 15)}
+              {truncateString(courseName, 20)}
             </footer>
           </div>
           <img alt="Icon" src={iconUrl} className="absolute bottom-0 right-0 mb-4 mr-8 w-15 h-6" />
