@@ -4,8 +4,8 @@ import CourseSearch from "./CourseSearch";
 import CourseYear from "./CourseYear";
 import Grade from "./Grade";
 import TextBox from "./TextBox";
-import { Link } from "react-router-dom";
 import axios from "axios";
+import SubmitBTN from "./SubmitBTN";
 
 const URL = "https://whale-app-3xvcg.ondigitalocean.app/v1";
 
@@ -153,20 +153,7 @@ const Review: React.FC = () => {
           <button className="shadow-md w-36 h-14 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg text-2xl">
             Cancel
           </button>
-          <button
-            className={`shadow-md w-36 h-14 ${
-              isDataCorrect ? "bg-green-600 hover:bg-green-700" : "bg-gray-400"
-            } text-white font-bold py-2 px-4 rounded-lg text-2xl`}
-            onClick={submitBTN}
-          >
-            {isDataCorrect ? (
-              // <Link to="/reviews/submited" state={reviewState}>
-              <>Submit</>
-            ) : (
-              // </Link>
-              <>Submit</>
-            )}
-          </button>
+          <SubmitBTN isDataCorrect={isDataCorrect} onClick={submitBTN} />
         </div>
       </div>
     </div>
