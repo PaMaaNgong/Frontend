@@ -15,13 +15,18 @@ const GetCourses: React.FC<GetCoursesProps> = ({}) => {
       const resp = await axios.get(
         `${URL}/courses?limit=${limit}&offset=${offset}`
       );
-      if (resp.data.ok) {
-        console.log(resp.data);
-        // const updateValue = resp.data.map((course: any) => {
-        //   return { CourseNo: course.id, CourseName: course.name_en };
-        // });
-        // const newValue = [...courseInfo, ...updateValue];
-        // setCourseInfo(newValue);
+      if (resp.data) {
+        // console.log(resp.data);
+        const updateValue = resp.data.map((course: any) => {
+          return {
+            CourseNo: course.id,
+            CourseName_TH: course.name_th,
+            CourseName_ENG: course.name_en,
+            Type: course.type,
+          };
+        });
+        const newValue = [...courseInfo, ...updateValue];
+        setCourseInfo(newValue);
       }
     } catch (err: any) {
       console.log(err.response.data.mesasge);
@@ -29,9 +34,7 @@ const GetCourses: React.FC<GetCoursesProps> = ({}) => {
   };
 
   const getCourseInfo = () => {
-    for (let i = 0; i < 10; i += 10) {
-      callGetCourse(10, i);
-    }
+    callGetCourse(100, 0);
   };
 
   return (

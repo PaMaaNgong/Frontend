@@ -7,6 +7,7 @@ interface GradeProps {
   setGrade: Function;
   examMethod: Array<string> | null;
   setExamMethod: Function;
+  triggleReset: boolean;
 }
 
 const Grade: React.FC<GradeProps> = ({
@@ -14,6 +15,7 @@ const Grade: React.FC<GradeProps> = ({
   setGrade,
   examMethod,
   setExamMethod,
+  triggleReset,
 }) => {
   const grades = ["W", "F", "D", "D+", "C", "C+", "B", "B+", "A"];
   const [selectedNone, setSelectedNone] = useState<boolean>(false);
@@ -37,6 +39,11 @@ const Grade: React.FC<GradeProps> = ({
   useEffect(() => {
     findExamMethod();
   }, [selectedNone, selectedMidterm, selectedFinal]);
+
+  useEffect(() => {
+    setSelectedMidterm(false);
+    setSelectedFinal(false);
+  }, [triggleReset]);
 
   return (
     <div className="flex flex-col gap-6 pl-3 pt-5">

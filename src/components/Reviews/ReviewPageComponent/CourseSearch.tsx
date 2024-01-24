@@ -25,7 +25,7 @@ const CourseSearch: React.FC<CourseSearchProps> = ({
       (course) => course.CourseNo === courseNo
     );
     if (courseMatch) {
-      setCourseName(courseMatch.CourseName);
+      setCourseName(courseMatch.CourseName_ENG);
       setHasCourseName(true);
     } else {
       setCourseName("Choose a course for review");

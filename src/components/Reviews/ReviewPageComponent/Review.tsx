@@ -22,6 +22,7 @@ const Review: React.FC = () => {
   const [examFormatValue, setExamFormatValue] = useState<string>("");
   const [exerFormatValue, setExerFormatValue] = useState<string>("");
   const [isDataCorrect, setIsDataCorrect] = useState<boolean>(false);
+  const [triggleReset, setTriggleReset] = useState<boolean>(false);
 
   const reviewState = {
     rating: starRating,
@@ -49,6 +50,7 @@ const Review: React.FC = () => {
   }, [courseNo, starRating, courseSemester, courseYear, examMethod]);
 
   const callPostReview = async () => {
+    console.log(`${URL}/course/${courseNo}/reviews`);
     console.log(reviewState);
     try {
       const resp = await axios.post(
@@ -58,6 +60,29 @@ const Review: React.FC = () => {
       if (resp.data.ok) alert("review suscessed");
     } catch (err: any) {
       alert(err.response.data.message);
+    }
+  };
+
+  const clearReivewStatus = () => {
+    setTriggleReset(!triggleReset);
+    setCourseNo("");
+    setCourseName("");
+    setStarRating(0);
+    setCourseSemester("-");
+    setCourseYear("----");
+    setGrade("-");
+    setExamMethod(null);
+    setContentValue("");
+    setClassroomEnvValue("");
+    setExamFormatValue("");
+    setExerFormatValue("");
+    setIsDataCorrect(false);
+  };
+
+  const submitBTN = () => {
+    if (isDataCorrect) {
+      callPostReview();
+      clearReivewStatus();
     }
   };
 
@@ -93,6 +118,7 @@ const Review: React.FC = () => {
             setGrade={setGrade}
             examMethod={examMethod}
             setExamMethod={setExamMethod}
+            triggleReset={triggleReset}
           />
         </div>
         <div className="flex flex-col gap-2 pl-2" style={{ width: 660 }}>
@@ -131,7 +157,7 @@ const Review: React.FC = () => {
             className={`shadow-md w-36 h-14 ${
               isDataCorrect ? "bg-green-600 hover:bg-green-700" : "bg-gray-400"
             } text-white font-bold py-2 px-4 rounded-lg text-2xl`}
-            onClick={callPostReview}
+            onClick={submitBTN}
           >
             {isDataCorrect ? (
               // <Link to="/reviews/submited" state={reviewState}>

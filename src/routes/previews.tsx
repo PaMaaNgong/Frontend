@@ -4,6 +4,7 @@ import Submited from "../components/Reviews/Submited";
 import ReviewPage from "../components/Reviews/ReviewPage";
 import ReviewPopup from "../components/Reviews/ReviewPopup";
 import GetCourses from "../components/Reviews/CourseInfoDB/GetCourses";
+import PopupTest from "../components/Reviews/PopupTest";
 
 const routes: RouteObject[] = [
   {
@@ -35,6 +36,10 @@ const routes: RouteObject[] = [
   {
     path: "/reviews/getcourseinfo",
     element: <GetCourses />,
+  },
+  {
+    path: "/reviews/popuptest",
+    element: <PopupTest />,
   },
 ];
 

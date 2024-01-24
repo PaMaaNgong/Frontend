@@ -9,9 +9,14 @@ import { Link } from "react-router-dom";
 interface ReviewPopupProps {
   courseNo: string;
   courseName: string;
+  onClose: Function;
 }
 
-const ReviewPopup: React.FC<ReviewPopupProps> = ({ courseNo, courseName }) => {
+const ReviewPopup: React.FC<ReviewPopupProps> = ({
+  courseNo,
+  courseName,
+  onClose,
+}) => {
   const [starRating, setStarRating] = useState<number>(0);
   const [courseSemester, setCourseSemester] = useState<string>("-");
   const [courseYear, setCourseYear] = useState<string>("----");
@@ -108,7 +113,10 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({ courseNo, courseName }) => {
       <div className="flex flex-row">
         <div className="basis-8/12 mr-4"></div>
         <div className="pl-14 flex flex-row gap-4">
-          <button className="shadow-md w-40 h-16 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg text-2xl">
+          <button
+            className="shadow-md w-40 h-16 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg text-2xl"
+            onClick={onClose}
+          >
             Cancel
           </button>
           <button
@@ -116,13 +124,7 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({ courseNo, courseName }) => {
               isDataCorrect ? "bg-green-600 hover:bg-green-700" : "bg-gray-400"
             } text-white font-bold py-2 px-4 rounded-lg text-2xl`}
           >
-            {isDataCorrect ? (
-              <Link to="/reviews/submited" state={reviewState}>
-                Submit
-              </Link>
-            ) : (
-              <>Submit</>
-            )}
+            Submit
           </button>
         </div>
       </div>

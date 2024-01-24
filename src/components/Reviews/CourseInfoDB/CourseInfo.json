@@ -1,78 +1,110 @@
 [
   {
     "CourseNo": "001101",
-    "CourseName": "Fundamental English 1"
+    "CourseName_TH": "ภาษาอังกฤษพื้นฐาน 1",
+    "CourseName_ENG": "Fundamental English 1",
+    "Type": "fe"
   },
   {
     "CourseNo": "001102",
-    "CourseName": "Fundamental English 2"
+    "CourseName_TH": "ภาษาอังกฤษพื้นฐาน 2",
+    "CourseName_ENG": "Fundamental English 2",
+    "Type": "fe"
   },
   {
     "CourseNo": "001201",
-    "CourseName": "Critical Reading and Effective Writing"
+    "CourseName_TH": "การอ่านและการเขียนอย่างมีประสิทธิภาพ",
+    "CourseName_ENG": "Critical Reading and Effective Writing",
+    "Type": "fe"
   },
   {
     "CourseNo": "001225",
-    "CourseName": "English in Science and Technology Context"
+    "CourseName_TH": "ภาษาอังกฤษเพื่อวิทยาศาสตร์และเทคโนโลยี",
+    "CourseName_ENG": "English in Science and Technology Context",
+    "Type": "fe"
   },
   {
     "CourseNo": "206161",
-    "CourseName": "Calculus for Engineering 1"
+    "CourseName_TH": "คณิตศาสตร์เพื่อวิศวกรรม 1",
+    "CourseName_ENG": "Calculus for Engineering 1",
+    "Type": "ge"
   },
   {
     "CourseNo": "206162",
-    "CourseName": "Calculus for Engineering 2"
+    "CourseName_TH": "คณิตศาสตร์เพื่อวิศวกรรม 2",
+    "CourseName_ENG": "Calculus for Engineering 2",
+    "Type": "ge"
   },
   {
     "CourseNo": "206261",
-    "CourseName": "Calculus for Engineering 3"
+    "CourseName_TH": "คณิตศาสตร์เพื่อวิศวกรรม 3",
+    "CourseName_ENG": "Calculus for Engineering 3",
+    "Type": "ge"
   },
   {
     "CourseNo": "207105",
-    "CourseName": "Physics for Engineering and Agro-Industry Students 1"
+    "CourseName_TH": "ฟิสิกส์เพื่อนักศึกษาวิศวกรรมและอุตสาหกรรมเกษตร 1",
+    "CourseName_ENG": "Physics for Engineering and Agro-Industry Students 1",
+    "Type": "ge"
   },
   {
     "CourseNo": "207115",
-    "CourseName": "Physics Laboratory for Engineering and Agro-Industry Students 1"
-  },
-  {
-    "CourseNo": "261408",
-    "CourseName": "QUANTUM COMPUTATION"
-  },
-  {
-    "CourseNo": "261434",
-    "CourseName": "Network Design and Management"
-  },
-  {
-    "CourseNo": "261453",
-    "CourseName": "Digital Image Processing"
-  },
-  {
-    "CourseNo": "261456",
-    "CourseName": "Intro to Computational Intelligence"
-  },
-  {
-    "CourseNo": "261494-1",
-    "CourseName": "R Programming (selected topics in computer engineering)"
-  },
-  {
-    "CourseNo": "261494-10",
-    "CourseName": "Blockchain Programming"
-  },
-  {
-    "CourseNo": "261494-2",
-    "CourseName": "Adv Algorithms and Computation (selected topics in comp engr)"
-  },
-  {
-    "CourseNo": "261494-4",
-    "CourseName": "Up Skills Unlock Limits (selected topics in comp engr)"
-  },
-  {
-    "CourseNo": "261494-8",
-    "CourseName": "Startup Raid (selected topics in computer engineering)"
+    "CourseName_TH": "การทดลองฟิสิกส์เพื่อนักศึกษาวิศวกรรมและอุตสาหกรรมเกษตร 1",
+    "CourseName_ENG": "Physics Laboratory for Engineering and Agro-Industry Students 1",
+    "Type": "ge"
   },
   {
     "CourseNo": "261200",
-    "CourseName": "Object-Oriented Programming"
+    "CourseName_TH": "การเขียนโปรแกรมเชิงวัตถุ",
+    "CourseName_ENG": "Object-Oriented Programming",
+    "Type": "me"
+  },
+  {
+    "CourseNo": "261408",
+    "CourseName_TH": "คอมพิวเตอร์ควอนตัม",
+    "CourseName_ENG": "Quantum Computing",
+    "Type": "me"
+  },
+  {
+    "CourseNo": "261434",
+    "CourseName_TH": "การออกแบบและการจัดการเครือข่าย",
+    "CourseName_ENG": "Network Design and Management",
+    "Type": "me"
+  },
+  {
+    "CourseNo": "261453",
+    "CourseName_TH": "การประมวลผลภาพดิจิตอล",
+    "CourseName_ENG": "Digital Image Processing",
+    "Type": "me"
+  },
+  {
+    "CourseNo": "261456",
+    "CourseName_TH": "การประมวลผลด้วยเทคนิคทางปัญญาประดิษฐ์",
+    "CourseName_ENG": "Intro to Computational Intelligence",
+    "Type": "me"
+  },
+  {
+    "CourseNo": "261494-1",
+    "CourseName_TH": "R Programming (selected topics in CPE)",
+    "CourseName_ENG": "R Programming (selected topics in CPE)",
+    "Type": "me"
+  },
+  {
+    "CourseNo": "261494-10",
+    "CourseName_TH": "Blockchain Programming (selected topics in CPE)",
+    "CourseName_ENG": "Blockchain Programming (selected topics in CPE)",
+    "Type": "me"
+  },
+  {
+    "CourseNo": "261494-2",
+    "CourseName_TH": "Adv Algorithms and Computation (selected topics in CPE)",
+    "CourseName_ENG": "Adv Algorithms and Computation (selected topics in CPE)",
+    "Type": "me"
+  },
+  {
+    "CourseNo": "261494-4",
+    "CourseName_TH": "Up Skills Unlock Limits (selected topics in CPE)",
+    "CourseName_ENG": "Up Skills Unlock Limits (selected topics in CPE)",
+    "Type": "me"
   }
 ]
