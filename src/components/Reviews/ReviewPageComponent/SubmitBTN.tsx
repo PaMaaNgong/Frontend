@@ -18,12 +18,20 @@ const style = {
 interface SubmitBTNProps {
   isDataCorrect: boolean;
   onClick: Function;
+  onClose: Function | undefined;
 }
 
-const SubmitBTN: React.FC<SubmitBTNProps> = ({ isDataCorrect, onClick }) => {
+const SubmitBTN: React.FC<SubmitBTNProps> = ({
+  isDataCorrect,
+  onClick,
+  onClose,
+}) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setOpen(false);
+    if (onClose) onClose();
+  };
   return (
     <>
       <button

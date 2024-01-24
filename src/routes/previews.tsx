@@ -11,7 +11,7 @@ const routes: RouteObject[] = [
     element: <CoursePreview />,
   },
   {
-    path: "/reviews/review",
+    path: "/review",
     element: <ReviewPage />,
   },
   {

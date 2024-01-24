@@ -5,6 +5,7 @@ import CourseYear from "../ReviewPageComponent/CourseYear";
 import Grade from "../ReviewPageComponent/Grade";
 import TextBox from "../ReviewPageComponent/TextBox";
 import axios from "axios";
+import SubmitBTN from "../ReviewPageComponent/SubmitBTN";
 
 const URL = "https://whale-app-3xvcg.ondigitalocean.app/v1";
 
@@ -87,8 +88,7 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({
   const submitBTN = () => {
     if (isDataCorrect) {
       callPostReview();
-      clearReivewStatus();
-      // onClose();
+      // clearReivewStatus();
     }
   };
 
@@ -157,14 +157,19 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({
           >
             Cancel
           </button>
-          <button
+          {/* <button
             className={`shadow-md w-36 h-14 ${
               isDataCorrect ? "bg-green-600 hover:bg-green-700" : "bg-gray-400"
             } text-white font-bold py-2 px-4 rounded-lg text-2xl`}
             onClick={submitBTN}
           >
             Submit
-          </button>
+          </button> */}
+          <SubmitBTN
+            isDataCorrect={isDataCorrect}
+            onClick={submitBTN}
+            onClose={onClose}
+          />
         </div>
       </div>
     </div>

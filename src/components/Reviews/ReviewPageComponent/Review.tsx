@@ -153,7 +153,11 @@ const Review: React.FC = () => {
           <button className="shadow-md w-36 h-14 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg text-2xl">
             Cancel
           </button>
-          <SubmitBTN isDataCorrect={isDataCorrect} onClick={submitBTN} />
+          <SubmitBTN
+            isDataCorrect={isDataCorrect}
+            onClick={submitBTN}
+            onClose={undefined}
+          />
         </div>
       </div>
     </div>

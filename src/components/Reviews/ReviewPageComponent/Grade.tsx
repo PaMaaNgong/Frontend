@@ -8,6 +8,7 @@ interface GradeProps {
   examMethod: Array<string> | null;
   setExamMethod: Function;
   triggleReset: boolean;
+  credit: number;
 }
 
 const Grade: React.FC<GradeProps> = ({
@@ -16,8 +17,10 @@ const Grade: React.FC<GradeProps> = ({
   examMethod,
   setExamMethod,
   triggleReset,
+  credit = 3,
 }) => {
-  const grades = ["W", "F", "D", "D+", "C", "C+", "B", "B+", "A"];
+  const grades_3_credits = ["W", "F", "D", "D+", "C", "C+", "B", "B+", "A"];
+  const grades_1_credits = ["W", "U", "S"];
   const [selectedNone, setSelectedNone] = useState<boolean>(false);
   const [selectedMidterm, setSelectedMidterm] = useState<boolean>(false);
   const [selectedFinal, setSelectedFinal] = useState<boolean>(false);
@@ -47,20 +50,40 @@ const Grade: React.FC<GradeProps> = ({
 
   return (
     <div className="flex flex-col gap-6 pl-3 pt-5">
+      {/* Grade */}
       <div className="text-2xl text-blue-900 font-bold">Grade (Optional)</div>
       <div className="shadow flex flex-row gap-0 w-fit rounded-full bg-gray-50">
-        {grades.map((g, index) => (
-          <RadioButton
-            key={g}
-            label={g}
-            selected={grade === g}
-            onSelect={() => {
-              if (grade === g) setGrade("-");
-              else setGrade(g);
-            }}
-          />
-        ))}
+        {credit === 1 ? (
+          <>
+            {grades_1_credits.map((g, index) => (
+              <RadioButton
+                key={g}
+                label={g}
+                selected={grade === g}
+                onSelect={() => {
+                  if (grade === g) setGrade("-");
+                  else setGrade(g);
+                }}
+              />
+            ))}
+          </>
+        ) : (
+          <>
+            {grades_3_credits.map((g, index) => (
+              <RadioButton
+                key={g}
+                label={g}
+                selected={grade === g}
+                onSelect={() => {
+                  if (grade === g) setGrade("-");
+                  else setGrade(g);
+                }}
+              />
+            ))}
+          </>
+        )}
       </div>
+      {/* Grading method */}
       <div className="text-2xl text-blue-900 font-bold pt-5">
         Grading Method
       </div>
