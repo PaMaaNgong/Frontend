@@ -26,8 +26,8 @@ const routes: RouteObject[] = [
     path: "/reviews/reviewBTN",
     element: (
       <PopupBTN
-        courseNo="207115-001"
-        courseName="Physics Laboratory for Engineering and Agro-Industry Students 1"
+        courseNo="261494-2"
+        courseName="Adv Algorithms and Computation (selected topics in CPE)"
       />
     ),
   },

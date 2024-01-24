@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-import StarRating from "./StarRating";
+import StarRating from "../ReviewPageComponent/StarRating";
 import CourseSearch from "./CourseSearch";
-import CourseYear from "./CourseYear";
-import Grade from "./Grade";
-import TextBox from "./TextBox";
-import { Link } from "react-router-dom";
+import CourseYear from "../ReviewPageComponent/CourseYear";
+import Grade from "../ReviewPageComponent/Grade";
+import TextBox from "../ReviewPageComponent/TextBox";
+import axios from "axios";
+
+const URL = "https://whale-app-3xvcg.ondigitalocean.app/v1";
 
 interface ReviewPopupProps {
   courseNo: string;
@@ -21,24 +23,24 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({
   const [courseSemester, setCourseSemester] = useState<string>("-");
   const [courseYear, setCourseYear] = useState<string>("----");
   const [grade, setGrade] = useState<string>("-");
-  const [examMethod, setExamMethod] = useState<string>("Null");
+  const [examMethod, setExamMethod] = useState<Array<string> | null>(null);
   const [contentValue, setContentValue] = useState<string>("");
   const [classroomEnvValue, setClassroomEnvValue] = useState<string>("");
   const [examFormatValue, setExamFormatValue] = useState<string>("");
   const [exerFormatValue, setExerFormatValue] = useState<string>("");
   const [isDataCorrect, setIsDataCorrect] = useState<boolean>(false);
+  const [triggleReset, setTriggleReset] = useState<boolean>(false);
 
   const reviewState = {
-    CourseNo: courseNo,
-    CourseSemester: courseSemester,
-    CourseYear: courseYear,
-    StarRating: starRating,
-    Grade: grade,
-    ExamMethod: examMethod,
-    ContentValue: contentValue,
-    ClassroomEnvValue: classroomEnvValue,
-    ExamFormatValue: examFormatValue,
-    ExerFormatValue: exerFormatValue,
+    rating: starRating,
+    grade: grade,
+    content: `${contentValue} `,
+    classroom_environment: `${classroomEnvValue} `,
+    examination_format: `${examFormatValue} `,
+    exercise_format: `${exerFormatValue} `,
+    grading_method: examMethod,
+    semester: courseSemester,
+    year: Number(courseYear),
   };
   // console.log(reviewState);
 
@@ -48,18 +50,54 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({
       starRating !== 0 &&
       courseSemester !== "-" &&
       courseYear !== "----" &&
-      examMethod !== "Null"
+      examMethod !== null
     )
       setIsDataCorrect(true);
     else setIsDataCorrect(false);
   }, [courseNo, starRating, courseSemester, courseYear, examMethod]);
 
+  const callPostReview = async () => {
+    console.log(`${URL}/course/${courseNo}/reviews`);
+    console.log(reviewState);
+    try {
+      const resp = await axios.post(
+        `${URL}/course/${courseNo}/reviews`,
+        reviewState
+      );
+      if (resp.data.ok) alert("review suscessed");
+    } catch (err: any) {
+      alert(err.response.data.message);
+    }
+  };
+
+  const clearReivewStatus = () => {
+    setTriggleReset(!triggleReset);
+    setStarRating(0);
+    setCourseSemester("-");
+    setCourseYear("----");
+    setGrade("-");
+    setExamMethod(null);
+    setContentValue("");
+    setClassroomEnvValue("");
+    setExamFormatValue("");
+    setExerFormatValue("");
+    setIsDataCorrect(false);
+  };
+
+  const submitBTN = () => {
+    if (isDataCorrect) {
+      callPostReview();
+      clearReivewStatus();
+      // onClose();
+    }
+  };
+
   return (
     <div
-      className="flex flex-col gap-4 border-blue-900 border-2"
+      className="flex flex-col gap-3 border-blue-900 border-0 font-['kanit']"
       style={{ height: 800, width: 1280 }}
     >
-      <div className="flex flex-row gap-10  pt-4">
+      <div className="flex flex-row gap-3 pt-4">
         <div
           className="flex flex-col gap-5 ml-3.5 border-r-4 border-blue-900"
           style={{ width: 570 }}
@@ -81,6 +119,7 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({
             setGrade={setGrade}
             examMethod={examMethod}
             setExamMethod={setExamMethod}
+            triggleReset={triggleReset}
           />
         </div>
         <div className="flex flex-col gap-2 pl-2" style={{ width: 660 }}>
@@ -110,19 +149,19 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({
           />
         </div>
       </div>
-      <div className="flex flex-row">
-        <div className="basis-8/12 mr-4"></div>
-        <div className="pl-14 flex flex-row gap-4">
+      <div className="flex justify-end">
+        <div className="flex flex-row gap-4 pr-8">
           <button
-            className="shadow-md w-40 h-16 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg text-2xl"
+            className="shadow-md w-36 h-14 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg text-2xl"
             onClick={onClose}
           >
             Cancel
           </button>
           <button
-            className={`shadow-md w-40 h-16 ${
+            className={`shadow-md w-36 h-14 ${
               isDataCorrect ? "bg-green-600 hover:bg-green-700" : "bg-gray-400"
             } text-white font-bold py-2 px-4 rounded-lg text-2xl`}
+            onClick={submitBTN}
           >
             Submit
           </button>

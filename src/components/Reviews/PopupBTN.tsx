@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./PopupBTN.css";
 import ReviewPopup from "./ReviewPopupComponent/ReviewPopup";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
