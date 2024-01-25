@@ -30,9 +30,13 @@ const Navbar: React.FC<NavbarProps> = () => {
     }
   ];
 
+    const handleSearchResults = (results) => {
+    // Handle search results (e.g., update state, navigate, etc.)
+  };
+
   return (
     <main>
-      <nav className={clsx("flex justify-between px-8 items-center py-3 font-['kanit'] font-thin bg-[#9B2226]")}>
+      <nav className={clsx("flex justify-between px-9 items-center py-3 font-['kanit'] font-normal bg-[#9B2226]")}>
         <div className="flex items-center gap-8">
           <section className="flex items-center gap-4">
             {/* menu */}
@@ -48,7 +52,7 @@ const Navbar: React.FC<NavbarProps> = () => {
           {navlinks.map((link, index) => (
             <a
               key={index}
-              className="hidden lg:block text-white hover:text-yellow-100"
+              className="hidden lg:block text-white hover:text-black"
               href={link.link}
             >
               {link.label}
