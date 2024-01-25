@@ -1,6 +1,6 @@
 import { RouteObject } from "react-router-dom";
 import CoursePreview from "../components/Courses/preview";
-import Review from "../components/Reviews/Review";
+// import Review from "../components/Reviews/Review";
 import Submited from "../components/Reviews/Submited";
 
 const routes: RouteObject[] = [
@@ -10,7 +10,7 @@ const routes: RouteObject[] = [
   },
   {
     path: "/reviews/review",
-    element: <Review />,
+    // element: <Review />,
   },
   {
     path: "/reviews/submited",
