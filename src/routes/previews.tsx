@@ -7,7 +7,7 @@ import GetCourses from "../components/Reviews/CourseInfoDB/GetCourses";
 
 const routes: RouteObject[] = [
   {
-    path: "/components/courses",
+    path: "/courses/courseId", // Dynamic route for course ID
     element: <CoursePreview />,
   },
   {
