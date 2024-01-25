@@ -32,7 +32,7 @@ const Navbar: React.FC<NavbarProps> = () => {
 
   return (
     <main>
-      <nav className={clsx("flex justify-between px-8 items-center py-3 font-['kanit'] bg-[#9B2226]")}>
+      <nav className={clsx("flex justify-between px-8 items-center py-3 font-['kanit'] font-thin bg-[#9B2226]")}>
         <div className="flex items-center gap-8">
           <section className="flex items-center gap-4">
             {/* menu */}

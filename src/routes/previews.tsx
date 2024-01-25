@@ -1,5 +1,6 @@
 import { RouteObject } from "react-router-dom";
 import CoursePreview from "../components/Courses/preview";
+// import Review from "../components/Reviews/Review";
 import Submited from "../components/Reviews/Submited";
 import ReviewPage from "../components/Reviews/ReviewPage";
 import GetCourses from "../components/Reviews/CourseInfoDB/GetCourses";
@@ -7,12 +8,12 @@ import PopupBTN from "../components/Reviews/PopupBTN";
 
 const routes: RouteObject[] = [
   {
-    path: "/components/courses",
+    path: "/courses/:courseId", // Dynamic route for course ID
     element: <CoursePreview />,
   },
   {
-    path: "/review",
-    element: <ReviewPage />,
+    path: "/reviews/review",
+    // element: <Review />,
   },
   {
     path: "/reviews/submited",
