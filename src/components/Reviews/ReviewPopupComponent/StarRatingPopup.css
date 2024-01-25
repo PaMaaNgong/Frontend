@@ -1,4 +1,4 @@
-.rating {
+.rating-popup {
   position: relative;
   /* width: 330px; */
   /* height: 90px; */
@@ -14,20 +14,20 @@
   /* box-shadow: 0 0 2px #b3acac; */
 }
 
-.star-rating {
+.star-rating-popup {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 1.1em;
 }
 
-.star {
+.star-popup {
   padding-bottom: 10px;
   cursor: pointer;
   color: rgb(209 213 219);
   transition: color 0.5s ease-in-out;
 }
 
-.star.active {
+.star-popup.active {
   color: #ffcc00;
 }

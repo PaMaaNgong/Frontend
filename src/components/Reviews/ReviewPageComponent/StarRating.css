@@ -1,0 +1,30 @@
+.rating {
+  position: relative;
+  width: 480px;
+  height: 108px;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 60px;
+  background-color: rgb(249 250 251);
+}
+
+.star-rating {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.32em;
+}
+
+.star {
+  padding-bottom: 12px;
+  cursor: pointer;
+  color: rgb(209 213 219);
+  transition: color 0.5s ease-in-out;
+}
+
+.star.active {
+  color: #ffcc00;
+}

@@ -1,11 +1,11 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from "tailwindcss";
 
 export default {
   content: [],
   theme: {
     extend: {
       colors: {
-        customRed: '#9B2226',
+        customRed: "#9B2226",
       },
       fontFamily: {
         kanit: ['Kanit', 'sans-serif'],
@@ -13,4 +13,4 @@ export default {
     },
   },
   plugins: [],
-} satisfies Config
+} satisfies Config;

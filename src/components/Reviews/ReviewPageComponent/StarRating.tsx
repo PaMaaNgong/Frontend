@@ -23,7 +23,7 @@ const StarRating: React.FC<StarRatingProps> = ({
           {[...Array(totalStars)].map((_, index) => (
             <span
               key={index}
-              className={`star ${index < starRating ? "active" : ""} text-6xl`}
+              className={`star ${index < starRating ? "active" : ""} text-7xl`}
               onClick={() => handleStarClick(index)}
             >
               ★
