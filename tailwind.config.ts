@@ -1,13 +1,13 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from "tailwindcss";
 
 export default {
   content: [],
   theme: {
     extend: {
       colors: {
-        customRed: '#9B2226',
+        customRed: "#9B2226",
       },
     },
   },
   plugins: [],
-} satisfies Config
+} satisfies Config;

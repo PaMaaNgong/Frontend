@@ -5,7 +5,7 @@ import Submited from "../components/Reviews/Submited";
 
 const routes: RouteObject[] = [
   {
-    path: "/components/courses",
+    path: "/courses/courseId", // Dynamic route for course ID
     element: <CoursePreview />,
   },
   {
