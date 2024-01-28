@@ -13,7 +13,6 @@ const App: React.FC = () => {
   
   return (
     <div className="App font-kanit">
-      <Navbar/>
       <Cardcourse />
     </div>
   );
