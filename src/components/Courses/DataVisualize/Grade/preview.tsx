@@ -13,13 +13,13 @@ export default function GradeHistogramPreview() {
             },
         }
     }
-    const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+    const labels = ['A', 'B+', 'B', 'C+', 'C', 'D+', 'D','F'];
     const data: ChartData = {
         labels,
         datasets: [
             {
-                label: 'Rating',
-                data: [9, 3, 2, 7, 9, 11, 13],
+                label: 'Grade',
+                data: [29, 37, 42, 27, 29, 18, 8],
                 backgroundColor: 'rgb(30,140,208)',
             }
         ]

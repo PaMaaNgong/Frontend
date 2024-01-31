@@ -1,28 +1,26 @@
 .ratings-container {
-    font-family: 'Kanit', 'sans-serif';
+    font-family: 'Kanit', sans-serif;
     color: #000;
     background-color: #fff4f4;
-    /*padding: 10px;*/
     width: 250px;
 }
 
 .ratings-header {
     display: flex;
     justify-content: space-between;
-    /*margin-bottom: 10px;*/
 }
 
 .histogram {
     display: flex;
     align-items: flex-end;
-    height: 100px; /* Adjust as needed */
+    height: 100px;
     padding: 10px 0;
     justify-content: center;
 }
 
 .histogram-bar {
-    width: 20px; /* Adjust the width as needed */
-    background-color: #666;
+    width: 20px;
+    background-color: #e71d1d;
     margin-right: 3px;
     text-align: center;
     color: #ccc;
@@ -32,29 +30,52 @@
     display: flex;
     justify-content: center;
     align-items: flex-end;
+    position: relative; /* Add position relative */
 }
 
 .histogram-bar span {
-    display: none; /* Hide by default, show on hover or as needed */
+    display: none;
 }
 
 .histogram-bar:hover span {
-    display: block; /* Show the value on hover */
+    display: block;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #f82944;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 0.7em;
+    white-space: nowrap;
+    z-index: 1; /* Ensure it's above other elements */
+    margin-bottom: 3px;
+}
+
+.histogram-bar:hover::after {
+    /*content: '';*/
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #000 transparent;
 }
 
 .ratings-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /*margin-top: 10px;*/
 }
 
 .rating-value {
     font-size: 1.5em;
-    color: #4CAF50; /* Green color to match the stars */
+    color: #4CAF50;
 }
 
 .rating-stars {
-    font-size: 1.5em;
+    font-size: .75em;
     color: #4CAF50;
 }
