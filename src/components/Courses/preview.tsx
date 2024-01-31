@@ -3,10 +3,12 @@ import { useParams } from "react-router-dom";
 import Navbar from "../Homepage/Navbar";
 import { ICourse } from "./props";
 import { fetchCourseData } from "./api";
+import clsx from "clsx";
+import profileIcon from "../Homepage/icon/image 4.png";
+import PopupBTN from "../Reviews/PopupBTN";
 
 const CoursePreview: React.FC = () => {
-  // const { courseId } = useParams();
-  const [courseId, setId] = useState<any>("261200");
+  const { courseId } = useParams<{ courseId: string }>();
   const [courseData, setCourseData] = useState<any>(null);
   const [buttonData, setButtonData] = useState<any>("");
 
@@ -17,8 +19,10 @@ const CoursePreview: React.FC = () => {
         .catch((error) => console.error(error));
     }
   }, [courseId]);
+
   console.log("ID is " + courseId);
   console.log("courseData " + courseData);
+
   if (!courseData) {
     // Loading state
     return <div> Loading... </div>;
@@ -26,7 +30,31 @@ const CoursePreview: React.FC = () => {
 
   return (
     <div className="bg-black h-screen">
-      <Navbar />
+      {/* Navbar */}
+      <nav
+        className={clsx(
+          "flex justify-between px-8 items-center py-3 font-['kanit'] bg-[#9B2226]"
+        )}
+      >
+        <div className="flex items-center gap-8">
+          <section className="flex items-center gap-4">
+            {/* logo */}
+            <a href="/" className="text-3xl font-mono text-white">
+              FreeCPE
+            </a>
+          </section>
+        </div>
+
+        {/* last section */}
+        <section className="flex items-center gap-3">
+          {/* Review */}
+          <PopupBTN courseNo={courseData.id} courseName={courseData.name_en} />
+          {/* Profile icon link */}
+          <a href="/profile" className="text-3xl">
+            <img src={profileIcon} alt="Profile Icon" className="w-15 h-8" />
+          </a>
+        </section>
+      </nav>
 
       <div className="grid grid-cols-2 bg-[#fff4f4] text-2xl p-16 gap-8 h-full">
         {/* course detail section */}
@@ -79,6 +107,12 @@ const CoursePreview: React.FC = () => {
               onClick={() => setButtonData("Room: " + courseData.rooms)}
             >
               Room
+            </button>
+            <button
+              className=" rounded-full hover:bg-sky-200"
+              onClick={() => setButtonData("Grade: " + courseData.rooms)}
+            >
+              Grade
             </button>
           </div>
           <div className="text-xl">

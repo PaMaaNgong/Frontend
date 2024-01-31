@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import clsx from "clsx";
 import { FiMenu } from "react-icons/fi";
 import { IoCloseOutline } from "react-icons/io5";
-import profileIcon from './icon/image 4.png';
-import reviewIcon from './icon/image 26.png';
+import profileIcon from "./icon/image 4.png";
+import reviewIcon from "./icon/image 26.png";
 import SearchBar from "./Searchbar";
 
 interface NavbarProps {}
@@ -14,25 +14,29 @@ const Navbar: React.FC<NavbarProps> = () => {
   const navlinks = [
     {
       label: "All",
-      link: "#"
+      link: "#",
     },
     {
       label: "Major Elective",
-      link: "#"
+      link: "#",
     },
     {
       label: "General Education",
-      link: "#"
+      link: "#",
     },
     {
       label: "Free Elective",
-      link: "#"
-    }
+      link: "#",
+    },
   ];
 
   return (
     <main>
-      <nav className={clsx("flex justify-between px-8 items-center py-3 font-['kanit'] font-thin bg-[#9B2226]")}>
+      <nav
+        className={clsx(
+          "flex justify-between px-8 items-center py-3 font-['kanit'] font-thin bg-[#9B2226]"
+        )}
+      >
         <div className="flex items-center gap-8">
           <section className="flex items-center gap-4">
             {/* menu */}
@@ -77,9 +81,9 @@ const Navbar: React.FC<NavbarProps> = () => {
           </section>
         </div>
         <div className="w-[750px] gap-3">
-        <SearchBar />
+          <SearchBar />
         </div>
-        
+
         {/* last section */}
         <section className="flex items-center gap-3">
           {/* Review icon link */}
