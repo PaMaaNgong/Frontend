@@ -6,45 +6,40 @@ import profileIcon from "./icon/image 4.png";
 import reviewIcon from "./icon/image 26.png";
 import SearchBar from "./Searchbar";
 
-interface NavbarProps {}
+interface NavbarProps {
+  onFilterChange: (filterType: string) => void;
+}
 
-const Navbar: React.FC<NavbarProps> = () => {
+const Navbar: React.FC<NavbarProps> = ({ onFilterChange }) => {
   const [isSideMenuOpen, setMenu] = useState(false);
+  const [activeCategory, setActiveCategory] = useState<string>("all");
+
+  const handleFilterClick = (e) => {
+    const filterType = e.target.getAttribute("data-filter");
+    setActiveCategory(filterType); // Update active category
+    onFilterChange(filterType); // Call the onFilterChange prop function
+  };
 
   const navlinks = [
-    {
-      label: "All",
-      link: "#",
-    },
-    {
-      label: "Major Elective",
-      link: "#",
-    },
-    {
-      label: "General Education",
-      link: "#",
-    },
-    {
-      label: "Free Elective",
-      link: "#",
-    },
+    { label: "All", filter: "all" },
+    { label: "Major Elective", filter: "me" },
+    { label: "General Education", filter: "ge" },
+    { label: "Free Elective", filter: "fe" },
   ];
 
   return (
     <main>
       <nav
         className={clsx(
-          "flex justify-between px-8 items-center py-3 font-['kanit'] font-thin bg-[#9B2226]"
+          "flex justify-between px-9 items-center py-3 font-['kanit'] font-normal bg-[#9B2226]"
         )}
       >
         <div className="flex items-center gap-8">
           <section className="flex items-center gap-4">
-            {/* menu */}
             <FiMenu
               onClick={() => setMenu(true)}
               className="text-3xl cursor-pointer lg:hidden"
             />
-            {/* logo */}
             <a href="/" className="text-3xl font-mono text-white">
               FreeCPE
             </a>
@@ -52,8 +47,12 @@ const Navbar: React.FC<NavbarProps> = () => {
           {navlinks.map((link, index) => (
             <a
               key={index}
-              className="hidden lg:block text-white hover:text-yellow-100"
-              href={link.link}
+              className={`hidden lg:block text-white hover:text-black ${
+                activeCategory === link.filter ? "border-b-2 border-white" : ""
+              }`}
+              onClick={handleFilterClick}
+              data-filter={link.filter}
+              href="#"
             >
               {link.label}
             </a>
@@ -80,9 +79,9 @@ const Navbar: React.FC<NavbarProps> = () => {
             ))}
           </section>
         </div>
-        <div className="w-[750px] gap-3">
-          <SearchBar />
-        </div>
+        {/* <div className="w-[750px] gap-3">
+        <SearchBar />
+        </div> */}
 
         {/* last section */}
         <section className="flex items-center gap-3">
@@ -96,7 +95,7 @@ const Navbar: React.FC<NavbarProps> = () => {
           </a>
         </section>
       </nav>
-      <hr className="" />
+      <hr />
     </main>
   );
 };

@@ -28,10 +28,12 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ course }) => {
   const getRandomImageUrl = () => {
     return imageUrls[Math.floor(Math.random() * imageUrls.length)];
   };
+  
+  
   const mapIconUrl = (type: CourseType) => {
     switch (type) {
       case "me":
-        return "src/components/Homepage/icon/image 29.png";
+        return "src/components/Homepage/icon/image 30.png";
       case "ge":
         return "src/components/Homepage/icon/image 28.png";
       case "fe":
