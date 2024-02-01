@@ -36,12 +36,12 @@ const routes: RouteObject[] = [
   },
   {
     path: "/course/gradehistogram",
-    element: <GradeHistogramPreview/>
+    element: <GradeHistogramPreview />,
   },
   {
     path: "/course/ratinghistogram",
-    element: <RatingHistogramPreview/>
-  }
+    element: <RatingHistogramPreview />,
+  },
 ];
 
 export default routes;

@@ -1,52 +1,54 @@
-// RatingsHistogram.tsx
-import React from 'react';
-import './RatingsHistogram.css'; // make sure to create a corresponding CSS file
+import React, { useState } from "react";
+import "./RatingsHistogram.css";
 
-type HistogramBar = {
-    value: number;
-    height: number;
+export type RatingDetail = {
+  stars: number;
+  count: number;
+  percentage: number;
 };
 
-const RatingsHistogram: React.FC = () => {
-    // Example data for histogram bars
-    const bars: HistogramBar[] = [
-        { value: 1, height: 80 },
-        { value: 2, height: 20 },
-        { value: 3, height: 30 },
-        { value: 4, height: 50 },
-        { value: 5, height: 70 },
-        // ...add more bars as needed
-    ];
+type HistogramProps = {
+  ratings: RatingDetail[];
+};
 
-    return (
-        <div className="ratings-container">
-            <div className="ratings-header">
-                <span>RATINGS</span>
-            </div>
-            <div className="histogram">
-                <span>⭐</span>
-                {bars.map((bar, index) => (
-                    <div
-                        key={index}
-                        className="histogram-bar"
-                        style={{ height: `${bar.height}%` }}
-                    >
-                        {/* The number inside the bar */}
-                        <span>{bar.value}</span>
-                    </div>
-                ))}
-                <span>⭐⭐⭐⭐⭐</span>
-            </div>
-            <div className="ratings-footer">
-                {/*<span className="rating-value">4.2</span>*/}
-                <span className="rating-stars">
-          {/* You can use a package or custom SVG for stars */}
+const RatingsHistogram: React.FC<HistogramProps> = ({ ratings }) => {
+  // Destructure ratings from props here
+  const [hoveredBar, setHoveredBar] = useState<number | null>(null);
 
+  const maxCount = Math.max(...ratings.map((r: RatingDetail) => r.count)); // Type the parameter r explicitly
 
-        </span>
+  return (
+    <div className="ratings-container">
+      <div className="ratings-header">
+        <span>RATINGS</span>
+      </div>
+      <div className="histogram">
+        {ratings.map(
+          (
+            rating: RatingDetail,
+            index: number // Type the parameters rating and index explicitly
+          ) => (
+            <div
+              key={index}
+              className="histogram-bar"
+              style={{ height: `${(rating.count / maxCount) * 100}%` }}
+              onMouseEnter={() => setHoveredBar(index)}
+              onMouseLeave={() => setHoveredBar(null)}
+            >
+              <span style={{ display: hoveredBar === index ? "flex" : "none" }}>
+                {rating.count} ★{rating.stars}
+                <br />
+                {rating.percentage}%
+              </span>
             </div>
-        </div>
-    );
+          )
+        )}
+      </div>
+      <div className="ratings-footer">
+        {/* Placeholder for rating value and stars */}
+      </div>
+    </div>
+  );
 };
 
 export default RatingsHistogram;
