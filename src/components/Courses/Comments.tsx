@@ -25,9 +25,9 @@ const comments: React.FC = () => {
                         <div> {review.content} </div>
                         <div className="flex flex-col justify-items-center">
                             <div className="text-center"> Rating: {review.rating} </div>
-                            <div className="text-center">{review.year}</div>
+                            <div className="text-center"> Year: {`${review.semester} / ${review.year}`}</div>
                             <div className="text-center">
-                                {review.grading_method.length === 2 ? review.grading_method[0] + "/" + review.grading_method[1] : review.grading_method.length === 1 ? review.grading_method[0] : "none"}
+                                {review.grading_method.length === 2 ? review.grading_method[0] + " | " + review.grading_method[1] : review.grading_method.length === 1 ? review.grading_method[0] : "none"}
                             </div>
                         </div>
                     </div>}
