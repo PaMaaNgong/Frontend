@@ -11,6 +11,7 @@ interface NavbarProps {
 }
 
 const Navbar: React.FC<NavbarProps> = ({ onFilterChange }) => {
+
   const [isSideMenuOpen, setMenu] = useState(false);
   const [activeCategory, setActiveCategory] = useState<string>("all");
 

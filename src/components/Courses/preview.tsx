@@ -8,6 +8,7 @@ import profileIcon from "../Homepage/icon/image 4.png";
 import PopupBTN from "../Reviews/PopupBTN";
 import { GradeHistogramChart } from "./DataVisualize/Grade/GradeHistogramChart";
 import RatingsHistogram from "./DataVisualize/Rating/RatingHistogram";
+import Comments from "./Comments";
 
 const options: ChartOptions = {
   responsive: true,
@@ -234,7 +235,7 @@ const CoursePreview: React.FC = () => {
         <div className=" ">
           <div>Review</div>
           <div className="rounded-3xl bg-white p-4 text-xl h-screen">
-            fetch data from DB
+            <Comments/>
           </div>
         </div>
       </div>

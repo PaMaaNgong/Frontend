@@ -25,10 +25,10 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ course }) => {
     "src/components/Homepage/Card/image 24.png",
     "src/components/Homepage/Card/image 25.png",
   ];
+
   const getRandomImageUrl = () => {
     return imageUrls[Math.floor(Math.random() * imageUrls.length)];
   };
-  
   
   const mapIconUrl = (type: CourseType) => {
     switch (type) {
