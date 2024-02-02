@@ -3,6 +3,7 @@ import Repository from ".";
 import { CourseDetail, CourseOverview, ReviewDetail, ReviewOverview } from "../models";
 
 export type Response<T> = Promise<AxiosResponse<T>>
+
 export async function getCourses(offset: number = 0, limit: number = 10): Response<CourseOverview[]> {
     return Repository.get(`/courses?offset=${offset}&limit=${limit}`);
 }
