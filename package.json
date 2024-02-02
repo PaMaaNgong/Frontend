@@ -11,7 +11,9 @@
   "dependencies": {
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
-    "@mui/material": "^5.15.3",
+    "@mui/icons-material": "^5.15.7",
+    "@mui/material": "^5.15.7",
+    "@mui/styled-engine-sc": "^6.0.0-alpha.14",
     "@types/react-router": "^5.1.20",
     "@types/react-router-dom": "^5.3.3",
     "axios": "^1.6.5",
@@ -24,7 +26,8 @@
     "react-native-paper": "^5.11.6",
     "react-router": "^6.21.3",
     "react-router-dom": "^6.21.3",
-    "reactjs-popup": "^2.0.6"
+    "reactjs-popup": "^2.0.6",
+    "styled-components": "^6.1.8"
   },
   "devDependencies": {
     "@types/chart.js": "^2.9.41",
