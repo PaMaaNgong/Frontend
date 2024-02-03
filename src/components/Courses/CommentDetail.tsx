@@ -8,6 +8,8 @@ import Collapse from '@mui/material/Collapse';
 import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Rating from '@mui/material/Rating';
+import Chip from '@mui/material/Chip';
 
 import {useParams} from "react-router-dom";
 import {useEffect} from 'react'
@@ -60,12 +62,14 @@ export const CommentDetail = () => {
           {review.content}
         </Typography> */}
         <Typography> {review.content} </Typography>
-        <div className="flex flex-col justify-items-end text-orange-300">
-            <div className="text-end"> Rating: {review.rating} </div>
-            <div className="text-end"> Year: {`${review.semester}/${review.year}`}</div>
-            <div className="text-end">
+        <div className="flex flex-col items-end text-orange-300">
+            {/* <div className="text-end"> Rating: {review.rating} </div> */}
+            <Rating className="" value={review.rating} readOnly />
+            <div className=""> Year: {`${review.semester}/${review.year}`}</div>
+            {/* <div className="text-end">
                 {review.grading_method.length === 2 ? review.grading_method[0] + " & " + review.grading_method[1] : review.grading_method.length === 1 ? review.grading_method[0] : "none"}
-            </div>
+            </div> */}
+            <Chip label={review.grading_method.length === 2 ? review.grading_method[0] + " & " + review.grading_method[1] : review.grading_method.length === 1 ? review.grading_method[0] : "none"} className="w-3/6" color="warning" size="small"/>
         </div>
       </CardContent>
 
