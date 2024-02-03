@@ -4,13 +4,13 @@ import Navbar from "../Homepage/Navbar";
 import { ICourse } from "./props";
 import { fetchCourseData } from "./api";
 import clsx from "clsx";
-import profileIcon from "../Homepage/icon/image 4.png";
 import PopupBTN from "../Reviews/PopupBTN";
 import { GradeHistogramChart } from "./DataVisualize/Grade/GradeHistogramChart";
 import RatingsHistogram from "./DataVisualize/Rating/RatingHistogram";
 import CommmentEach from "./CommmentEach";
 import {ChartData, ChartOptions} from "chart.js";
 
+const profileIcon = "/icon/image 4.png";
 const options: ChartOptions = {
   responsive: true,
   plugins: {
@@ -131,21 +131,21 @@ const CoursePreview: React.FC = () => {
               {courseData.type === "me" && (
                 <img
                   alt="Icon"
-                  src="../src/components/Homepage/icon/image%2030.png"
+                  src="/icon/image 30.png"
                   className="ml-4 w-15 h-9"
                 />
               )}
               {courseData.type === "fe" && (
                 <img
                   alt="Icon"
-                  src="../src/components/Homepage/icon/image%2027.png"
+                  src="/icon/image 27.png"
                   className="ml-4 w-15 h-9"
                 />
               )}
               {courseData.type === "ge" && (
                 <img
                   alt="Icon"
-                  src="../src/components/Homepage/icon/image%2028.png"
+                  src="/icon/image 28.png"
                   className="ml-4 w-15 h-9"
                 />
               )}

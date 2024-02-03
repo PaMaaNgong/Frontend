@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import ReviewPopup from "./ReviewPopupComponent/ReviewPopup";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-import reviewIcon from "./review_icon.png";
 
 const style = {
   position: "absolute" as "absolute",
@@ -35,7 +34,7 @@ const PopupBTN: React.FC<PopupBTNProps> = ({ courseNo, courseName }) => {
       </button> */}
       {/* Button section */}
       <img
-        src={reviewIcon}
+        src="/images/review_icon.png"
         alt="Review Icon"
         onClick={handleOpen}
         className="w-25 h-8 text-3xl"

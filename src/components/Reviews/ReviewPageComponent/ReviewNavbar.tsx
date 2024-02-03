@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import clsx from "clsx";
-import profileIcon from "../profile_icon.png";
 
 interface ReviewNavbarProps {}
 
@@ -25,7 +24,7 @@ const ReviewNavbar: React.FC<ReviewNavbarProps> = ({}) => {
         <section className="flex items-center gap-3">
           {/* Profile icon link */}
           <a href="/profile" className="text-3xl">
-            <img src={profileIcon} alt="Profile Icon" className="w-15 h-8" />
+            <img src="/images/profile_icon.png" alt="Profile Icon" className="w-15 h-8" />
           </a>
         </section>
       </nav>
