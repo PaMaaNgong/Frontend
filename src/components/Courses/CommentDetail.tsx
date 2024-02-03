@@ -69,7 +69,7 @@ export const CommentDetail: React.FC<CommentDetailProp> = ({
         </div>
       </CardContent>
 
-      <CardActions disableSpacing className="bg-gray-200">
+      <CardActions disableSpacing className="bg-gray-100">
         <div>More Detail</div>
         <ExpandMore
           expand={expanded}

@@ -15,10 +15,9 @@ const Navbar: React.FC<NavbarProps> = ({ onFilterChange }) => {
   const [isSideMenuOpen, setMenu] = useState(false);
   const [activeCategory, setActiveCategory] = useState<string>("all");
 
-  const handleFilterClick = (e) => {
-    const filterType = e.target.getAttribute("data-filter");
-    setActiveCategory(filterType); // Update active category
-    onFilterChange(filterType); // Call the onFilterChange prop function
+  const handleFilterClick = (to: string) => {
+    setActiveCategory(to); // Update active category
+    onFilterChange(to); // Call the onFilterChange prop function
   };
 
   const navlinks = [
@@ -51,8 +50,7 @@ const Navbar: React.FC<NavbarProps> = ({ onFilterChange }) => {
               className={`hidden lg:block text-white hover:text-black ${
                 activeCategory === link.filter ? "border-b-2 border-white" : ""
               }`}
-              onClick={handleFilterClick}
-              data-filter={link.filter}
+              onClick={() => handleFilterClick(link.filter)}
               href="#"
             >
               {link.label}
@@ -74,7 +72,7 @@ const Navbar: React.FC<NavbarProps> = ({ onFilterChange }) => {
             />
 
             {navlinks.map((link, index) => (
-              <a key={index} className="font-bold" href={link.link}>
+              <a key={index} className="font-bold" href="#">
                 {link.label}
               </a>
             ))}
