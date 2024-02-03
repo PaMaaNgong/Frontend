@@ -8,8 +8,8 @@ import profileIcon from "../Homepage/icon/image 4.png";
 import PopupBTN from "../Reviews/PopupBTN";
 import { GradeHistogramChart } from "./DataVisualize/Grade/GradeHistogramChart";
 import RatingsHistogram from "./DataVisualize/Rating/RatingHistogram";
-import CommentDetail from "./CommentDetail";
 import CommmentEach from "./CommmentEach";
+import {ChartData, ChartOptions} from "chart.js";
 
 const options: ChartOptions = {
   responsive: true,
@@ -23,7 +23,7 @@ const options: ChartOptions = {
   },
 };
 const labels = ["A", "B+", "B", "C+", "C", "D+", "D", "F"];
-const data: ChartData = {
+const data: ChartData<'bar'> = {
   labels,
   datasets: [
     {
@@ -34,7 +34,7 @@ const data: ChartData = {
   ],
 };
 
-const exampleRatings: RatingDetail[] = [
+const exampleRatings: any[] = [
   { stars: 1, count: 150, percentage: 5 },
   { stars: 1.5, count: 78, percentage: 2.5 },
   { stars: 2, count: 200, percentage: 7 },
@@ -46,7 +46,7 @@ const exampleRatings: RatingDetail[] = [
   { stars: 5, count: 147, percentage: 1.5 },
 ];
 
-const formatSchedule = (schedules) => {
+const formatSchedule = (schedules: any) => {
   if (Array.isArray(schedules) && schedules.length > 0) {
     return schedules.map((schedule, index) => (
       <div key={index}>
@@ -89,7 +89,7 @@ const CoursePreview: React.FC = () => {
 
     return <div> Loading... </div>;
   }
-  console.log(courseData);
+  console.log(courseData.schedule);
   return (
     <div className="bg-[#F5EBE0]/40">
       {/* Navbar */}
@@ -174,24 +174,6 @@ const CoursePreview: React.FC = () => {
             >
               Lecturer
             </button>
-            {/* <button
-              className=" rounded-full hover:bg-sky-200"
-              onClick={() => handleButtonClick("location")}
-            >
-              Location
-            </button>
-            <button
-              className=" rounded-full hover:bg-sky-200"
-              onClick={() => handleButtonClick("schedule")}
-            >
-              Schedule
-            </button>
-            <button
-              className=" rounded-full hover:bg-sky-200"
-              onClick={() => handleButtonClick("room")}
-            >
-              Room
-            </button> */}
             <button
               className=" rounded-full hover:bg-sky-200"
               onClick={() => handleButtonClick("grade")}
@@ -203,17 +185,9 @@ const CoursePreview: React.FC = () => {
             {courseData ? (
               <div>
                 {buttonType === "lecturers" && (
-                  <div>
-                    Lecturers:{" "}
-                    {courseData.lecturers.map((lecturer, index) => (
-                      <span key={index}>
-                        {lecturer}
-                        {index < courseData.lecturers.length - 1 && ", "}
-                      </span>
-                    ))}
-                  </div>
+                  <div>Lecturer: {courseData.lecturers}</div>
                 )}
-                {/* {buttonType === "location" && (
+                {buttonType === "location" && (
                   <div>Location: {courseData.location}</div>
                 )}
                 {buttonType === "schedule" && (
@@ -226,7 +200,7 @@ const CoursePreview: React.FC = () => {
                       ? courseData.rooms.join(", ")
                       : courseData.rooms[0]}
                   </div>
-                )} */}
+                )}
                 {buttonType === "grade" && (
                   <GradeHistogramChart
                     options={options}
@@ -244,9 +218,9 @@ const CoursePreview: React.FC = () => {
 
         {/* review section */}
         <div className="h-2/4">
-          <div className="text-4xl font-bold mb-8">Review</div>
+          <div>Review</div>
           <div className="rounded-3xl bg-white p-4 text-xl overflow-y-auto overflow-hidden h-[28em]">
-            <CommmentEach />
+            <CommmentEach/>
           </div>
         </div>
       </div>
