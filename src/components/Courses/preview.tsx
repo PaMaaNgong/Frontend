@@ -89,7 +89,7 @@ const CoursePreview: React.FC = () => {
 
     return <div> Loading... </div>;
   }
-  console.log(courseData.schedule);
+  console.log(courseData);
   return (
     <div className="bg-[#F5EBE0]/40">
       {/* Navbar */}
@@ -174,7 +174,7 @@ const CoursePreview: React.FC = () => {
             >
               Lecturer
             </button>
-            <button
+            {/* <button
               className=" rounded-full hover:bg-sky-200"
               onClick={() => handleButtonClick("location")}
             >
@@ -191,7 +191,7 @@ const CoursePreview: React.FC = () => {
               onClick={() => handleButtonClick("room")}
             >
               Room
-            </button>
+            </button> */}
             <button
               className=" rounded-full hover:bg-sky-200"
               onClick={() => handleButtonClick("grade")}
@@ -203,9 +203,17 @@ const CoursePreview: React.FC = () => {
             {courseData ? (
               <div>
                 {buttonType === "lecturers" && (
-                  <div>Lecturer: {courseData.lecturers}</div>
+                  <div>
+                    Lecturers:{" "}
+                    {courseData.lecturers.map((lecturer, index) => (
+                      <span key={index}>
+                        {lecturer}
+                        {index < courseData.lecturers.length - 1 && ", "}
+                      </span>
+                    ))}
+                  </div>
                 )}
-                {buttonType === "location" && (
+                {/* {buttonType === "location" && (
                   <div>Location: {courseData.location}</div>
                 )}
                 {buttonType === "schedule" && (
@@ -218,7 +226,7 @@ const CoursePreview: React.FC = () => {
                       ? courseData.rooms.join(", ")
                       : courseData.rooms[0]}
                   </div>
-                )}
+                )} */}
                 {buttonType === "grade" && (
                   <GradeHistogramChart
                     options={options}
@@ -234,12 +242,11 @@ const CoursePreview: React.FC = () => {
           </div>
         </div>
 
-
         {/* review section */}
         <div className="h-2/4">
-          <div>Review</div>
+          <div className="text-4xl font-bold mb-8">Review</div>
           <div className="rounded-3xl bg-white p-4 text-xl overflow-y-auto overflow-hidden h-[28em]">
-            <CommmentEach/>
+            <CommmentEach />
           </div>
         </div>
       </div>
