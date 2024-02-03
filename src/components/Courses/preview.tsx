@@ -118,11 +118,11 @@ const CoursePreview: React.FC = () => {
         </section>
       </nav>
 
-      <div className="grid grid-cols-2 text-2xl p-16 gap-8 h-lvh">
+      <div className="grid grid-cols-2 text-2xl p-8 gap-8 h-lvh">
         {/* course detail section */}
         <div className="h-min">
           {/* course No */}
-          <div className="mb-4  ">
+          <div className="mb-4">
             {/* <span className="font-bold text-5xl">{courseData.id}</span> */}
             <span className="font-bold text-5xl">{courseData.id}</span>
 
@@ -198,7 +198,7 @@ const CoursePreview: React.FC = () => {
               Grade
             </button>
           </div>
-          <div className="text-xl">
+          <div className="text-xl -mt-8">
             {courseData ? (
               <div>
                 {buttonType === "lecturers" && (
@@ -232,6 +232,8 @@ const CoursePreview: React.FC = () => {
             )}
           </div>
         </div>
+
+
         {/* review section */}
         <div className="h-2/4">
           <div>Review</div>
