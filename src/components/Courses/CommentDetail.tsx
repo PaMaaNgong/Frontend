@@ -11,65 +11,61 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Rating from '@mui/material/Rating';
 import Chip from '@mui/material/Chip';
 
-import {useParams} from "react-router-dom";
-import {useEffect} from 'react'
-import {getReviewDetail} from "../../repositories/Course";
 import {ReviewDetail} from "../../models";
 
 interface ExpandMoreProps extends IconButtonProps {
-    expand: boolean;
-  }
+  expand: boolean;
+}
+
+interface CommentDetailProp {
+  content: string;
+  classroom_environment: string;
+  examination_format: string;
+  exercise_format: string;
+  grading_method: Array<string>;
+  semester: string;
+  year: number;
+  rating: number;
+};
+
+const ExpandMore = styled((props: ExpandMoreProps) => {
+  const {expand, ...other } = props;
   
-  const ExpandMore = styled((props: ExpandMoreProps) => {
-    const {expand, ...other } = props;
-    
-    return <IconButton {...other} />;})
+  return <IconButton {...other} />;})
 
-    (({theme, expand}) => ({
-        transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-        marginLeft: 'auto',
-        transition: theme.transitions.create('transform', {
-          duration: theme.transitions.duration.shortest,
-        }),
-    }));
+  (({theme, expand}) => ({
+      transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
+      marginLeft: 'auto',
+      transition: theme.transitions.create('transform', {
+        duration: theme.transitions.duration.shortest,
+      }),
+  }));
 
-export const CommentDetail = () => {      
-    const [expanded, setExpanded] = React.useState(false);
-      
-    const handleExpandClick = () => {
-      setExpanded(!expanded);
-    };
-      
-    const {courseId} = useParams<{courseId: string}>();
-    const [reviews, setReviews] = React.useState<ReviewDetail[]>([]);
-      
-    useEffect( () => {
-        getReviewDetail(`${courseId}`).then(response => {
-          setReviews(response.data);
-          console.log(response.data)
-      })
-    }, []);
-      
-    const RegexWhiteSpacePattern = /\s+/g;
+export const CommentDetail: React.FC<CommentDetailProp> = ({
+  content,
+  classroom_environment,
+  examination_format,
+  exercise_format,
+  grading_method,
+  semester,
+  year,
+  rating
+}) => {   
+
+  const [expanded, setExpanded] = React.useState(false);
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
 
   return (
     <div>
-    {reviews.map(review => 
-    <div> {review.content.replace(RegexWhiteSpacePattern, "") === "" || review.content === "\n"? null:
     <Card className="maxWidth-3/4 mb-5">
       <CardContent className="flex grid grid-cols-2 col-start-1 col-end-2 gap-x-[1em]">
-        {/* <Typography variant="body2" color="text.secondary">
-          {review.content}
-        </Typography> */}
-        <Typography> {review.content} </Typography>
+        <Typography> {content} </Typography>
         <div className="flex flex-col items-end text-orange-300">
-            {/* <div className="text-end"> Rating: {review.rating} </div> */}
-            <Rating className="" value={review.rating} readOnly />
-            <div className=""> Year: {`${review.semester}/${review.year}`}</div>
-            {/* <div className="text-end">
-                {review.grading_method.length === 2 ? review.grading_method[0] + " & " + review.grading_method[1] : review.grading_method.length === 1 ? review.grading_method[0] : "none"}
-            </div> */}
-            <Chip label={review.grading_method.length === 2 ? review.grading_method[0] + " & " + review.grading_method[1] : review.grading_method.length === 1 ? review.grading_method[0] : "none"} className="w-3/6" color="warning" size="small"/>
+            <Rating className="" value={rating} readOnly />
+            <div className=""> Year: {`${semester}/${year}`}</div>
+            <Chip label={grading_method.length === 2 ? grading_method[0] + " & " + grading_method[1] : grading_method.length === 1 ? grading_method[0] : "none"} className="w-3/6" color="warning" size="small"/>
         </div>
       </CardContent>
 
@@ -87,18 +83,17 @@ export const CommentDetail = () => {
         <CardContent>
           <Typography paragraph>Environment:</Typography>
           <Typography paragraph>
-            {review.classroom_environment}
+            {classroom_environment}
           </Typography>
           <Typography paragraph>Detail:</Typography>
           <Typography paragraph>
-            - Exercise: {review.exercise_format}
+            - Exercise: {exercise_format}
             <br />
-            - Exam: {review.examination_format}
+            - Exam: {examination_format}
           </Typography>
         </CardContent>
       </Collapse>
-    </Card>}
-    </div>)}
+    </Card>
     </div>)
 }
 

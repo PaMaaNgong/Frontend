@@ -20,6 +20,6 @@ export async function postReview(id: string, body: ReviewDetail): Response<void>
     return Repository.post(`/course/${id}/reviews`, body);
 }
 
-export async function getReviewDetail(id: string, offset: number = 0, limit: number = 50): Response<ReviewDetail[]> {
+export async function getReviewDetail(id: string, offset: number = 0, limit: number = 40): Response<ReviewDetail[]> {
     return Repository.get(`/course/${id}/reviews/detail?offset=${offset}&limit=${limit}`);
 }

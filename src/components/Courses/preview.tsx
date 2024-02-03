@@ -9,6 +9,7 @@ import PopupBTN from "../Reviews/PopupBTN";
 import { GradeHistogramChart } from "./DataVisualize/Grade/GradeHistogramChart";
 import RatingsHistogram from "./DataVisualize/Rating/RatingHistogram";
 import CommentDetail from "./CommentDetail";
+import CommmentEach from "./CommmentEach";
 
 const options: ChartOptions = {
   responsive: true,
@@ -238,7 +239,7 @@ const CoursePreview: React.FC = () => {
         <div className="h-2/4">
           <div>Review</div>
           <div className="rounded-3xl bg-white p-4 text-xl overflow-y-auto overflow-hidden h-[28em]">
-            <CommentDetail/>
+            <CommmentEach/>
           </div>
         </div>
       </div>
