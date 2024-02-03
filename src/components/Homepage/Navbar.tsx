@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import clsx from "clsx";
 import { FiMenu } from "react-icons/fi";
 import { IoCloseOutline } from "react-icons/io5";
-import profileIcon from "./icon/image 4.png";
-import reviewIcon from "./icon/image 26.png";
 import SearchBar from "./Searchbar";
 
 interface NavbarProps {
@@ -86,11 +84,11 @@ const Navbar: React.FC<NavbarProps> = ({ onFilterChange }) => {
         <section className="flex items-center gap-3">
           {/* Review icon link */}
           <a href="/review" className="text-3xl">
-            <img src={reviewIcon} alt="Review Icon" className="w-25 h-8" />
+            <img src="/icon/image 26.png" alt="Review Icon" className="w-25 h-8" />
           </a>
           {/* Profile icon link */}
           <a href="/profile" className="text-3xl">
-            <img src={profileIcon} alt="Profile Icon" className="w-15 h-8" />
+            <img src="/icon/image 4.png" alt="Profile Icon" className="w-15 h-8" />
           </a>
         </section>
       </nav>
