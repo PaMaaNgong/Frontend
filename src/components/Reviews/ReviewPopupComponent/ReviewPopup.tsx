@@ -12,7 +12,7 @@ const URL = "https://whale-app-3xvcg.ondigitalocean.app/v1";
 interface ReviewPopupProps {
   courseNo: string;
   courseName: string;
-  onClose: Function;
+  onClose: any;
 }
 
 const ReviewPopup: React.FC<ReviewPopupProps> = ({
@@ -120,6 +120,7 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({
             examMethod={examMethod}
             setExamMethod={setExamMethod}
             triggleReset={triggleReset}
+            credit={3}
           />
         </div>
         <div className="flex flex-col gap-2 pl-2" style={{ width: 660 }}>

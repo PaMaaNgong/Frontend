@@ -119,6 +119,7 @@ const Review: React.FC = () => {
             examMethod={examMethod}
             setExamMethod={setExamMethod}
             triggleReset={triggleReset}
+            credit={3}
           />
         </div>
         <div className="flex flex-col gap-2 pl-2" style={{ width: 660 }}>
