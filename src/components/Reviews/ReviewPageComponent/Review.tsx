@@ -27,10 +27,10 @@ const Review: React.FC = () => {
   const reviewState = {
     rating: starRating,
     grade: grade,
-    content: `${contentValue} `,
-    classroom_environment: `${classroomEnvValue} `,
-    examination_format: `${examFormatValue} `,
-    exercise_format: `${exerFormatValue} `,
+    content: `${contentValue}`,
+    classroom_environment: `${classroomEnvValue}`,
+    examination_format: `${examFormatValue}`,
+    exercise_format: `${exerFormatValue}`,
     grading_method: examMethod,
     semester: courseSemester,
     year: Number(courseYear),
@@ -43,11 +43,25 @@ const Review: React.FC = () => {
       starRating !== 0 &&
       courseSemester !== "-" &&
       courseYear !== "----" &&
-      examMethod !== null
+      examMethod !== null &&
+      contentValue !== "" &&
+      classroomEnvValue !== "" &&
+      examFormatValue !== "" &&
+      exerFormatValue !== ""
     )
       setIsDataCorrect(true);
     else setIsDataCorrect(false);
-  }, [courseNo, starRating, courseSemester, courseYear, examMethod]);
+  }, [
+    courseNo,
+    starRating,
+    courseSemester,
+    courseYear,
+    examMethod,
+    contentValue,
+    classroomEnvValue,
+    examFormatValue,
+    exerFormatValue,
+  ]);
 
   const callPostReview = async () => {
     console.log(`${URL}/course/${courseNo}/reviews`);
