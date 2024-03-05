@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 import Repository from ".";
-import { CourseDetail, CourseOverview, ReviewDetail, ReviewOverview } from "../models";
+import {CourseDetail, CourseOverview, Grade, ReviewDetail, ReviewOverview} from "../models";
 
 export type Response<T> = Promise<AxiosResponse<T>>
 export async function getCourses(offset: number = 0, limit: number = 10): Response<CourseOverview[]> {
@@ -9,6 +9,10 @@ export async function getCourses(offset: number = 0, limit: number = 10): Respon
 
 export async function getCourseById(id: string): Response<CourseDetail> {
     return Repository.get(`/course/${id}`);
+}
+
+export async function getGrades(id: string): Response<Grade[]> {
+    return Repository.get(`/course/${id}/grades`)
 }
 
 export async function getReviews(id: string, offset: number = 0, limit: number = 10): Response<ReviewOverview[]> {

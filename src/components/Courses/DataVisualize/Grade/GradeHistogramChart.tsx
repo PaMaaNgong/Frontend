@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from "react";
+import React from "react";
 import {Bar} from "react-chartjs-2";
 import {
     Chart as ChartJS,
@@ -10,8 +10,11 @@ import {
     Legend, ChartOptions,
 } from 'chart.js';
 import './GradeHistogram.css';
+import {Grade} from "../../../../models";
+import {getGrades} from "../../../../repositories/Course";
 
-interface IGradeHistogramChart {
+type Props = {
+    grades: Grade[],
     data: ChartData;
     options: ChartOptions;
     title: string;
@@ -35,7 +38,14 @@ interface ChartData {
     }[];
 }
 
-export const GradeHistogramChart: React.FC<IGradeHistogramChart> = ({data, options, title}) => {
+export const GradeHistogramChart: React.FC<Props> = ({data, options, title}) => {
+    const [grades, setGrades] = React.useState<Grade[]>([]);
+    React.useEffect(() => {
+        getGrades("261200").then(response => {
+            setGrades(response.data)
+            console.log(response.data)
+        })
+    },[])
     return (
         <div className="GradesHistogram">
             <Bar options={options} data={data} title={title}/>;
