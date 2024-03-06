@@ -9,7 +9,7 @@ import SubmitBTN from "./SubmitBTN";
 import RadioSelection from "../RadioSelection";
 import RadioThreeButton from "../RadioThreeButton";
 
-const URL = "https://whale-app-3xvcg.ondigitalocean.app/v1";
+const URL = "https://whale-app-3xvcg.ondigitalocean.app/v2";
 
 const Review: React.FC = () => {
   const [courseNo, setCourseNo] = useState<string>("");
@@ -41,12 +41,11 @@ const Review: React.FC = () => {
     else if (exerciseFormatSelection === "Both ทั้งสอง")
       exercise_format = ["group", "individual"];
 
-    let exercise_difficulty: string[] = [];
-    if (exerciseFormatButton === "Easy ง่าย") exercise_difficulty = ["easy"];
+    let exercise_difficulty: string = "";
+    if (exerciseFormatButton === "Easy ง่าย") exercise_difficulty = "easy";
     else if (exerciseFormatButton === "Normal ปานกลาง")
-      exercise_difficulty = ["normal"];
-    else if (exerciseFormatButton === "Hard ยาก")
-      exercise_difficulty = ["hard"];
+      exercise_difficulty = "normal";
+    else if (exerciseFormatButton === "Hard ยาก") exercise_difficulty = "hard";
 
     let examination_format: string[] = [];
     if (examinationFormatSelection === "Objective test ปรนัย")
@@ -56,13 +55,13 @@ const Review: React.FC = () => {
     else if (examinationFormatSelection === "Both ทั้งสอง")
       examination_format = ["objective", "subjective"];
 
-    let examination_difficulty: string[] = [];
+    let examination_difficulty: string = "";
     if (examinationFormatButton === "Easy ง่าย")
-      examination_difficulty = ["easy"];
+      examination_difficulty = "easy";
     else if (examinationFormatButton === "Normal ปานกลาง")
-      examination_difficulty = ["normal"];
+      examination_difficulty = "normal";
     else if (examinationFormatButton === "Hard ยาก")
-      examination_difficulty = ["hard"];
+      examination_difficulty = "hard";
 
     return {
       rating: starRating,
@@ -84,19 +83,18 @@ const Review: React.FC = () => {
     };
   };
 
-  const reviewState = {
-    rating: starRating,
-    grade: grade,
-    content: `${contentValue}`,
-    classroom_environment: `${classroomEnvValue}`,
-    other: `${other}`,
-    examination_format: { format: [], difficulty: [] },
-    exercise_format: { format: [], difficulty: [] },
-    grading_method: examMethod,
-    semester: courseSemester,
-    year: Number(courseYear),
-  };
-  // console.log(reviewState);
+  // const reviewState = {
+  //   rating: starRating,
+  //   grade: grade,
+  //   content: `${contentValue}`,
+  //   classroom_environment: `${classroomEnvValue}`,
+  //   other: `${other}`,
+  //   examination_format: { format: [], difficulty: "" },
+  //   exercise_format: { format: [], difficulty: "" },
+  //   grading_method: examMethod,
+  //   semester: courseSemester,
+  //   year: Number(courseYear),
+  // };
 
   useEffect(() => {
     if (
@@ -107,7 +105,7 @@ const Review: React.FC = () => {
       examMethod !== null &&
       contentValue !== "" &&
       classroomEnvValue !== "" &&
-      other !== "" &&
+      // other !== "" &&
       exerciseFormatSelection !== "" &&
       exerciseFormatButton !== "" &&
       examinationFormatSelection !== "" &&
@@ -123,7 +121,7 @@ const Review: React.FC = () => {
     examMethod,
     contentValue,
     classroomEnvValue,
-    other,
+    // other,
     exerciseFormatSelection,
     exerciseFormatButton,
     examinationFormatSelection,
@@ -141,10 +139,15 @@ const Review: React.FC = () => {
   const callPostReview = async () => {
     console.log(`${URL}/course/${courseNo}/reviews`);
     console.log(createReviewState());
+    const accessToken = "12345";
+    // const accessToken = localStorage.getItem("accessToken");
     // try {
     //   const resp = await axios.post(
     //     `${URL}/course/${courseNo}/reviews`,
-    //     reviewState
+    //     createReviewState(),
+    //     {
+    //       headers: { Authorization: `Bearer ${accessToken}` },
+    //     }
     //   );
     //   if (resp.data.ok) alert("review suscessed");
     // } catch (err: any) {
@@ -166,9 +169,9 @@ const Review: React.FC = () => {
     setIsDataCorrect(false);
   };
 
-  const submitBTN = () => {
+  const submitBTN = async () => {
     if (isDataCorrect) {
-      callPostReview();
+      await callPostReview();
       clearReivewStatus();
     }
   };
@@ -178,9 +181,9 @@ const Review: React.FC = () => {
       className="flex flex-col gap-3 border-blue-900 border-0 font-['kanit']"
       style={{ height: 800, width: 1280 }}
     >
-      <div className="flex flex-row gap-3 pt-4">
+      <div className="flex flex-row gap-10 pt-4">
         <div
-          className="flex flex-col gap-5 ml-3.5 border-r-4 border-blue-900"
+          className="flex flex-col gap-5 ml-3.5 border-r-0 border-blue-900"
           style={{ width: 570 }}
         >
           <CourseSearch
@@ -284,7 +287,7 @@ const Review: React.FC = () => {
           </div>
           <TextBox
             title="Other"
-            subTitle="ข้อมูลอื่นๆที่อยากบอก"
+            subTitle="ข้อมูลอื่นๆที่อยากบอก (Optional)"
             setValue={setOther}
             value={other}
             triggleReset={triggleReset}
@@ -299,7 +302,7 @@ const Review: React.FC = () => {
               setTriggleReset(!triggleReset);
             }}
           >
-            Cancel
+            Clear
           </button>
           <SubmitBTN
             isDataCorrect={isDataCorrect}

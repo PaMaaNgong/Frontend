@@ -18,9 +18,16 @@ const style = {
 interface PopupBTNProps {
   courseNo: string;
   courseName: string;
+  reviewId: string;
+  accessToken: string;
 }
 
-const PopupBTN: React.FC<PopupBTNProps> = ({ courseNo, courseName }) => {
+const PopupBTN: React.FC<PopupBTNProps> = ({
+  courseNo,
+  courseName,
+  reviewId,
+  accessToken,
+}) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -52,6 +59,8 @@ const PopupBTN: React.FC<PopupBTNProps> = ({ courseNo, courseName }) => {
             courseNo={courseNo}
             courseName={courseName}
             onClose={handleClose}
+            reviewId={reviewId}
+            accessToken={accessToken}
           />
         </Box>
       </Modal>
