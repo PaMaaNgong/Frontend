@@ -32,11 +32,66 @@ const Review: React.FC = () => {
   const [examinationFormatButton, setExaminationFormatButton] =
     useState<string>("");
 
+  const createReviewState = () => {
+    let exercise_format: string[] = [];
+    if (exerciseFormatSelection === "Individual งานเดี่ยว")
+      exercise_format = ["individual"];
+    else if (exerciseFormatSelection === "Group งานกลุ่ม")
+      exercise_format = ["group"];
+    else if (exerciseFormatSelection === "Both ทั้งสอง")
+      exercise_format = ["group", "individual"];
+
+    let exercise_difficulty: string[] = [];
+    if (exerciseFormatButton === "Easy ง่าย") exercise_difficulty = ["easy"];
+    else if (exerciseFormatButton === "Normal ปานกลาง")
+      exercise_difficulty = ["normal"];
+    else if (exerciseFormatButton === "Hard ยาก")
+      exercise_difficulty = ["hard"];
+
+    let examination_format: string[] = [];
+    if (examinationFormatSelection === "Objective test ปรนัย")
+      examination_format = ["objective"];
+    else if (examinationFormatSelection === "Subjective test อัตนัย")
+      examination_format = ["subjective"];
+    else if (examinationFormatSelection === "Both ทั้งสอง")
+      examination_format = ["objective", "subjective"];
+
+    let examination_difficulty: string[] = [];
+    if (examinationFormatButton === "Easy ง่าย")
+      examination_difficulty = ["easy"];
+    else if (examinationFormatButton === "Normal ปานกลาง")
+      examination_difficulty = ["normal"];
+    else if (examinationFormatButton === "Hard ยาก")
+      examination_difficulty = ["hard"];
+
+    return {
+      rating: starRating,
+      grade: grade,
+      content: `${contentValue}`,
+      classroom_environment: `${classroomEnvValue}`,
+      other: `${other}`,
+      exercise_format: {
+        format: exercise_format,
+        difficulty: exercise_difficulty,
+      },
+      examination_format: {
+        format: examination_format,
+        difficulty: examination_difficulty,
+      },
+      grading_method: examMethod,
+      semester: courseSemester,
+      year: Number(courseYear),
+    };
+  };
+
   const reviewState = {
     rating: starRating,
     grade: grade,
     content: `${contentValue}`,
     classroom_environment: `${classroomEnvValue}`,
+    other: `${other}`,
+    examination_format: { format: [], difficulty: [] },
+    exercise_format: { format: [], difficulty: [] },
     grading_method: examMethod,
     semester: courseSemester,
     year: Number(courseYear),
@@ -51,7 +106,12 @@ const Review: React.FC = () => {
       courseYear !== "----" &&
       examMethod !== null &&
       contentValue !== "" &&
-      classroomEnvValue !== ""
+      classroomEnvValue !== "" &&
+      other !== "" &&
+      exerciseFormatSelection !== "" &&
+      exerciseFormatButton !== "" &&
+      examinationFormatSelection !== "" &&
+      examinationFormatButton !== ""
     )
       setIsDataCorrect(true);
     else setIsDataCorrect(false);
@@ -63,6 +123,11 @@ const Review: React.FC = () => {
     examMethod,
     contentValue,
     classroomEnvValue,
+    other,
+    exerciseFormatSelection,
+    exerciseFormatButton,
+    examinationFormatSelection,
+    examinationFormatButton,
   ]);
 
   useEffect(() => {
@@ -75,16 +140,16 @@ const Review: React.FC = () => {
 
   const callPostReview = async () => {
     console.log(`${URL}/course/${courseNo}/reviews`);
-    console.log(reviewState);
-    try {
-      const resp = await axios.post(
-        `${URL}/course/${courseNo}/reviews`,
-        reviewState
-      );
-      if (resp.data.ok) alert("review suscessed");
-    } catch (err: any) {
-      alert(err.response.data.message);
-    }
+    console.log(createReviewState());
+    // try {
+    //   const resp = await axios.post(
+    //     `${URL}/course/${courseNo}/reviews`,
+    //     reviewState
+    //   );
+    //   if (resp.data.ok) alert("review suscessed");
+    // } catch (err: any) {
+    //   alert(err.response.data.message);
+    // }
   };
 
   const clearReivewStatus = () => {
