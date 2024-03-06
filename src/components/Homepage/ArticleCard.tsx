@@ -29,7 +29,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ course }) => {
   const getRandomImageUrl = () => {
     return imageUrls[Math.floor(Math.random() * imageUrls.length)];
   };
-  
+
   const mapIconUrl = (type: CourseType) => {
     switch (type) {
       case "me":

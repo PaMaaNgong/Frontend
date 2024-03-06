@@ -8,7 +8,7 @@ import PopupBTN from "../Reviews/PopupBTN";
 import { GradeHistogramChart } from "./DataVisualize/Grade/GradeHistogramChart";
 import RatingsHistogram from "./DataVisualize/Rating/RatingHistogram";
 import CommmentEach from "./CommmentEach";
-import {ChartData, ChartOptions} from "chart.js";
+import { ChartData, ChartOptions } from "chart.js";
 
 const profileIcon = "/icon/image 4.png";
 const options: ChartOptions = {
@@ -23,7 +23,7 @@ const options: ChartOptions = {
   },
 };
 const labels = ["A", "B+", "B", "C+", "C", "D+", "D", "F"];
-const data: ChartData<'bar'> = {
+const data: ChartData<"bar"> = {
   labels,
   datasets: [
     {
@@ -113,7 +113,7 @@ const CoursePreview: React.FC = () => {
           {/* Review */}
           <PopupBTN courseNo={courseData.id} courseName={courseData.name_en} />
           {/* Profile icon link */}
-          <a href="/profile" className="text-3xl">
+          <a href="/profile/userId" className="text-3xl">
             <img src={profileIcon} alt="Profile Icon" className="w-15 h-8" />
           </a>
         </section>
@@ -220,7 +220,7 @@ const CoursePreview: React.FC = () => {
         <div className="h-2/4">
           <div>Review</div>
           <div className="rounded-3xl bg-white p-4 text-xl overflow-y-auto overflow-hidden h-[28em]">
-            <CommmentEach/>
+            <CommmentEach />
           </div>
         </div>
       </div>

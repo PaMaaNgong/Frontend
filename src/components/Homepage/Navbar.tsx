@@ -9,7 +9,6 @@ interface NavbarProps {
 }
 
 const Navbar: React.FC<NavbarProps> = ({ onFilterChange }) => {
-
   const [isSideMenuOpen, setMenu] = useState(false);
   const [activeCategory, setActiveCategory] = useState<string>("all");
 
@@ -84,11 +83,19 @@ const Navbar: React.FC<NavbarProps> = ({ onFilterChange }) => {
         <section className="flex items-center gap-3">
           {/* Review icon link */}
           <a href="/review" className="text-3xl">
-            <img src="/icon/image 26.png" alt="Review Icon" className="w-25 h-8" />
+            <img
+              src="/icon/image 26.png"
+              alt="Review Icon"
+              className="w-25 h-8"
+            />
           </a>
           {/* Profile icon link */}
-          <a href="/profile" className="text-3xl">
-            <img src="/icon/image 4.png" alt="Profile Icon" className="w-15 h-8" />
+          <a href="/profile/userId" className="text-3xl">
+            <img
+              src="/icon/image 4.png"
+              alt="Profile Icon"
+              className="w-15 h-8"
+            />
           </a>
         </section>
       </nav>
