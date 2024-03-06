@@ -3,7 +3,7 @@ import clsx from "clsx";
 
 interface ReviewNavbarProps {}
 
-const ReviewNavbar: React.FC<ReviewNavbarProps> = ({}) => {
+const ProfileNavbar: React.FC<ReviewNavbarProps> = ({}) => {
   return (
     <main>
       <nav
@@ -33,4 +33,4 @@ const ReviewNavbar: React.FC<ReviewNavbarProps> = ({}) => {
   );
 };
 
-export default ReviewNavbar;
+export default ProfileNavbar;

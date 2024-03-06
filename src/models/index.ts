@@ -6,6 +6,7 @@ export type CourseOverview = {
   name_en: string;
   type: CourseType;
   total_reviews: number;
+  rating: number;
 };
 
 export type CourseDetail = CourseOverview & {

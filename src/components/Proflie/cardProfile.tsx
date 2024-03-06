@@ -6,7 +6,7 @@ type ArticleCardProps = {
   course: CourseOverview;
 };
 
-const ArticleCard: React.FC<ArticleCardProps> = ({ course }) => {
+const cardProfile: React.FC<ArticleCardProps> = ({ course }) => {
   // ฟังก์ชันเพื่อตัดและเติม "..."
   const truncateString = (str: string, num: number) => {
     if (str.length > num) {
@@ -45,7 +45,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ course }) => {
     {/* ย้าย hover:shadow-lg และ transition-shadow ไปยัง article */}
     <Link
       to={`/courses/${course.id}`}
-      className="block overflow-hidden rounded-lg shadow"
+      className="block overflow-hidden rounded-lg"
     >
       <article className="overflow-hidden rounded-lg bg-white hover:shadow-lg transition-shadow duration-300">
         <a href="#" className="block overflow-hidden rounded-lg">
@@ -78,4 +78,4 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ course }) => {
   );
 };
 
-export default ArticleCard;
+export default cardProfile;

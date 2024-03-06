@@ -4,7 +4,7 @@ import { FiMenu } from "react-icons/fi";
 import { IoCloseOutline } from "react-icons/io5";
 import profileIcon from "./icon/image 4.png";
 import reviewIcon from "./icon/image 26.png";
-import SearchBar from "./Searchbar";
+import logo from "../Homepage/icon/logo.png";
 
 interface NavbarProps {
   onFilterChange: (filterType: string) => void;
@@ -32,7 +32,7 @@ const Navbar: React.FC<NavbarProps> = ({ onFilterChange }) => {
     <main>
       <nav
         className={clsx(
-          "flex justify-between px-9 items-center py-3 font-['kanit'] font-normal bg-[#9B2226]"
+          "flex justify-between px-9 items-center py-3 font-['kanit'] font-normal bg-[#9B2226] h-12"
         )}
       >
         <div className="flex items-center gap-8">
@@ -42,7 +42,7 @@ const Navbar: React.FC<NavbarProps> = ({ onFilterChange }) => {
               className="text-3xl cursor-pointer lg:hidden"
             />
             <a href="/" className="text-3xl font-mono text-white">
-              FreeCPE
+              <img src={logo} alt="Logo" className="w-auto h-12" /> 
             </a>
           </section>
           {navlinks.map((link, index) => (
