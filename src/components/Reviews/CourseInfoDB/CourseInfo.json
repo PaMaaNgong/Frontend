@@ -1,110 +1,368 @@
 [
   {
-    "CourseNo": "001101",
-    "CourseName_TH": "ภาษาอังกฤษพื้นฐาน 1",
-    "CourseName_ENG": "Fundamental English 1",
+    "CourseNo": "001210",
+    "CourseName_TH": "การพูด 1",
+    "CourseName_ENG": "Oral Expression 1",
     "Type": "fe"
   },
   {
-    "CourseNo": "001102",
-    "CourseName_TH": "ภาษาอังกฤษพื้นฐาน 2",
-    "CourseName_ENG": "Fundamental English 2",
+    "CourseNo": "011100",
+    "CourseName_TH": "มนุษย์กับปรัชญา",
+    "CourseName_ENG": "Man and Philosophy",
+    "Type": "ge"
+  },
+  {
+    "CourseNo": "012200",
+    "CourseName_TH": "จิตอาสา",
+    "CourseName_ENG": "Mind Volunteer",
     "Type": "fe"
   },
   {
-    "CourseNo": "001201",
-    "CourseName_TH": "การอ่านและการเขียนอย่างมีประสิทธิภาพ",
-    "CourseName_ENG": "Critical Reading and Effective Writing",
+    "CourseNo": "013110",
+    "CourseName_TH": "จิตวิทยากับชีวิตประจำวัน",
+    "CourseName_ENG": "Psychology and Daily Life",
+    "Type": "ge"
+  },
+  {
+    "CourseNo": "050106",
+    "CourseName_TH": "ศิลปะแห่งการเป็นมนุษย์ที่มีคุณค่า",
+    "CourseName_ENG": "Humanistic Arts",
+    "Type": "ge"
+  },
+  {
+    "CourseNo": "057138",
+    "CourseName_TH": "กีฬาภูมิปัญญาไทยเพื่อการต่อสู้ป้องกันตัว",
+    "CourseName_ENG": "Thai Wisdom Sports for Self-Defense",
     "Type": "fe"
   },
   {
-    "CourseNo": "001225",
-    "CourseName_TH": "ภาษาอังกฤษเพื่อวิทยาศาสตร์และเทคโนโลยี",
-    "CourseName_ENG": "English in Science and Technology Context",
+    "CourseNo": "109114",
+    "CourseName_TH": "ศิลปะในชีวิตประจำวัน",
+    "CourseName_ENG": "Art in Everyday Life",
+    "Type": "ge"
+  },
+  {
+    "CourseNo": "127100",
+    "CourseName_TH": "การเมืองในชีวิตประจำวัน",
+    "CourseName_ENG": "Politics in Everyday Life",
+    "Type": "ge"
+  },
+  {
+    "CourseNo": "128100",
+    "CourseName_TH": "การบริหารงานตามหลักธรรมาภิบาลพื้นฐาน",
+    "CourseName_ENG": "Basic Good Governance in Administration",
+    "Type": "ge"
+  },
+  {
+    "CourseNo": "154104",
+    "CourseName_TH": "การอนุรักษ์สิ่งแวดล้อม",
+    "CourseName_ENG": "Environmental Conservation",
+    "Type": "ge"
+  },
+  {
+    "CourseNo": "154153",
+    "CourseName_TH": "ภัยพิบัติในโลกสมัยใหม่",
+    "CourseName_ENG": "Disaster in Modern World",
     "Type": "fe"
   },
   {
-    "CourseNo": "206161",
-    "CourseName_TH": "คณิตศาสตร์เพื่อวิศวกรรม 1",
-    "CourseName_ENG": "Calculus for Engineering 1",
+    "CourseNo": "176100",
+    "CourseName_TH": "กฎหมายและโลกสมัยใหม่",
+    "CourseName_ENG": "Law and Modern World",
     "Type": "ge"
   },
   {
-    "CourseNo": "206162",
-    "CourseName_TH": "คณิตศาสตร์เพื่อวิศวกรรม 2",
-    "CourseName_ENG": "Calculus for Engineering 2",
+    "CourseNo": "201100",
+    "CourseName_TH": "วิทยาศาสตร์บูรณาการ",
+    "CourseName_ENG": "Integrated Science",
     "Type": "ge"
   },
   {
-    "CourseNo": "206261",
-    "CourseName_TH": "คณิตศาสตร์เพื่อวิศวกรรม 3",
-    "CourseName_ENG": "Calculus for Engineering 3",
+    "CourseNo": "201114",
+    "CourseName_TH": "วิทยาศาสตร์สิ่งแวดล้อมในโลกปัจจุบัน",
+    "CourseName_ENG": "Environmental Science in Today’s World",
     "Type": "ge"
   },
   {
-    "CourseNo": "207105",
-    "CourseName_TH": "ฟิสิกส์เพื่อนักศึกษาวิศวกรรมและอุตสาหกรรมเกษตร 1",
-    "CourseName_ENG": "Physics for Engineering and Agro-Industry Students 1",
+    "CourseNo": "201117",
+    "CourseName_TH": "คณิตศาสตร์และวิทยาศาสตร์กับอารยธรรม",
+    "CourseName_ENG": "Mathematics and Science in Civilization",
     "Type": "ge"
   },
   {
-    "CourseNo": "207115",
-    "CourseName_TH": "การทดลองฟิสิกส์เพื่อนักศึกษาวิศวกรรมและอุตสาหกรรมเกษตร 1",
-    "CourseName_ENG": "Physics Laboratory for Engineering and Agro-Industry Students 1",
+    "CourseNo": "201190",
+    "CourseName_TH": "การคิดอย่างมีวิจารณญาณ การแก้ปัญหา และการสื่อสารทางวิทยาศาสตร์",
+    "CourseName_ENG": "Critical Thinking, Problem Solving and Science Communication",
     "Type": "ge"
   },
   {
-    "CourseNo": "261200",
-    "CourseName_TH": "การเขียนโปรแกรมเชิงวัตถุ",
-    "CourseName_ENG": "Object-Oriented Programming",
+    "CourseNo": "203100",
+    "CourseName_TH": "เคมีในชีวิตประจำวัน",
+    "CourseName_ENG": "Chemistry in Everyday Life",
+    "Type": "ge"
+  },
+  {
+    "CourseNo": "204100",
+    "CourseName_TH": "เทคโนโลยีสารสนเทศและชีวิตสมัยใหม่",
+    "CourseName_ENG": "Information Technology and Modern Life",
+    "Type": "ge"
+  },
+  {
+    "CourseNo": "207109",
+    "CourseName_TH": "ชีวิตกับเอกภพ",
+    "CourseName_ENG": "Life and the Universe",
+    "Type": "ge"
+  },
+  {
+    "CourseNo": "207110",
+    "CourseName_TH": "ฟิสิกส์ : ศาสตร์ที่เปลี่ยนโลก",
+    "CourseName_ENG": "Physics : the Science that Changed the World",
+    "Type": "ge"
+  },
+  {
+    "CourseNo": "211100",
+    "CourseName_TH": "กินดี : การมีชีวิตที่ดีขึ้นและการป้องกันโรค",
+    "CourseName_ENG": "Eating Well : Better Living and Disease Prevention",
+    "Type": "ge"
+  },
+  {
+    "CourseNo": "254182",
+    "CourseName_TH": "พลังงานเบื้องต้น",
+    "CourseName_ENG": "Introduction to Energy",
+    "Type": "ge"
+  },
+  {
+    "CourseNo": "256131",
+    "CourseName_TH": "การทำเหมืองแร่ในเมือง",
+    "CourseName_ENG": "Urban Mining",
+    "Type": "ge"
+  },
+  {
+    "CourseNo": "259108",
+    "CourseName_TH": "ไฟฟ้าในชีวิตประจำวัน",
+    "CourseName_ENG": "Electricity in Everyday Life",
+    "Type": "ge"
+  },
+  {
+    "CourseNo": "259193",
+    "CourseName_TH": "คุณธรรมและปัญญาสำหรับการเป็นผู้ประกอบวิชาชีพ",
+    "CourseName_ENG": "Morality and Intelligence for Being a Professional",
+    "Type": "ge"
+  },
+  {
+    "CourseNo": "259194",
+    "CourseName_TH": "อุปนิสัยและค่านิยมสำหรับการเป็นผู้ประกอบการวิชาชีพ",
+    "CourseName_ENG": "Characteristics and Values for Being a Professional Entrepreneur",
+    "Type": "ge"
+  },
+  {
+    "CourseNo": "259195",
+    "CourseName_TH": "การจัดกิจกรรมเพื่อการพัฒนา",
+    "CourseName_ENG": "Managing Activities for Development",
+    "Type": "ge"
+  },
+  {
+    "CourseNo": "261111",
+    "CourseName_TH": "อินเทอร์เน็ตและสังคมออนไลน์",
+    "CourseName_ENG": "Internet and Online Community",
+    "Type": "ge"
+  },
+  {
+    "CourseNo": "261112",
+    "CourseName_TH": "เกมวิจักษณ์",
+    "CourseName_ENG": "Game Appreciation",
+    "Type": "fe"
+  },
+  {
+    "CourseNo": "261383",
+    "CourseName_TH": "การวิเคราะห์และตรวจหาภัยคุกคามด้านความมั่นคงปลอดภัยไซเบอร์",
+    "CourseName_ENG": "Cybersecurity Threat Analysis and Detection",
+    "Type": "me"
+  },
+  {
+    "CourseNo": "261406",
+    "CourseName_TH": "การออกแบบคอมไพเลอร์อย่างง่าย",
+    "CourseName_ENG": "Basic Compiler Design",
+    "Type": "me"
+  },
+  {
+    "CourseNo": "261407",
+    "CourseName_TH": "พื้นฐานของการคำนวณสำหรับวิศวกรคอมพิวเตอร์",
+    "CourseName_ENG": "Fundamentals of Computation for Computer Engineers",
     "Type": "me"
   },
   {
     "CourseNo": "261408",
-    "CourseName_TH": "คอมพิวเตอร์ควอนตัม",
-    "CourseName_ENG": "Quantum Computing",
+    "CourseName_TH": "การประมวลผลเชิงควอนตัม",
+    "CourseName_ENG": "Quantum Computation",
+    "Type": "me"
+  },
+  {
+    "CourseNo": "261409",
+    "CourseName_TH": "การเขียนโปรแกรมเชิงฟังก์ชัน",
+    "CourseName_ENG": "Functional Programming",
+    "Type": "me"
+  },
+  {
+    "CourseNo": "261421",
+    "CourseName_TH": "การออกแบบฮาร์ดแวร์คอมพิวเตอร์",
+    "CourseName_ENG": "Computer Hardware Design",
+    "Type": "me"
+  },
+  {
+    "CourseNo": "261430",
+    "CourseName_TH": "เครือข่ายไร้สาย",
+    "CourseName_ENG": "Wireless Networks",
     "Type": "me"
   },
   {
     "CourseNo": "261434",
-    "CourseName_TH": "การออกแบบและการจัดการเครือข่าย",
-    "CourseName_ENG": "Network Design and Management",
+    "CourseName_TH": "การออกแบบและจัดการเครือข่ายคอมพิวเตอร์",
+    "CourseName_ENG": "Computer Network Design and Management",
+    "Type": "me"
+  },
+  {
+    "CourseNo": "261447",
+    "CourseName_TH": "ความปลอดภัยของเครือข่ายและสารสนเทศ",
+    "CourseName_ENG": "Network and Information Security",
     "Type": "me"
   },
   {
     "CourseNo": "261453",
-    "CourseName_TH": "การประมวลผลภาพดิจิตอล",
+    "CourseName_TH": "การประมวลผลข้อมูลภาพดิจิทัล",
     "CourseName_ENG": "Digital Image Processing",
     "Type": "me"
   },
   {
     "CourseNo": "261456",
-    "CourseName_TH": "การประมวลผลด้วยเทคนิคทางปัญญาประดิษฐ์",
-    "CourseName_ENG": "Intro to Computational Intelligence",
+    "CourseName_TH": "บทนำความฉลาดเชิงคำนวณสำหรับวิศวกรรมคอมพิวเตอร์",
+    "CourseName_ENG": "Introduction to Computational Intelligence for Computer Engineering",
     "Type": "me"
   },
   {
-    "CourseNo": "261494-1",
-    "CourseName_TH": "R Programming (selected topics in CPE)",
-    "CourseName_ENG": "R Programming (selected topics in CPE)",
+    "CourseNo": "261459",
+    "CourseName_TH": "การเรียนรู้เชิงลึก",
+    "CourseName_ENG": "Deep Learning",
     "Type": "me"
   },
   {
-    "CourseNo": "261494-10",
-    "CourseName_TH": "Blockchain Programming (selected topics in CPE)",
-    "CourseName_ENG": "Blockchain Programming (selected topics in CPE)",
+    "CourseNo": "261461",
+    "CourseName_TH": "การเขียนโปรแกรมเชิงภาพและโต้ตอบ",
+    "CourseName_ENG": "Visual and Interactive Programming",
     "Type": "me"
   },
   {
-    "CourseNo": "261494-2",
-    "CourseName_TH": "Adv Algorithms and Computation (selected topics in CPE)",
-    "CourseName_ENG": "Adv Algorithms and Computation (selected topics in CPE)",
+    "CourseNo": "261469",
+    "CourseName_TH": "การบริหารจัดการโครงการซอฟต์แวร์สำหรับวิศวกรรมคอมพิวเตอร์",
+    "CourseName_ENG": "Software Project Management for Computer Engineering",
     "Type": "me"
   },
   {
-    "CourseNo": "261494-4",
-    "CourseName_TH": "Up Skills Unlock Limits (selected topics in CPE)",
-    "CourseName_ENG": "Up Skills Unlock Limits (selected topics in CPE)",
-    "Type": "me"
+    "CourseNo": "356102",
+    "CourseName_TH": "สัตว์น้ำสวยงาม",
+    "CourseName_ENG": "Ornamental Aquatic Animals",
+    "Type": "fe"
+  },
+  {
+    "CourseNo": "368100",
+    "CourseName_TH": "การเริ่มต้นธุรกิจเกษตรในโลกที่เปลี่ยนแปลง",
+    "CourseName_ENG": "Starting an Agribusiness in a Changing World",
+    "Type": "ge"
+  },
+  {
+    "CourseNo": "462130",
+    "CourseName_TH": "ยาในชีวิตประจำวัน",
+    "CourseName_ENG": "Medications in Everyday Life",
+    "Type": "ge"
+  },
+  {
+    "CourseNo": "515101",
+    "CourseName_TH": "รังสีกับชีวิตประจำวัน",
+    "CourseName_ENG": "Radiation in Everyday Life",
+    "Type": "fe"
+  },
+  {
+    "CourseNo": "571116",
+    "CourseName_TH": "สุขภาพกับการทำงานในยุคดิจิทัล",
+    "CourseName_ENG": "Health and Working in the Digital Age",
+    "Type": "ge"
+  },
+  {
+    "CourseNo": "602102",
+    "CourseName_TH": "ชีวิตกับพลังงานทางเลือก",
+    "CourseName_ENG": "Life and Alternative Energy",
+    "Type": "ge"
+  },
+  {
+    "CourseNo": "602201",
+    "CourseName_TH": "โลกทัศน์ทางอุตสาหกรรมเกษตร",
+    "CourseName_ENG": "Agro-Industrial Vision",
+    "Type": "ge"
+  },
+  {
+    "CourseNo": "610111",
+    "CourseName_TH": "บรรจุภัณฑ์เพื่อการตลาด",
+    "CourseName_ENG": "Packaging for Marketing",
+    "Type": "ge"
+  },
+  {
+    "CourseNo": "701181",
+    "CourseName_TH": "การบัญชีเบื้องต้นสำหรับผู้ประกอบการ",
+    "CourseName_ENG": "Basic Accounting for Entrepreneurs",
+    "Type": "ge"
+  },
+  {
+    "CourseNo": "702101",
+    "CourseName_TH": "การเงินในชีวิตประจำวัน",
+    "CourseName_ENG": "Finance for Daily Life",
+    "Type": "ge"
+  },
+  {
+    "CourseNo": "703103",
+    "CourseName_TH": "การเป็นผู้ประกอบการและธุรกิจเบื้องต้น",
+    "CourseName_ENG": "Introduction to Entrepreneurship and Business",
+    "Type": "ge"
+  },
+  {
+    "CourseNo": "705191",
+    "CourseName_TH": "ผู้บริโภคที่ชาญฉลาด",
+    "CourseName_ENG": "Smart Consumer",
+    "Type": "ge"
+  },
+  {
+    "CourseNo": "751100",
+    "CourseName_TH": "เศรษฐศาสตร์ในชีวิตประจำวัน",
+    "CourseName_ENG": "Economics for Everyday Life",
+    "Type": "ge"
+  },
+  {
+    "CourseNo": "801100",
+    "CourseName_TH": "สถาปัตยกรรมในชีวิตประจำวัน",
+    "CourseName_ENG": "Architecture in Everyday Life",
+    "Type": "ge"
+  },
+  {
+    "CourseNo": "851103",
+    "CourseName_TH": "ชีวิตและสังคมผ่านสื่อ",
+    "CourseName_ENG": "Life and Society through Media",
+    "Type": "ge"
+  },
+  {
+    "CourseNo": "852100",
+    "CourseName_TH": "ความรู้เบื้องต้นเกี่ยวกับภาพยนตร์",
+    "CourseName_ENG": "Introduction to Film",
+    "Type": "ge"
+  },
+  {
+    "CourseNo": "951100",
+    "CourseName_TH": "ชีวิตสมัยใหม่กับแอนนิเมชัน",
+    "CourseName_ENG": "Modern Life and Animation",
+    "Type": "ge"
+  },
+  {
+    "CourseNo": "953111",
+    "CourseName_TH": "ซอฟต์แวร์สำหรับชีวิตประจำวัน",
+    "CourseName_ENG": "Software for Everyday Life",
+    "Type": "ge"
   }
 ]

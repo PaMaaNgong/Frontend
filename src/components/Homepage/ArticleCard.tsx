@@ -15,6 +15,19 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ course }) => {
     return str;
   };
 
+<<<<<<< HEAD
+=======
+  const imageUrls = [
+    "/card/image 18.png",
+    "/card/image 19.png",
+    "/card/image 20.png",
+    "/card/image 21.png",
+    "/card/image 22.png",
+    "/card/image 23.png",
+    "/card/image 24.png",
+    "/card/image 25.png",
+  ];
+>>>>>>> f544873c503291a758b6d41ce9754b43ab4d7e91
 
   const getImageUrlByType = (type: CourseType) => {
     switch (type) {
@@ -32,11 +45,11 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ course }) => {
   const mapIconUrl = (type: CourseType) => {
     switch (type) {
       case "me":
-        return "src/components/Homepage/icon/image 30.png";
+        return "/icon/image 30.png";
       case "ge":
-        return "src/components/Homepage/icon/image 28.png";
+        return "/icon/image 28.png";
       case "fe":
-        return "src/components/Homepage/icon/image 27.png";
+        return "/icon/image 27.png";
     }
   };
 

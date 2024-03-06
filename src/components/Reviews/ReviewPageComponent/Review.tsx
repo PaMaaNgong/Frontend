@@ -27,10 +27,10 @@ const Review: React.FC = () => {
   const reviewState = {
     rating: starRating,
     grade: grade,
-    content: `${contentValue} `,
-    classroom_environment: `${classroomEnvValue} `,
-    examination_format: `${examFormatValue} `,
-    exercise_format: `${exerFormatValue} `,
+    content: `${contentValue}`,
+    classroom_environment: `${classroomEnvValue}`,
+    examination_format: `${examFormatValue}`,
+    exercise_format: `${exerFormatValue}`,
     grading_method: examMethod,
     semester: courseSemester,
     year: Number(courseYear),
@@ -43,11 +43,25 @@ const Review: React.FC = () => {
       starRating !== 0 &&
       courseSemester !== "-" &&
       courseYear !== "----" &&
-      examMethod !== null
+      examMethod !== null &&
+      contentValue !== "" &&
+      classroomEnvValue !== "" &&
+      examFormatValue !== "" &&
+      exerFormatValue !== ""
     )
       setIsDataCorrect(true);
     else setIsDataCorrect(false);
-  }, [courseNo, starRating, courseSemester, courseYear, examMethod]);
+  }, [
+    courseNo,
+    starRating,
+    courseSemester,
+    courseYear,
+    examMethod,
+    contentValue,
+    classroomEnvValue,
+    examFormatValue,
+    exerFormatValue,
+  ]);
 
   const callPostReview = async () => {
     console.log(`${URL}/course/${courseNo}/reviews`);
@@ -119,6 +133,7 @@ const Review: React.FC = () => {
             examMethod={examMethod}
             setExamMethod={setExamMethod}
             triggleReset={triggleReset}
+            credit={3}
           />
         </div>
         <div className="flex flex-col gap-2 pl-2" style={{ width: 660 }}>

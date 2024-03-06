@@ -1,5 +1,5 @@
 import {GradeHistogramChart} from './GradeHistogramChart';
-import {ChartData, ChartOptions} from "chart.js";
+import {ChartData, ChartOptions, ChartTypeRegistry} from "chart.js";
 
 export default function GradeHistogramPreview() {
     const options: ChartOptions = {
@@ -14,7 +14,7 @@ export default function GradeHistogramPreview() {
         }
     }
     const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-    const data: ChartData = {
+    const data: ChartData<'bar', number[]> = {
         labels,
         datasets: [
             {

@@ -12,7 +12,7 @@ const URL = "https://whale-app-3xvcg.ondigitalocean.app/v1";
 interface ReviewPopupProps {
   courseNo: string;
   courseName: string;
-  onClose: Function;
+  onClose: any;
 }
 
 const ReviewPopup: React.FC<ReviewPopupProps> = ({
@@ -35,10 +35,10 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({
   const reviewState = {
     rating: starRating,
     grade: grade,
-    content: `${contentValue} `,
-    classroom_environment: `${classroomEnvValue} `,
-    examination_format: `${examFormatValue} `,
-    exercise_format: `${exerFormatValue} `,
+    content: `${contentValue}`,
+    classroom_environment: `${classroomEnvValue}`,
+    examination_format: `${examFormatValue}`,
+    exercise_format: `${exerFormatValue}`,
     grading_method: examMethod,
     semester: courseSemester,
     year: Number(courseYear),
@@ -51,11 +51,25 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({
       starRating !== 0 &&
       courseSemester !== "-" &&
       courseYear !== "----" &&
-      examMethod !== null
+      examMethod !== null &&
+      contentValue !== "" &&
+      classroomEnvValue !== "" &&
+      examFormatValue !== "" &&
+      exerFormatValue !== ""
     )
       setIsDataCorrect(true);
     else setIsDataCorrect(false);
-  }, [courseNo, starRating, courseSemester, courseYear, examMethod]);
+  }, [
+    courseNo,
+    starRating,
+    courseSemester,
+    courseYear,
+    examMethod,
+    contentValue,
+    classroomEnvValue,
+    examFormatValue,
+    exerFormatValue,
+  ]);
 
   const callPostReview = async () => {
     console.log(`${URL}/course/${courseNo}/reviews`);
@@ -120,6 +134,7 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({
             examMethod={examMethod}
             setExamMethod={setExamMethod}
             triggleReset={triggleReset}
+            credit={3}
           />
         </div>
         <div className="flex flex-col gap-2 pl-2" style={{ width: 660 }}>

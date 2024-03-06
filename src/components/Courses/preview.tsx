@@ -4,12 +4,13 @@ import Navbar from "../Homepage/Navbar";
 import { ICourse } from "./props";
 import { fetchCourseData } from "./api";
 import clsx from "clsx";
-import profileIcon from "../Homepage/icon/image 4.png";
 import PopupBTN from "../Reviews/PopupBTN";
 import { GradeHistogramChart } from "./DataVisualize/Grade/GradeHistogramChart";
 import RatingsHistogram from "./DataVisualize/Rating/RatingHistogram";
-import Comments from "./Comments";
+import CommmentEach from "./CommmentEach";
+import {ChartData, ChartOptions} from "chart.js";
 
+const profileIcon = "/icon/image 4.png";
 const options: ChartOptions = {
   responsive: true,
   plugins: {
@@ -22,7 +23,7 @@ const options: ChartOptions = {
   },
 };
 const labels = ["A", "B+", "B", "C+", "C", "D+", "D", "F"];
-const data: ChartData = {
+const data: ChartData<'bar'> = {
   labels,
   datasets: [
     {
@@ -33,7 +34,7 @@ const data: ChartData = {
   ],
 };
 
-const exampleRatings: RatingDetail[] = [
+const exampleRatings: any[] = [
   { stars: 1, count: 150, percentage: 5 },
   { stars: 1.5, count: 78, percentage: 2.5 },
   { stars: 2, count: 200, percentage: 7 },
@@ -45,30 +46,24 @@ const exampleRatings: RatingDetail[] = [
   { stars: 5, count: 147, percentage: 1.5 },
 ];
 
-const formatSchedule = (schedule: {
-  days: any[];
-  start_hour: any;
-  start_minute: any;
-  end_hour: any;
-  end_minute: any;
-}) => {
-  if (schedule && typeof schedule === "object") {
-    const pad = (num: { toString: () => string }) =>
-      num.toString().padStart(2, "0");
-
-    return (
-      <div>
-        <p>Day: {schedule.days.join(" and ")}</p>
+const formatSchedule = (schedules: any) => {
+  if (Array.isArray(schedules) && schedules.length > 0) {
+    return schedules.map((schedule, index) => (
+      <div key={index}>
+        <p>Day: {schedule.days.join(" - ")}</p>
         <p>
           Time:{" "}
-          {`${pad(schedule.start_hour)}.${pad(schedule.start_minute)} - ${pad(
-            schedule.end_hour
-          )}.${pad(schedule.end_minute)}`}
+          {`${String(schedule.start_hour).padStart(2, "0")}.${String(
+            schedule.start_minute
+          ).padStart(2, "0")} to ${String(schedule.end_hour).padStart(
+            2,
+            "0"
+          )}.${String(schedule.end_minute).padStart(2, "0")}`}
         </p>
       </div>
-    );
+    ));
   } else {
-    return <div>Invalid schedule format</div>;
+    return <div>Invalid schedule format or no schedule available</div>;
   }
 };
 
@@ -94,9 +89,9 @@ const CoursePreview: React.FC = () => {
 
     return <div> Loading... </div>;
   }
-  // console.log(courseData.rooms);
+  console.log(courseData.schedule);
   return (
-    <div className="bg-black ">
+    <div className="bg-[#F5EBE0]/40">
       {/* Navbar */}
 
       <nav
@@ -124,11 +119,11 @@ const CoursePreview: React.FC = () => {
         </section>
       </nav>
 
-      <div className="grid grid-cols-2 bg-[#fff4f4] text-2xl p-16 gap-8 h-full">
+      <div className="grid grid-cols-2 text-2xl p-8 gap-8 h-lvh">
         {/* course detail section */}
-        <div className=" ">
+        <div className="h-min">
           {/* course No */}
-          <div className="mb-4  ">
+          <div className="mb-4">
             {/* <span className="font-bold text-5xl">{courseData.id}</span> */}
             <span className="font-bold text-5xl">{courseData.id}</span>
 
@@ -136,21 +131,21 @@ const CoursePreview: React.FC = () => {
               {courseData.type === "me" && (
                 <img
                   alt="Icon"
-                  src="../src/components/Homepage/icon/image%2030.png"
+                  src="/icon/image 30.png"
                   className="ml-4 w-15 h-9"
                 />
               )}
               {courseData.type === "fe" && (
                 <img
                   alt="Icon"
-                  src="../src/components/Homepage/icon/image%2027.png"
+                  src="/icon/image 27.png"
                   className="ml-4 w-15 h-9"
                 />
               )}
               {courseData.type === "ge" && (
                 <img
                   alt="Icon"
-                  src="../src/components/Homepage/icon/image%2028.png"
+                  src="/icon/image 28.png"
                   className="ml-4 w-15 h-9"
                 />
               )}
@@ -181,30 +176,12 @@ const CoursePreview: React.FC = () => {
             </button>
             <button
               className=" rounded-full hover:bg-sky-200"
-              onClick={() => handleButtonClick("location")}
-            >
-              Location
-            </button>
-            <button
-              className=" rounded-full hover:bg-sky-200"
-              onClick={() => handleButtonClick("schedule")}
-            >
-              Schedule
-            </button>
-            <button
-              className=" rounded-full hover:bg-sky-200"
-              onClick={() => handleButtonClick("room")}
-            >
-              Room
-            </button>
-            <button
-              className=" rounded-full hover:bg-sky-200"
               onClick={() => handleButtonClick("grade")}
             >
               Grade
             </button>
           </div>
-          <div className="text-xl">
+          <div className="text-xl -mt-8">
             {courseData ? (
               <div>
                 {buttonType === "lecturers" && (
@@ -216,7 +193,14 @@ const CoursePreview: React.FC = () => {
                 {buttonType === "schedule" && (
                   <div>Schedule: {formatSchedule(courseData.schedule)}</div>
                 )}
-                {buttonType === "room" && <div>Room: {courseData.rooms}</div>}
+                {buttonType === "room" && (
+                  <div>
+                    Room:{" "}
+                    {courseData.rooms.length > 1
+                      ? courseData.rooms.join(", ")
+                      : courseData.rooms[0]}
+                  </div>
+                )}
                 {buttonType === "grade" && (
                   <GradeHistogramChart
                     options={options}
@@ -231,11 +215,12 @@ const CoursePreview: React.FC = () => {
             )}
           </div>
         </div>
+
         {/* review section */}
-        <div className=" ">
+        <div className="h-2/4">
           <div>Review</div>
-          <div className="rounded-3xl bg-white p-4 text-xl h-screen">
-            <Comments/>
+          <div className="rounded-3xl bg-white p-4 text-xl overflow-y-auto overflow-hidden h-[28em]">
+            <CommmentEach/>
           </div>
         </div>
       </div>
