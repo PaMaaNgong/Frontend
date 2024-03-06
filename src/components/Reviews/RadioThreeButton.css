@@ -1,0 +1,20 @@
+.radio-three-button {
+  border-radius: 28px;
+  border: 0px;
+  font-size: 18px;
+  font-weight: 400;
+  background: rgb(249 250 251);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 45px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.radio-three-button.selected {
+  /* bg-blue-900 */
+  background: rgb(30 58 138);
+  color: #fff;
+}

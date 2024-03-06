@@ -6,6 +6,8 @@ import Grade from "./Grade";
 import TextBox from "./TextBox";
 import axios from "axios";
 import SubmitBTN from "./SubmitBTN";
+import RadioSelection from "../RadioSelection";
+import RadioThreeButton from "../RadioThreeButton";
 
 const URL = "https://whale-app-3xvcg.ondigitalocean.app/v1";
 
@@ -19,18 +21,22 @@ const Review: React.FC = () => {
   const [examMethod, setExamMethod] = useState<Array<string> | null>(null);
   const [contentValue, setContentValue] = useState<string>("");
   const [classroomEnvValue, setClassroomEnvValue] = useState<string>("");
-  const [examFormatValue, setExamFormatValue] = useState<string>("");
-  const [exerFormatValue, setExerFormatValue] = useState<string>("");
+  const [other, setOther] = useState<string>("");
   const [isDataCorrect, setIsDataCorrect] = useState<boolean>(false);
   const [triggleReset, setTriggleReset] = useState<boolean>(false);
+  const [exerciseFormatSelection, setExerciseFormatSelection] =
+    useState<string>("");
+  const [exerciseFormatButton, setExerciseFormatButton] = useState<string>("");
+  const [examinationFormatSelection, setExaminationFormatSelection] =
+    useState<string>("");
+  const [examinationFormatButton, setExaminationFormatButton] =
+    useState<string>("");
 
   const reviewState = {
     rating: starRating,
     grade: grade,
     content: `${contentValue}`,
     classroom_environment: `${classroomEnvValue}`,
-    examination_format: `${examFormatValue}`,
-    exercise_format: `${exerFormatValue}`,
     grading_method: examMethod,
     semester: courseSemester,
     year: Number(courseYear),
@@ -45,9 +51,7 @@ const Review: React.FC = () => {
       courseYear !== "----" &&
       examMethod !== null &&
       contentValue !== "" &&
-      classroomEnvValue !== "" &&
-      examFormatValue !== "" &&
-      exerFormatValue !== ""
+      classroomEnvValue !== ""
     )
       setIsDataCorrect(true);
     else setIsDataCorrect(false);
@@ -59,8 +63,6 @@ const Review: React.FC = () => {
     examMethod,
     contentValue,
     classroomEnvValue,
-    examFormatValue,
-    exerFormatValue,
   ]);
 
   const callPostReview = async () => {
@@ -88,8 +90,6 @@ const Review: React.FC = () => {
     setExamMethod(null);
     setContentValue("");
     setClassroomEnvValue("");
-    setExamFormatValue("");
-    setExerFormatValue("");
     setIsDataCorrect(false);
   };
 
@@ -149,17 +149,63 @@ const Review: React.FC = () => {
             setValue={setClassroomEnvValue}
             value={classroomEnvValue}
           />
+          {/* Exercise Format */}
+          <div>
+            <div>
+              <span className="text-2xl text-blue-900 font-bold">
+                Exercise Format
+              </span>
+              <span className="text-2xl">{"  "}</span>
+              <span className=" text-2xl text-blue-900">
+                รูปแบบฝึกแบบฝึกหัด
+              </span>
+            </div>
+            <div className="flex flex-col gap-1 pt-1 pb-1">
+              <RadioSelection
+                label1="Individual งานเดี่ยว"
+                label2="Group งานกลุ่ม"
+                label3="Both ทั้งสอง"
+                setValue={setExerciseFormatSelection}
+              />
+              <RadioThreeButton
+                value={exerciseFormatButton}
+                setValue={setExerciseFormatButton}
+                value_list={["Easy ง่าย", "Normal ปานกลาง", "Hard ยาก"]}
+              />
+            </div>
+            {/* {exerciseFormatSelection}
+            {exerciseFormatButton} */}
+          </div>
+          {/* Examination Format */}
+          <div>
+            <div>
+              <span className="text-2xl text-blue-900 font-bold">
+                Examination Format
+              </span>
+              <span className="text-2xl">{"  "}</span>
+              <span className=" text-2xl text-blue-900">รูปแบบข้อสอบ</span>
+            </div>
+            <div className="flex flex-col gap-1 pt-1 pb-1">
+              <RadioSelection
+                label1="Objective test ปรนัย"
+                label2="Subjective test อัตนัย"
+                label3="Both ทั้งสอง"
+                setValue={setExaminationFormatSelection}
+              />
+              <RadioThreeButton
+                value={examinationFormatButton}
+                setValue={setExaminationFormatButton}
+                value_list={["Easy ง่าย", "Normal ปานกลาง", "Hard ยาก"]}
+              />
+            </div>
+            {/* {examinationFormatSelection}
+            {examinationFormatButton} */}
+          </div>
           <TextBox
-            title="Examination Format"
-            subTitle="รูปแบบข้อสอบ"
-            setValue={setExamFormatValue}
-            value={examFormatValue}
-          />
-          <TextBox
-            title="Excerise Format"
-            subTitle="รูปแบบแบบฝึกหัด"
-            setValue={setExerFormatValue}
-            value={exerFormatValue}
+            title="Other"
+            subTitle="ข้อมูลอื่นๆที่อยากบอก"
+            setValue={setOther}
+            value={other}
           />
         </div>
       </div>

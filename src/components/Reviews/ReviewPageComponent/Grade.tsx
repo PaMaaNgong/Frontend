@@ -83,6 +83,7 @@ const Grade: React.FC<GradeProps> = ({
           </>
         )}
       </div>
+
       {/* Grading method */}
       <div className="text-2xl text-blue-900 font-bold pt-5">
         Grading Method

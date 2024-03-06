@@ -27,7 +27,7 @@ const TextBox: React.FC<TextBoxProps> = ({
           value={value}
           onChange={(e) => setValue(e.target.value)}
           className="block rounded-2xl text-2xl shadow py-0.25 pl-3.5 pr-1 ring-1 ring-inset ring-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
-          style={{ width: 650, height: 130, minHeight: 130, maxHeight: 130 }}
+          style={{ width: 650, height: 100, minHeight: 100, maxHeight: 100 }}
           maxLength={512}
         />
       </div>
