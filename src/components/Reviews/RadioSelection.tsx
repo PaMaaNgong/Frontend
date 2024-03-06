@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -22,15 +22,23 @@ interface RadioSelectionProps {
   label1: string;
   label2: string;
   label3: string;
+  value: string;
   setValue: Function;
+  triggleReset: boolean;
 }
 
 const RadioSelection: React.FC<RadioSelectionProps> = ({
   label1,
   label2,
   label3,
+  value,
   setValue,
+  triggleReset,
 }) => {
+  useEffect(() => {
+    setValue("");
+  }, [triggleReset]);
+
   return (
     <div className="flex justify-center text-gray-600 font-['kanit']">
       <FormControl>
@@ -41,7 +49,7 @@ const RadioSelection: React.FC<RadioSelectionProps> = ({
         >
           <FormControlLabel
             value={label1}
-            control={<Radio sx={sx2} />}
+            control={<Radio checked={value === label1} sx={sx2} />}
             label={label1}
             onClick={() => {
               setValue(label1);
@@ -50,7 +58,7 @@ const RadioSelection: React.FC<RadioSelectionProps> = ({
           />
           <FormControlLabel
             value={label2}
-            control={<Radio sx={sx2} />}
+            control={<Radio checked={value === label2} sx={sx2} />}
             label={label2}
             onClick={() => {
               setValue(label2);
@@ -59,7 +67,7 @@ const RadioSelection: React.FC<RadioSelectionProps> = ({
           />
           <FormControlLabel
             value={label3}
-            control={<Radio sx={sx2} />}
+            control={<Radio checked={value === label3} sx={sx2} />}
             label={label3}
             onClick={() => {
               setValue(label3);

@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 interface TextBoxProps {
   title: string;
   subTitle: string;
   setValue: Function;
   value: string;
+  triggleReset: boolean;
 }
 
 const TextBox: React.FC<TextBoxProps> = ({
@@ -12,7 +13,12 @@ const TextBox: React.FC<TextBoxProps> = ({
   subTitle,
   setValue,
   value,
+  triggleReset,
 }) => {
+  useEffect(() => {
+    setValue("");
+  }, [triggleReset]);
+
   return (
     <div className="flex flex-col gap-0">
       <div>

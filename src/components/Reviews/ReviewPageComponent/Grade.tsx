@@ -44,6 +44,7 @@ const Grade: React.FC<GradeProps> = ({
   }, [selectedNone, selectedMidterm, selectedFinal]);
 
   useEffect(() => {
+    setGrade("");
     setSelectedMidterm(false);
     setSelectedFinal(false);
   }, [triggleReset]);

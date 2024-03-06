@@ -5,13 +5,19 @@ interface RadioThreeButtonProps {
   value: string | null;
   setValue: Function;
   value_list: Array<string>;
+  triggleReset: boolean;
 }
 
 const RadioThreeButton: React.FC<RadioThreeButtonProps> = ({
   value,
   setValue,
   value_list,
+  triggleReset,
 }) => {
+  useEffect(() => {
+    setValue("");
+  }, [triggleReset]);
+
   return (
     <div className="flex justify-center text-gray-600">
       <div className="shadow flex flex-row gap-0 w-fit rounded-full bg-gray-50">

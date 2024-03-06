@@ -65,6 +65,14 @@ const Review: React.FC = () => {
     classroomEnvValue,
   ]);
 
+  useEffect(() => {
+    setCourseNo("");
+    setCourseName("");
+    setStarRating(0);
+    setCourseSemester("-");
+    setCourseYear("----");
+  }, [triggleReset]);
+
   const callPostReview = async () => {
     console.log(`${URL}/course/${courseNo}/reviews`);
     console.log(reviewState);
@@ -142,12 +150,14 @@ const Review: React.FC = () => {
             subTitle="เนื้อหา,เรียนแล้วรู้สึกยังไง"
             setValue={setContentValue}
             value={contentValue}
+            triggleReset={triggleReset}
           />
           <TextBox
             title="Classroom Environment"
             subTitle="บรรยากาศในห้องเรียน"
             setValue={setClassroomEnvValue}
             value={classroomEnvValue}
+            triggleReset={triggleReset}
           />
           {/* Exercise Format */}
           <div>
@@ -165,12 +175,15 @@ const Review: React.FC = () => {
                 label1="Individual งานเดี่ยว"
                 label2="Group งานกลุ่ม"
                 label3="Both ทั้งสอง"
+                value={exerciseFormatSelection}
                 setValue={setExerciseFormatSelection}
+                triggleReset={triggleReset}
               />
               <RadioThreeButton
                 value={exerciseFormatButton}
                 setValue={setExerciseFormatButton}
                 value_list={["Easy ง่าย", "Normal ปานกลาง", "Hard ยาก"]}
+                triggleReset={triggleReset}
               />
             </div>
             {/* {exerciseFormatSelection}
@@ -190,12 +203,15 @@ const Review: React.FC = () => {
                 label1="Objective test ปรนัย"
                 label2="Subjective test อัตนัย"
                 label3="Both ทั้งสอง"
+                value={examinationFormatSelection}
                 setValue={setExaminationFormatSelection}
+                triggleReset={triggleReset}
               />
               <RadioThreeButton
                 value={examinationFormatButton}
                 setValue={setExaminationFormatButton}
                 value_list={["Easy ง่าย", "Normal ปานกลาง", "Hard ยาก"]}
+                triggleReset={triggleReset}
               />
             </div>
             {/* {examinationFormatSelection}
@@ -206,12 +222,18 @@ const Review: React.FC = () => {
             subTitle="ข้อมูลอื่นๆที่อยากบอก"
             setValue={setOther}
             value={other}
+            triggleReset={triggleReset}
           />
         </div>
       </div>
       <div className="flex justify-end">
         <div className="flex flex-row gap-4 pr-8">
-          <button className="shadow-md w-36 h-14 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg text-2xl">
+          <button
+            className="shadow-md w-36 h-14 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg text-2xl"
+            onClick={() => {
+              setTriggleReset(!triggleReset);
+            }}
+          >
             Cancel
           </button>
           <SubmitBTN
