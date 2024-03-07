@@ -1,25 +1,25 @@
-import React, { useEffect, useRef } from "react";
-import { Bar } from "react-chartjs-2";
+import React, {useEffect, useRef} from "react";
+import {Bar} from "react-chartjs-2";
 import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-  ChartOptions,
-  ChartData
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend,
+    ChartOptions,
+    ChartData
 } from "chart.js";
 import "./GradeHistogram.css";
 
 ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend
 );
 
 // interface ChartData {
@@ -31,14 +31,16 @@ ChartJS.register(
 //   }[];
 // }
 
-export const GradeHistogramChart: React.FC<{data: ChartData<'bar'>, options: ChartOptions, title: string}> = ({
-  data,
-  options,
-  title,
-}) => {
-  return (
-    <div className="GradesHistogram">
-      <Bar data={data} title={title} />
-    </div>
-  );
+const GradeHistogramChart: React.FC<{ data: ChartData<'bar'>, options: ChartOptions, title?: string }> = ({
+                                                                                                              data,
+                                                                                                              options,
+                                                                                                              title,
+                                                                                                          }) => {
+    return (
+        <div className="mt-1 bg-[#fff] justify-center  rounded-xl p-3 shadow">
+            <Bar data={data} title={title}/>
+        </div>
+    );
 };
+
+export default GradeHistogramChart;
