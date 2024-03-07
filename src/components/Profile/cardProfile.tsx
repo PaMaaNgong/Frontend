@@ -6,7 +6,8 @@ type ArticleCardProps = {
   course: CourseOverview;
 };
 
-const ArticleCard: React.FC<ArticleCardProps> = ({ course }) => {
+const CardProfile: React.FC<ArticleCardProps> = ({ course }) => {
+  // ฟังก์ชันเพื่อตัดและเติม "..."
   const truncateString = (str: string, num: number) => {
     if (str.length > num) {
       return str.slice(0, num) + "...";
@@ -17,11 +18,11 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ course }) => {
   const getImageUrlByType = (type: CourseType) => {
     switch (type) {
       case "fe":
-        return "src/components/Homepage/Card/image 27.png";
+        return "../src/components/Homepage/Card/image 27.png";
       case "me":
-        return "src/components/Homepage/Card/image 28.png";
+        return "../src/components/Homepage/card/image 28.png";
       case "ge":
-        return "src/components/Homepage/Card/image 29.png";
+        return "../src/components/Homepage/card/image 29.png";
       default:
         return ""; // Consider adding a default image URL here
     }
@@ -39,7 +40,8 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ course }) => {
   };
 
   return (
-    <div className="mt-0 px-1 w-1/5 md:w-1/5 lg:mt-4 lg:px-4 lg:mb-4 lg:w-1/5 relative">
+    <div className="mt-1 px-1 w-1/5 md:w-1/5 lg:mt-4 lg:px-4 lg:mb-4 lg:w-1/5 relative">
+      {/* ย้าย hover:shadow-lg และ transition-shadow ไปยัง article */}
       <Link
         to={`/courses/${course.id}`}
         className="block overflow-hidden rounded-lg"
@@ -48,31 +50,35 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ course }) => {
           <a href="#" className="block overflow-hidden rounded-lg">
             <img
               alt="Placeholder"
-              className="block h-auto w-full object-cover mb-0"
+              className="block h-auto w-full object-cover mb-1"
               src={getImageUrlByType(course.type)}
             />
-            <div className=" md:p-2 ">
+            <div className="p-1 md:p-4 pt-0 pb-0">
               <header className="mt-0 mb-0 pl-0">
                 <h1 className="text-lg">{course.id}</h1>
               </header>
-              <footer className="mt-0">
-                {truncateString(course.name_en, 18)}
+              <footer className="mt-0 mb-0">
+                {truncateString(course.name_en, 17)}
               </footer>
             </div>
             <div className="absolute bottom-0 right-0 mb-4 mr-8 text-right">
-              <div className="text-lg font-bold">
+              <div className="text-lg font-bold text-black">
                 {course.rating} <span className="text-blue-600">*</span>
               </div>
               <div className="text-sm text-blue-600">
                 {course.total_reviews} reviews
               </div>
             </div>
+            {/* <img
+              alt="Icon"
+              src={mapIconUrl(course.type)}
+              className="absolute bottom-0 right-0 mb-4 mr-8 w-15 h-6"
+            /> */}
           </a>
         </article>
       </Link>
     </div>
-
   );
 };
 
-export default ArticleCard;
+export default CardProfile;
