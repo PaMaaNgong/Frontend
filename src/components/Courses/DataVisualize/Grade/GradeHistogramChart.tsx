@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useRef} from "react";
 import {Bar} from "react-chartjs-2";
 import {
     Chart as ChartJS,
@@ -7,18 +7,11 @@ import {
     BarElement,
     Title,
     Tooltip,
-    Legend, ChartOptions,
-} from 'chart.js';
-import './GradeHistogram.css';
-import {Grade} from "../../../../models";
-import {getGrades} from "../../../../repositories/Course";
-
-type Props = {
-    grades: Grade[],
-    data: ChartData;
-    options: ChartOptions;
-    title: string;
-}
+    Legend,
+    ChartOptions,
+    ChartData
+} from "chart.js";
+import "./GradeHistogram.css";
 
 ChartJS.register(
     CategoryScale,
@@ -29,27 +22,25 @@ ChartJS.register(
     Legend
 );
 
-interface ChartData {
-    labels: string[];
-    datasets: {
-        label: string;
-        data: number[];
-        backgroundColor: string;
-    }[];
-}
+// interface ChartData {
+//   labels: string[];
+//   datasets: {
+//     label: string;
+//     data: number[];
+//     backgroundColor: string;
+//   }[];
+// }
 
-export const GradeHistogramChart: React.FC<Props> = ({data, options, title}) => {
-    const [grades, setGrades] = React.useState<Grade[]>([]);
-    React.useEffect(() => {
-        getGrades("261200").then(response => {
-            setGrades(response.data)
-            console.log(response.data)
-        })
-    },[])
+const GradeHistogramChart: React.FC<{ data: ChartData<'bar'>, options: ChartOptions, title?: string }> = ({
+                                                                                                              data,
+                                                                                                              options,
+                                                                                                              title,
+                                                                                                          }) => {
     return (
-        <div className="GradesHistogram">
-            <Bar options={options} data={data} title={title}/>;
+        <div className="mt-1 bg-[#fff] justify-center  rounded-xl p-3 shadow">
+            <Bar data={data} title={title}/>
         </div>
     );
-
 };
+
+export default GradeHistogramChart;

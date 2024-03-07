@@ -1,6 +1,7 @@
 import { AxiosResponse } from "axios";
 import Repository from ".";
 import {CourseDetail, CourseOverview, Grade, ReviewDetail, ReviewOverview} from "../models";
+import {RatingDetail} from "../components/Courses/DataVisualize/Rating/RatingHistogram";
 
 export type Response<T> = Promise<AxiosResponse<T>>
 export async function getCourses(offset: number = 0, limit: number = 10): Response<CourseOverview[]> {
@@ -25,4 +26,8 @@ export async function postReview(id: string, body: ReviewDetail): Response<void>
 
 export async function getReviewDetail(id: string, offset: number = 0, limit: number = 10): Response<ReviewDetail[]> {
     return Repository.get(`/course/${id}/reviews/detail?offset=${offset}&limit=${limit}`);
+}
+
+export async function getRating(courseId: string): Response<RatingDetail[]>{
+    return Repository.get(`/course/${courseId}/reviews`);
 }

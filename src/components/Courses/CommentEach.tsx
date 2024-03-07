@@ -7,7 +7,7 @@ import {getReviewDetail} from "../../repositories/Course";
 import {ReviewDetail} from "../../models";
 
 
-const CommmentEach: React.FC = () => {
+const CommentEach: React.FC = () => {
 
     const {courseId} = useParams<{courseId: string}>();
     const [reviews, setReviews] = React.useState<ReviewDetail[]>([]);
@@ -41,4 +41,4 @@ const CommmentEach: React.FC = () => {
   )
 }
 
-export default CommmentEach
+export default CommentEach

@@ -4,8 +4,6 @@ import Submited from "../components/Reviews/Submited";
 import ReviewPage from "../components/Reviews/ReviewPage";
 import GetCourses from "../components/Reviews/CourseInfoDB/GetCourses";
 import PopupBTN from "../components/Reviews/PopupBTN";
-import RatingHistogramPreview from "../components/Courses/DataVisualize/Rating/preview";
-import GradeHistogramPreview from "../components/Courses/DataVisualize/Grade/preview";
 
 
 const routes: RouteObject[] = [
@@ -34,14 +32,14 @@ const routes: RouteObject[] = [
             />
         ),
     },
-    {
-        path: "/course/gradehistogram",
-        element: <GradeHistogramPreview />,
-    },
-    {
-        path: "/course/ratinghistogram",
-        element: <RatingHistogramPreview />,
-    },
+    // {
+    //     path: "/course/gradehistogram",
+    //     element: <GradeHistogramPreview />,
+    // },
+    // {
+    //     path: "/course/ratinghistogram",
+    //     element: <RatingHistogramPreview />,
+    // },
 ]
 
 export default routes;
