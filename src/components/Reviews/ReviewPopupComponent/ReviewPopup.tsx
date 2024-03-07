@@ -137,12 +137,12 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({
         `${URL}/course/${courseNo}/reviews`,
         createReviewState(),
         {
-          headers: { accessToken: accessToken },
+          headers: { accesstoken: accessToken },
         }
       );
       if (resp.data.ok) alert("review suscessed");
     } catch (err: any) {
-      alert(err.response.data.message);
+      alert("คุณเคยรีวิววิชานี้ไปแล้ว");
     }
   };
 

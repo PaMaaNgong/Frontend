@@ -83,19 +83,6 @@ const Review: React.FC = () => {
     };
   };
 
-  // const reviewState = {
-  //   rating: starRating,
-  //   grade: grade,
-  //   content: `${contentValue}`,
-  //   classroom_environment: `${classroomEnvValue}`,
-  //   other: `${other}`,
-  //   examination_format: { format: [], difficulty: "" },
-  //   exercise_format: { format: [], difficulty: "" },
-  //   grading_method: examMethod,
-  //   semester: courseSemester,
-  //   year: Number(courseYear),
-  // };
-
   useEffect(() => {
     if (
       courseNo !== "" &&
@@ -146,12 +133,12 @@ const Review: React.FC = () => {
         `${URL}/course/${courseNo}/reviews`,
         createReviewState(),
         {
-          headers: { accessToken: accessToken },
+          headers: { accesstoken: accessToken },
         }
       );
       if (resp.data.ok) alert("review suscessed");
     } catch (err: any) {
-      alert(err.response.data.message);
+      alert("คุณเคยรีวิววิชานี้ไปแล้ว");
     }
   };
 

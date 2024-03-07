@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
+import axios from "axios";
 
 const style = {
   position: "absolute" as "absolute",
@@ -14,6 +15,8 @@ const style = {
   boxShadow: 12,
   p: 0,
 };
+
+const URL = "https://whale-app-3xvcg.ondigitalocean.app/v1";
 
 interface ReviewDeleteBTNProps {
   courseNo: string;
@@ -32,7 +35,17 @@ const ReviewDeleteBTN: React.FC<ReviewDeleteBTNProps> = ({
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const handleDelete = async () => {
-    // call api
+    try {
+      const resp = await axios.delete(
+        `${URL}/course/${courseNo}/reviews/${reviewId}`,
+        {
+          headers: { accesstoken: accessToken },
+        }
+      );
+      if (resp.data.ok) alert("review suscessed");
+    } catch (err: any) {
+      alert(err.response.data.message);
+    }
     handleClose();
   };
 
