@@ -6,6 +6,7 @@ export type CourseOverview = {
   name_en: string;
   type: CourseType;
   total_reviews: number;
+  rating: number;
 };
 
 export type CourseDetail = CourseOverview & {
@@ -45,18 +46,38 @@ export type Grade =
   | "-";
 
 export type ReviewOverview = {
+  id: number;
   rating: number;
   grade: Grade;
+  content: string;
 };
 
 export type GradingMethod = "midterm" | "Final";
 export type Semester = "1" | "2" | "3";
 
+export type format_exam = "objective" | "subjective";
+export type difficulty = "easy" | "normal" | "hard";
+export type ExaminationInfo = {
+  format: format_exam[];
+  difficulty: difficulty;
+};
+
+export type format_exercise = "group" | "individual";
+export type ExerciseInfo = {
+  format: format_exercise[];
+  difficulty: difficulty;
+};
+
 export type ReviewDetail = ReviewOverview & {
+  id: number;
+  rating: number;
+  grade: string;
   content: string;
+  owner: number;
+  other: string;
   classroom_environment: string;
-  examination_format: string;
-  exercise_format: string;
+  examination_format: ExaminationInfo;
+  exercise_format: ExerciseInfo;
   grading_method: GradingMethod[];
   semester: Semester;
   year: number;
