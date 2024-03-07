@@ -5,10 +5,11 @@ import RadioButton from "./RadioButton";
 interface GradeProps {
   grade: string | null;
   setGrade: Function;
-  examMethod: Array<string> | null;
+  examMethod: Array<string>;
   setExamMethod: Function;
   triggleReset: boolean;
   credit: number;
+  isForEdit: boolean;
 }
 
 const Grade: React.FC<GradeProps> = ({
@@ -18,6 +19,7 @@ const Grade: React.FC<GradeProps> = ({
   setExamMethod,
   triggleReset,
   credit = 3,
+  isForEdit = false,
 }) => {
   const grades_3_credits = ["W", "F", "D", "D+", "C", "C+", "B", "B+", "A"];
   const grades_1_credits = ["W", "U", "S"];
@@ -35,15 +37,25 @@ const Grade: React.FC<GradeProps> = ({
     } else if (selectedMidterm && selectedFinal) {
       setExamMethod(["midterm", "final"]);
     } else {
-      setExamMethod(null);
+      setExamMethod([]);
     }
   };
+
+  useEffect(() => {
+    if (isForEdit) {
+      examMethod.map((element) => {
+        if (element === "midterm") setSelectedMidterm(true);
+        if (element === "final") setSelectedFinal(true);
+      });
+    }
+  }, [examMethod]);
 
   useEffect(() => {
     findExamMethod();
   }, [selectedNone, selectedMidterm, selectedFinal]);
 
   useEffect(() => {
+    setGrade("");
     setSelectedMidterm(false);
     setSelectedFinal(false);
   }, [triggleReset]);
@@ -83,6 +95,7 @@ const Grade: React.FC<GradeProps> = ({
           </>
         )}
       </div>
+
       {/* Grading method */}
       <div className="text-2xl text-blue-900 font-bold pt-5">
         Grading Method

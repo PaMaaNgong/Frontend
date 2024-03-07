@@ -1,17 +1,17 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
+import EditBTN from "./EditBTN";
 import StarRating from "../ReviewPageComponent/StarRating";
 import CourseSearch from "./CourseSearch";
 import CourseYear from "../ReviewPageComponent/CourseYear";
 import Grade from "../ReviewPageComponent/Grade";
 import TextBox from "../ReviewPageComponent/TextBox";
-import axios from "axios";
-import SubmitBTN from "../ReviewPageComponent/SubmitBTN";
 import RadioSelection from "./RadioSelection";
 import RadioThreeButton from "./RadioThreeButton";
 
 const URL = "https://whale-app-3xvcg.ondigitalocean.app/v1";
 
-interface ReviewPopupProps {
+interface ReviewEditPopupProps {
   courseNo: string;
   courseName: string;
   onClose: any;
@@ -19,7 +19,7 @@ interface ReviewPopupProps {
   accessToken: string;
 }
 
-const ReviewPopup: React.FC<ReviewPopupProps> = ({
+const ReviewEditPopup: React.FC<ReviewEditPopupProps> = ({
   courseNo,
   courseName,
   onClose,
@@ -43,6 +43,38 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({
     useState<string>("");
   const [examinationFormatButton, setExaminationFormatButton] =
     useState<string>("");
+
+  const showReviewState = (data: any) => {
+    setStarRating(data.rating);
+    setGrade(data.grade);
+    setContentValue(data.content);
+    setClassroomEnvValue(data.classroom_environment);
+    setOther(data.other);
+    setCourseSemester(data.semester);
+    setCourseYear(data.year);
+    setExamMethod(data.grading_method);
+    setExaminationFormatSelection(data.examination_format.format);
+    setExaminationFormatButton(data.examination_format.difficulty);
+    setExerciseFormatSelection(data.exercise_format.format);
+    setExerciseFormatButton(data.exercise_format.difficulty);
+  };
+
+  const handleGetReview = async () => {
+    try {
+      const resp = await axios.get(`${URL}/profile/reviews/${courseNo}`, {
+        headers: { accesstoken: accessToken },
+      });
+      if (resp.data.ok) alert("review suscessed");
+      // console.log(resp.data);
+      showReviewState(resp.data);
+    } catch (err: any) {
+      alert(err.response.data.message);
+    }
+  };
+
+  useEffect(() => {
+    handleGetReview();
+  }, []);
 
   const createReviewState = () => {
     let exercise_format: string[] = [];
@@ -130,11 +162,10 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({
   const callPostReview = async () => {
     console.log(`${URL}/course/${courseNo}/reviews`);
     console.log(createReviewState());
-    const accessToken = "token-1";
     // const accessToken = localStorage.getItem("accessToken");
     try {
-      const resp = await axios.post(
-        `${URL}/course/${courseNo}/reviews`,
+      const resp = await axios.patch(
+        `${URL}/course/${courseNo}/reviews/${reviewId}`,
         createReviewState(),
         {
           headers: { accesstoken: accessToken },
@@ -142,14 +173,13 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({
       );
       if (resp.data.ok) alert("review suscessed");
     } catch (err: any) {
-      alert("คุณเคยรีวิววิชานี้ไปแล้ว");
+      alert(err);
     }
   };
 
   const submitBTN = () => {
     if (isDataCorrect) {
       callPostReview();
-      // clearReivewStatus();
     }
   };
 
@@ -182,7 +212,7 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({
             setExamMethod={setExamMethod}
             triggleReset={triggleReset}
             credit={3}
-            isForEdit={false}
+            isForEdit={true}
           />
         </div>
         <div className="flex flex-col gap-2 pl-2" style={{ width: 660 }}>
@@ -219,18 +249,16 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({
                 value={exerciseFormatSelection}
                 setValue={setExerciseFormatSelection}
                 triggleReset={triggleReset}
-                isForEdit={false}
+                isForEdit={true}
               />
               <RadioThreeButton
                 value={exerciseFormatButton}
                 setValue={setExerciseFormatButton}
                 value_list={["Easy ง่าย", "Normal ปานกลาง", "Hard ยาก"]}
                 triggleReset={triggleReset}
-                isForEdit={false}
+                isForEdit={true}
               />
             </div>
-            {/* {exerciseFormatSelection}
-            {exerciseFormatButton} */}
           </div>
           {/* Examination Format */}
           <div>
@@ -249,18 +277,16 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({
                 value={examinationFormatSelection}
                 setValue={setExaminationFormatSelection}
                 triggleReset={triggleReset}
-                isForEdit={false}
+                isForEdit={true}
               />
               <RadioThreeButton
                 value={examinationFormatButton}
                 setValue={setExaminationFormatButton}
                 value_list={["Easy ง่าย", "Normal ปานกลาง", "Hard ยาก"]}
                 triggleReset={triggleReset}
-                isForEdit={false}
+                isForEdit={true}
               />
             </div>
-            {/* {examinationFormatSelection}
-            {examinationFormatButton} */}
           </div>
           <TextBox
             title="Other"
@@ -279,7 +305,7 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({
           >
             Cancel
           </button>
-          <SubmitBTN
+          <EditBTN
             isDataCorrect={isDataCorrect}
             onClick={submitBTN}
             onClose={onClose}
@@ -290,4 +316,4 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({
   );
 };
 
-export default ReviewPopup;
+export default ReviewEditPopup;
