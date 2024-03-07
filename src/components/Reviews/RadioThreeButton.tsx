@@ -6,6 +6,7 @@ interface RadioThreeButtonProps {
   setValue: Function;
   value_list: Array<string>;
   triggleReset: boolean;
+  isForEdit: boolean;
 }
 
 const RadioThreeButton: React.FC<RadioThreeButtonProps> = ({
@@ -13,10 +14,20 @@ const RadioThreeButton: React.FC<RadioThreeButtonProps> = ({
   setValue,
   value_list,
   triggleReset,
+  isForEdit = false,
 }) => {
   useEffect(() => {
     setValue("");
   }, [triggleReset]);
+
+  useEffect(() => {
+    if (isForEdit) {
+      // console.log(value);
+      if (value === "easy") setValue("Easy ง่าย");
+      else if (value === "normal") setValue("Normal ปานกลาง");
+      else if (value === "hard") setValue("Hard ยาก");
+    }
+  }, [value]);
 
   return (
     <div className="flex justify-center text-gray-600">

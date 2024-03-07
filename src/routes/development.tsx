@@ -46,15 +46,15 @@ const routes: RouteObject[] = [
       <div className="m-10">
         <div className="flex flex-row gap-2">
           <ReviewEditBTN
-            courseNo={"000000"}
-            courseName={"edit-course"}
-            reviewId={"1"}
+            courseNo={"201100"}
+            courseName={"วิทยาศาสตร์บูรณาการ"}
+            reviewId={"14"}
             accessToken={"token-1"}
           />
           <ReviewDeleteBTN
-            courseNo={"111111"}
+            courseNo={"127100"}
             courseName={"delete-course"}
-            reviewId={"1"}
+            reviewId={"16"}
             accessToken={"token-1"}
           />
         </div>
