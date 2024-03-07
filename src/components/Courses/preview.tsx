@@ -11,6 +11,8 @@ import {ChartData, ChartOptions} from "chart.js";
 import RatingsHistogram, {RatingDetail} from "./DataVisualize/Rating/RatingHistogram";
 import RatingChart from "./DataVisualize/Rating/RatingChart";
 import {getRating} from "../../repositories/Course";
+import logo from "../Homepage/icon/logo.png"; // Make sure this path is correct
+
 
 const profileIcon = "/icon/image 4.png";
 const options: ChartOptions = {
@@ -135,15 +137,15 @@ const CoursePreview: React.FC = () => {
 
             <nav
                 className={clsx(
-                    "flex justify-between px-9 items-center py-3 font-['kanit'] bg-[#9B2226]"
+                    "flex justify-between px-9 items-center py-3 font-['kanit'] font-normal bg-[#9B2226] h-14"
                 )}
             >
                 <div className="flex items-center gap-8">
                     <section className="flex items-center gap-4">
                         {/* logo */}
                         <a href="/" className="text-3xl font-mono text-white">
-                            FreeCPE
-                        </a>
+              <img src={logo} alt="Logo" className="w-auto h-12" />
+            </a>
                     </section>
                 </div>
 
@@ -152,7 +154,7 @@ const CoursePreview: React.FC = () => {
                     {/* Review */}
                     <PopupBTN courseNo={courseData.id} courseName={courseData.name_en}/>
                     {/* Profile icon link */}
-                    <a href="/profile" className="text-3xl">
+                    <a href="/profile/userId" className="text-3xl">
                         <img src={profileIcon} alt="Profile Icon" className="w-15 h-8"/>
                     </a>
                 </section>
@@ -204,12 +206,7 @@ const CoursePreview: React.FC = () => {
                         >
                             Lecturer
                         </button>
-                        <button
-                            className=" rounded-full hover:bg-sky-200"
-                            onClick={() => handleButtonClick("grade")}
-                        >
-                            Grade
-                        </button>
+                        
                     </div>
                     <div className="text-xl -mt-8">
                         {courseData ? (

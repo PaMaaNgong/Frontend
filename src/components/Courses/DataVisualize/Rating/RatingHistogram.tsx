@@ -47,7 +47,7 @@ const RatingsHistogram: React.FC<HistogramProps> = ({ ratings }) => {
                             <div className="ml-1">
                                 {/*{rating.count} ★{rating.stars}*/}
                                 {/*    <br />*/}
-                                    {rating.percentage}%
+                                {rating.percentage.toFixed(2)}%
                             </div>
                         </div>
                     </div>

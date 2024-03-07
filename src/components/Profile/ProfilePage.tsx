@@ -8,6 +8,8 @@ import reviewIcon from "../Homepage/icon/image 26.png";
 import ArticleCard from "../Homepage/ArticleCard";
 import CardProfile from "./cardProfile";
 import { CourseOverview } from "../../models";
+import ReviewEditBTN from "../Reviews/ReviewEditBTN";
+import ReviewDeleteBTN from "../Reviews/ReviewDeleteBTN";
 
 interface Props {
   majorElectiveProgress: number;
@@ -112,17 +114,33 @@ const ProfilePage: React.FC<Props> = ({
           </div>
         </div>
         <div className="w-3/4 ml-12">
-          <div className="bg-bg-[#F5EBE0]/40 p-4 rounded-lg text-4xl h-autp">
-            <div className="mb-4 border-b">วิชาที่เคยรีวิวไปแล้ว</div>
-            <div className="flex border-b border-gray-300 mb-4 text-sm">
-              {reviewedCourses.map((course) => (
-                <CardProfile key={course.id} course={course} />
-              ))}
-            </div>
-
-            {/* Remaining content */}
+  <div className="bg-bg-[#F5EBE0]/40 p-4 rounded-lg text-4xl h-autp">
+    <div className="mb-4 border-b">วิชาที่เคยรีวิวไปแล้ว</div>
+    <div className="flex flex-wrap border-b border-gray-300 mb-4 text-sm">
+      {reviewedCourses.map((course) => (
+        <CardProfile key={course.id} course={course}>
+          <div className="flex justify-between gap-1">
+            {/* {uniqueReviewId} */}
+            <ReviewEditBTN
+              courseNo={course.id}
+              courseName={course.name_th}
+              reviewId={"uniqueReviewId"} // This should be dynamically obtained
+              accessToken={"token-1"}
+            />
+            <ReviewDeleteBTN
+              courseNo={course.id}
+              courseName={course.name_th}
+              reviewId={"13"} // This should also be dynamically obtained
+              accessToken={"token-1"}
+            />
           </div>
-        </div>
+          
+        </CardProfile>
+      ))}
+    </div>
+  </div>
+</div>
+
       </div>
     </div>
   );
