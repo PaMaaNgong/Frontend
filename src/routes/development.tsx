@@ -6,6 +6,7 @@ import GetCourses from "../components/Reviews/CourseInfoDB/GetCourses";
 import PopupBTN from "../components/Reviews/PopupBTN";
 import RatingHistogramPreview from "../components/Courses/DataVisualize/Rating/preview";
 import GradeHistogramPreview from "../components/Courses/DataVisualize/Grade/preview";
+import LoginPage from "../components/Login/LoginPage";
 import ProfilePage from "../components/Profile/ProfilePage";
 
 const routes: RouteObject[] = [
@@ -41,6 +42,10 @@ const routes: RouteObject[] = [
   {
     path: "/course/ratinghistogram",
     element: <RatingHistogramPreview />,
+  },
+  {
+    path: "/login",
+    element: <LoginPage />,
   },
   {
     path: "/profile/userId",
