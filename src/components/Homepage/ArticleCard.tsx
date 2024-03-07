@@ -71,6 +71,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ course }) => {
         </article>
       </Link>
     </div>
+
   );
 };
 
