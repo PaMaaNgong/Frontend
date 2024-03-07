@@ -39,22 +39,24 @@ const ArticleBoard: React.FC = () => {
   };
 
   return (
-    <div className="overflow-auto max-h-[930px] max-w-[5000px]">
+    <div className="flex flex-col h-screen">
       <Navbar onFilterChange={handleFilterChange} />
-      <div className="container my-12 mx-auto px-8 md:px-12 w-full">
-      <div className="mb-5"> 
-          <SearchBar onSearch={handleSearch} />
-        </div>
-        <div className="flex flex-wrap -mx-1 lg:-mx-4 font-['kanit'] font-normal">
-          {filteredCourses.length > 0 ? (
-            filteredCourses.map((course, index) => (
-              <ArticleCard key={index} course={course} />
-            ))
-          ) : (
-<div id="footer" className="flex items-center justify-center w-full h-full mt-20">
-  <p className="text-xl md:text-6xl text-gray-400">"Not found"</p>
-</div>
-          )}
+      <div className="flex-grow-0">
+        <SearchBar onSearch={handleSearch} />
+      </div>
+      <div className="flex-grow overflow-auto">
+        <div className="container mx-auto w-full">
+          <div className="flex flex-wrap mx-1 lg:-mx-4 font-['kanit'] font-normal">
+            {filteredCourses.length > 0 ? (
+              filteredCourses.map((course, index) => (
+                <ArticleCard key={index} course={course} />
+              ))
+            ) : (
+              <div className="flex items-center justify-center w-full h-full">
+                <p className="text-xl md:text-6xl text-gray-400">Not found</p>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>

@@ -44,7 +44,7 @@ const routes: RouteObject[] = [
   },
   {
     path: "/profile/userId",
-    element: <ProfilePage />,
+    element: <ProfilePage majorElectiveProgress={0} totalMajorElectives={0} />,
   },
 ];
 

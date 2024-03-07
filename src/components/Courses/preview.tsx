@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../Homepage/Navbar";
 import { ICourse } from "./props";
-import { fetchCourseData } from "./api";
+import { fetchCourseData, getRatings } from "./api";
 import clsx from "clsx";
 import PopupBTN from "../Reviews/PopupBTN";
 import { GradeHistogramChart } from "./DataVisualize/Grade/GradeHistogramChart";
 import RatingsHistogram from "./DataVisualize/Rating/RatingHistogram";
 import CommmentEach from "./CommmentEach";
 import { ChartData, ChartOptions } from "chart.js";
+import logo from "../Homepage/icon/logo.png";
 
 const profileIcon = "/icon/image 4.png";
 const options: ChartOptions = {
@@ -71,11 +72,15 @@ const CoursePreview: React.FC = () => {
   const { courseId } = useParams<{ courseId: string }>();
   const [courseData, setCourseData] = useState<any>(null);
   const [buttonType, setButtonType] = useState<string>("lecturers");
+  const [courseRating, setCourseRating] = useState<any>(null);
 
   useEffect(() => {
     if (courseId) {
       fetchCourseData(courseId)
         .then((data) => setCourseData(data))
+        .catch((error) => console.error(error));
+      getRatings(courseId)
+        .then((data) => setCourseRating(data))
         .catch((error) => console.error(error));
     }
   }, [courseId]);
@@ -89,21 +94,20 @@ const CoursePreview: React.FC = () => {
 
     return <div> Loading... </div>;
   }
-  console.log(courseData.schedule);
+  console.log(courseRating);
   return (
     <div className="bg-[#F5EBE0]/40">
       {/* Navbar */}
 
       <nav
         className={clsx(
-          "flex justify-between px-8 items-center py-3 font-['kanit'] bg-[#9B2226]"
+          "flex justify-between px-9 items-center py-3 font-['kanit'] font-normal bg-[#9B2226] h-14"
         )}
       >
         <div className="flex items-center gap-8">
           <section className="flex items-center gap-4">
-            {/* logo */}
             <a href="/" className="text-3xl font-mono text-white">
-              FreeCPE
+              <img src={logo} alt="Logo" className="w-auto h-12" />
             </a>
           </section>
         </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import searchicon from "./icon/image 6.png";
+import searchIcon from "../Homepage/icon/image 30.png"
 
 interface SearchBarProps {
   onSearch: (searchText: string) => void;
@@ -10,22 +10,20 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
 
   const handleChange = (value: string) => {
     setInput(value);
-    onSearch(value); // Call the passed onSearch function with the current input value
+    onSearch(value);
   };
   
 
   return (
-    <div>
-      <div className="w-1/2 mx-auto input-wrapper ">
-      {/* <img src={searchicon} alt="Profile Icon" className="w-15 h-8" /> */}
-        <input
-          className="w-full px-4 py-1 border-30 rounded-full focus:outline-none focus:ring-2 focus:ring-black placeholder-gray-500"
-          type="text"
-          placeholder="Type to search..."
-          value={input}
-          onChange={(e) => handleChange(e.target.value)}
-        />
-      </div>
+    <div className="relative w-1/2 mx-auto my-8">
+      <img src={searchIcon} alt="Search Icon" className="absolute left-0 top-1/2 transform -translate-y-1/2 w-auto h-9" />
+      <input
+        className="pl-14 pr-3 w-full py-1 border-2 rounded-full focus:outline-none focus:ring-2 focus:ring-black placeholder-gray-500 text-left"
+        type="text"
+        placeholder="Type to search..."
+        value={input}
+        onChange={(e) => handleChange(e.target.value)}
+      />
     </div>
   );
 };

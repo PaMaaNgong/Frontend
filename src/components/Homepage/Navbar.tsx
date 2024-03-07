@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import clsx from "clsx";
 import { FiMenu } from "react-icons/fi";
 import { IoCloseOutline } from "react-icons/io5";
+import profileIcon from "./icon/image 4.png";
+import reviewIcon from "./icon/image 26.png";
+import logo from "../Homepage/icon/logo.png"; // Make sure this path is correct
 import SearchBar from "./Searchbar";
 
 interface NavbarProps {
@@ -12,9 +15,10 @@ const Navbar: React.FC<NavbarProps> = ({ onFilterChange }) => {
   const [isSideMenuOpen, setMenu] = useState(false);
   const [activeCategory, setActiveCategory] = useState<string>("all");
 
-  const handleFilterClick = (to: string) => {
-    setActiveCategory(to); // Update active category
-    onFilterChange(to); // Call the onFilterChange prop function
+  const handleFilterClick = (e) => {
+    const filterType = e.target.getAttribute("data-filter");
+    setActiveCategory(filterType); // Update active category
+    onFilterChange(filterType); // Call the onFilterChange prop function
   };
 
   const navlinks = [
@@ -28,7 +32,7 @@ const Navbar: React.FC<NavbarProps> = ({ onFilterChange }) => {
     <main>
       <nav
         className={clsx(
-          "flex justify-between px-9 items-center py-3 font-['kanit'] font-normal bg-[#9B2226]"
+          "flex justify-between px-9 items-center py-3 font-['kanit'] font-normal bg-[#9B2226] h-14"
         )}
       >
         <div className="flex items-center gap-8">
@@ -38,7 +42,7 @@ const Navbar: React.FC<NavbarProps> = ({ onFilterChange }) => {
               className="text-3xl cursor-pointer lg:hidden"
             />
             <a href="/" className="text-3xl font-mono text-white">
-              FreeCPE
+              <img src={logo} alt="Logo" className="w-auto h-12" />
             </a>
           </section>
           {navlinks.map((link, index) => (
@@ -47,7 +51,8 @@ const Navbar: React.FC<NavbarProps> = ({ onFilterChange }) => {
               className={`hidden lg:block text-white hover:text-black ${
                 activeCategory === link.filter ? "border-b-2 border-white" : ""
               }`}
-              onClick={() => handleFilterClick(link.filter)}
+              onClick={handleFilterClick}
+              data-filter={link.filter}
               href="#"
             >
               {link.label}
@@ -69,7 +74,7 @@ const Navbar: React.FC<NavbarProps> = ({ onFilterChange }) => {
             />
 
             {navlinks.map((link, index) => (
-              <a key={index} className="font-bold" href="#">
+              <a key={index} className="font-bold" href={link.link}>
                 {link.label}
               </a>
             ))}
@@ -83,19 +88,11 @@ const Navbar: React.FC<NavbarProps> = ({ onFilterChange }) => {
         <section className="flex items-center gap-3">
           {/* Review icon link */}
           <a href="/review" className="text-3xl">
-            <img
-              src="/icon/image 26.png"
-              alt="Review Icon"
-              className="w-25 h-8"
-            />
+            <img src={reviewIcon} alt="Review Icon" className="w-25 h-8" />
           </a>
           {/* Profile icon link */}
           <a href="/profile/userId" className="text-3xl">
-            <img
-              src="/icon/image 4.png"
-              alt="Profile Icon"
-              className="w-15 h-8"
-            />
+            <img src={profileIcon} alt="Profile Icon" className="w-15 h-8" />
           </a>
         </section>
       </nav>

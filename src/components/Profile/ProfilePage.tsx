@@ -1,8 +1,13 @@
+import React, { useEffect, useState } from "react";
 import clsx from "clsx";
-import React from "react";
 import PopupBTN from "../Reviews/PopupBTN";
-import LoadingBar from "./LoadingBar"; // Assuming you put the LoadingBar component in a separate file
+import LoadingBar from "./LoadingBar";
+import logo from "../Homepage/icon/logo.png";
+import profileIcon from "../Homepage/icon/image 4.png";
+import reviewIcon from "../Homepage/icon/image 26.png";
 import ArticleCard from "../Homepage/ArticleCard";
+import CardProfile from "./cardProfile";
+import { CourseOverview } from "../../models";
 
 interface Props {
   majorElectiveProgress: number;
@@ -13,34 +18,62 @@ const ProfilePage: React.FC<Props> = ({
   majorElectiveProgress,
   totalMajorElectives,
 }) => {
+  const [reviewedCourses, setReviewedCourses] = useState<CourseOverview[]>([]);
+
+  useEffect(() => {
+    const fetchReviewedCourses = async () => {
+      try {
+        const accessToken = "token-1"; // Replace with actual access token
+
+        const response = await fetch(
+          "https://whale-app-3xvcg.ondigitalocean.app/v1/profile/reviews/courses",
+          {
+            headers: {
+              accept: "application/json",
+              accessToken: accessToken,
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch reviewed courses");
+        }
+
+        const data = await response.json();
+        setReviewedCourses(data); // Assuming the response is an array of courses
+      } catch (error) {
+        console.error("Error fetching reviewed courses:", error);
+      }
+    };
+
+    fetchReviewedCourses();
+  }, []);
+
   return (
     <div className="bg-[#F5EBE0]/40 min-h-screen">
       {/* Navigation */}
       <nav
         className={clsx(
-          "flex justify-between px-8 items-center py-3 font-['kanit'] bg-[#9B2226]"
+          "flex justify-between px-9 items-center py-3 font-['kanit'] font-normal bg-[#9B2226] h-14"
         )}
       >
         <div className="flex items-center gap-8">
           <section className="flex items-center gap-4">
-            {/* Logo */}
             <a href="/" className="text-3xl font-mono text-white">
-              FreeCPE
+              <img src={logo} alt="Logo" className="w-auto h-12" />
             </a>
           </section>
         </div>
 
-        {/* Last section */}
+        {/* last section */}
         <section className="flex items-center gap-3">
-          {/* Review */}
-          <PopupBTN courseNo={""} courseName={""} />
+          {/* Review icon link */}
+          <a href="/review" className="text-3xl">
+            <img src={reviewIcon} alt="Review Icon" className="w-25 h-8" />
+          </a>
           {/* Profile icon link */}
           <a href="/profile/userId" className="text-3xl">
-            <img
-              src="/icon/image 4.png"
-              alt="Profile Icon"
-              className="w-15 h-8"
-            />
+            <img src={profileIcon} alt="Profile Icon" className="w-15 h-8" />
           </a>
         </section>
       </nav>
@@ -54,11 +87,11 @@ const ProfilePage: React.FC<Props> = ({
             {/* Place the LoadingBar here */}
             <div className="mt-8">
               <div className="flex flex-col gap-4 text-left">
-                <div>Major Elective:</div>
+                <div>Major Elective</div>
                 <div className="flex items-center gap-4 ">
                   <LoadingBar currentProgress={2} total={4} />
                 </div>
-                <div>General Education Elective:</div>
+                <div>General Education</div>
                 <div className="flex items-center gap-4">
                   <LoadingBar
                     currentProgress={1}
@@ -66,7 +99,7 @@ const ProfilePage: React.FC<Props> = ({
                     color="bg-yellow-300"
                   />
                 </div>
-                <div>Free Elective:</div>
+                <div>Free Elective</div>
                 <div className="flex items-center gap-4">
                   <LoadingBar
                     currentProgress={4}
@@ -80,32 +113,14 @@ const ProfilePage: React.FC<Props> = ({
         </div>
         <div className="w-3/4 ml-12">
           <div className="bg-bg-[#F5EBE0]/40 p-4 rounded-lg text-4xl h-autp">
-            <div className="border-b border-gray-300 mb-4">
-              <h2 className="mb-4">วิชาที่ยังไม่ได้รีวิว</h2>
-              <ArticleCard
-                course={{
-                  id: "000001",
-                  name_th: "",
-                  name_en: "kuy SE hee mak",
-                  type: "ge",
-                  total_reviews: 100,
-                }}
-              />
+            <div className="mb-4 border-b">วิชาที่เคยรีวิวไปแล้ว</div>
+            <div className="flex border-b border-gray-300 mb-4 text-sm">
+              {reviewedCourses.map((course) => (
+                <CardProfile key={course.id} course={course} />
+              ))}
             </div>
 
-            <div className="reviewed-courses">
-              <h2>วิชาที่เคยรีวิวไปแล้ว</h2>
-              {/* List of reviewed courses */}
-              <ArticleCard
-                course={{
-                  id: "123",
-                  name_th: "",
-                  name_en: "",
-                  type: "ge",
-                  total_reviews: 0,
-                }}
-              />
-            </div>
+            {/* Remaining content */}
           </div>
         </div>
       </div>
