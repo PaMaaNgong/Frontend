@@ -40,33 +40,26 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ course }) => {
 
   return (
     <div className="mt-0 px-1 w-1/5 md:w-1/5 lg:mt-4 lg:px-4 lg:mb-4 lg:w-1/5 relative">
-      <Link
-        to={`/courses/${course.id}`}
-        className="block overflow-hidden rounded-lg"
-      >
-        <article className="overflow-hidden rounded-lg bg-white hover:shadow-lg transition-shadow duration-300">
-          <a href="#" className="block overflow-hidden rounded-lg">
-            <img
-              alt="Placeholder"
-              className="block h-auto w-full object-cover mb-0"
-              src={getImageUrlByType(course.type)}
-            />
-            <div className=" md:p-2 ">
-              <header className="mt-0 mb-0 pl-0">
-                <h1 className="text-lg">{course.id}</h1>
-              </header>
-              <footer className="mt-0">
-                {truncateString(course.name_en, 18)}
-              </footer>
-            </div>
-            <div className="absolute bottom-0 right-0 mb-4 mr-8 text-right">
+    <Link to={`/courses/${course.id}`} className="block overflow-hidden rounded-lg">
+      <article className="overflow-hidden rounded-lg bg-white hover:shadow-lg transition-shadow duration-300">
+        <div className="scale-90 transform transition duration-300 hover:scale-100"> {/* Scale down the card */}
+          <img alt="Placeholder" className="block h-auto w-full object-cover mb-0" src={getImageUrlByType(course.type)} />
+          <div className="md:p-0 mt-0 ml-3 mb-3">
+            <header className="mt-0 mb-0 pl-0">
+              <h1 className="text-lg">{course.id}</h1>
+            </header>
+            <footer className="mt-0">
+              {truncateString(course.name_en, 18)}
+            </footer>
+          </div>
+          <div className="absolute bottom-0 right-0 mb-0 mr-4 text-right">
             <div className="text-lg font-bold">{course.rating} <span className="text-blue-600">*</span></div>
             <div className="text-sm text-blue-600">{course.total_reviews} reviews</div>
           </div>
-          </a>
-        </article>
-      </Link>
-    </div>
+        </div>
+      </article>
+    </Link>
+  </div>
   );
 };
 
