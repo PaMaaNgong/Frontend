@@ -6,8 +6,8 @@ import Grade from "../ReviewPageComponent/Grade";
 import TextBox from "../ReviewPageComponent/TextBox";
 import axios from "axios";
 import SubmitBTN from "../ReviewPageComponent/SubmitBTN";
-import RadioSelection from "../RadioSelection";
-import RadioThreeButton from "../RadioThreeButton";
+import RadioSelection from "./RadioSelection";
+import RadioThreeButton from "./RadioThreeButton";
 
 const URL = "https://whale-app-3xvcg.ondigitalocean.app/v1";
 
@@ -30,7 +30,7 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({
   const [courseSemester, setCourseSemester] = useState<string>("-");
   const [courseYear, setCourseYear] = useState<string>("----");
   const [grade, setGrade] = useState<string>("-");
-  const [examMethod, setExamMethod] = useState<Array<string> | null>(null);
+  const [examMethod, setExamMethod] = useState<Array<string>>([]);
   const [contentValue, setContentValue] = useState<string>("");
   const [classroomEnvValue, setClassroomEnvValue] = useState<string>("");
   const [other, setOther] = useState<string>("");
@@ -182,6 +182,7 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({
             setExamMethod={setExamMethod}
             triggleReset={triggleReset}
             credit={3}
+            isForEdit={false}
           />
         </div>
         <div className="flex flex-col gap-2 pl-2" style={{ width: 660 }}>
@@ -218,12 +219,14 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({
                 value={exerciseFormatSelection}
                 setValue={setExerciseFormatSelection}
                 triggleReset={triggleReset}
+                isForEdit={false}
               />
               <RadioThreeButton
                 value={exerciseFormatButton}
                 setValue={setExerciseFormatButton}
                 value_list={["Easy ง่าย", "Normal ปานกลาง", "Hard ยาก"]}
                 triggleReset={triggleReset}
+                isForEdit={false}
               />
             </div>
             {/* {exerciseFormatSelection}
@@ -246,12 +249,14 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({
                 value={examinationFormatSelection}
                 setValue={setExaminationFormatSelection}
                 triggleReset={triggleReset}
+                isForEdit={false}
               />
               <RadioThreeButton
                 value={examinationFormatButton}
                 setValue={setExaminationFormatButton}
                 value_list={["Easy ง่าย", "Normal ปานกลาง", "Hard ยาก"]}
                 triggleReset={triggleReset}
+                isForEdit={false}
               />
             </div>
             {/* {examinationFormatSelection}

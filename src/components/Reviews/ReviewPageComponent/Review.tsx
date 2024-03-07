@@ -6,8 +6,8 @@ import Grade from "./Grade";
 import TextBox from "./TextBox";
 import axios from "axios";
 import SubmitBTN from "./SubmitBTN";
-import RadioSelection from "../RadioSelection";
-import RadioThreeButton from "../RadioThreeButton";
+import RadioSelection from "../ReviewPopupComponent/RadioSelection";
+import RadioThreeButton from "../ReviewPopupComponent/RadioThreeButton";
 
 const URL = "https://whale-app-3xvcg.ondigitalocean.app/v1";
 
@@ -18,7 +18,7 @@ const Review: React.FC = () => {
   const [courseSemester, setCourseSemester] = useState<string>("-");
   const [courseYear, setCourseYear] = useState<string>("----");
   const [grade, setGrade] = useState<string>("-");
-  const [examMethod, setExamMethod] = useState<Array<string> | null>(null);
+  const [examMethod, setExamMethod] = useState<Array<string>>([]);
   const [contentValue, setContentValue] = useState<string>("");
   const [classroomEnvValue, setClassroomEnvValue] = useState<string>("");
   const [other, setOther] = useState<string>("");
@@ -150,7 +150,7 @@ const Review: React.FC = () => {
     setCourseSemester("-");
     setCourseYear("----");
     setGrade("-");
-    setExamMethod(null);
+    setExamMethod([]);
     setContentValue("");
     setClassroomEnvValue("");
     setIsDataCorrect(false);
@@ -197,6 +197,7 @@ const Review: React.FC = () => {
             setExamMethod={setExamMethod}
             triggleReset={triggleReset}
             credit={3}
+            isForEdit={false}
           />
         </div>
         <div className="flex flex-col gap-2 pl-2" style={{ width: 660 }}>
@@ -233,16 +234,16 @@ const Review: React.FC = () => {
                 value={exerciseFormatSelection}
                 setValue={setExerciseFormatSelection}
                 triggleReset={triggleReset}
+                isForEdit={false}
               />
               <RadioThreeButton
                 value={exerciseFormatButton}
                 setValue={setExerciseFormatButton}
                 value_list={["Easy ง่าย", "Normal ปานกลาง", "Hard ยาก"]}
                 triggleReset={triggleReset}
+                isForEdit={false}
               />
             </div>
-            {/* {exerciseFormatSelection}
-            {exerciseFormatButton} */}
           </div>
           {/* Examination Format */}
           <div>
@@ -261,16 +262,16 @@ const Review: React.FC = () => {
                 value={examinationFormatSelection}
                 setValue={setExaminationFormatSelection}
                 triggleReset={triggleReset}
+                isForEdit={false}
               />
               <RadioThreeButton
                 value={examinationFormatButton}
                 setValue={setExaminationFormatButton}
                 value_list={["Easy ง่าย", "Normal ปานกลาง", "Hard ยาก"]}
                 triggleReset={triggleReset}
+                isForEdit={false}
               />
             </div>
-            {/* {examinationFormatSelection}
-            {examinationFormatButton} */}
           </div>
           <TextBox
             title="Other"

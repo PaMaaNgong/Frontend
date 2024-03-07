@@ -6,8 +6,8 @@ import CourseSearch from "./CourseSearch";
 import CourseYear from "../ReviewPageComponent/CourseYear";
 import Grade from "../ReviewPageComponent/Grade";
 import TextBox from "../ReviewPageComponent/TextBox";
-import RadioSelection from "../RadioSelection";
-import RadioThreeButton from "../RadioThreeButton";
+import RadioSelection from "./RadioSelection";
+import RadioThreeButton from "./RadioThreeButton";
 
 const URL = "https://whale-app-3xvcg.ondigitalocean.app/v1";
 
