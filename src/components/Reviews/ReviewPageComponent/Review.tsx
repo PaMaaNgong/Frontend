@@ -9,7 +9,7 @@ import SubmitBTN from "./SubmitBTN";
 import RadioSelection from "../RadioSelection";
 import RadioThreeButton from "../RadioThreeButton";
 
-const URL = "https://whale-app-3xvcg.ondigitalocean.app/v2";
+const URL = "https://whale-app-3xvcg.ondigitalocean.app/v1";
 
 const Review: React.FC = () => {
   const [courseNo, setCourseNo] = useState<string>("");
@@ -139,20 +139,20 @@ const Review: React.FC = () => {
   const callPostReview = async () => {
     console.log(`${URL}/course/${courseNo}/reviews`);
     console.log(createReviewState());
-    const accessToken = "12345";
+    const accessToken = "token-1";
     // const accessToken = localStorage.getItem("accessToken");
-    // try {
-    //   const resp = await axios.post(
-    //     `${URL}/course/${courseNo}/reviews`,
-    //     createReviewState(),
-    //     {
-    //       headers: { Authorization: `Bearer ${accessToken}` },
-    //     }
-    //   );
-    //   if (resp.data.ok) alert("review suscessed");
-    // } catch (err: any) {
-    //   alert(err.response.data.message);
-    // }
+    try {
+      const resp = await axios.post(
+        `${URL}/course/${courseNo}/reviews`,
+        createReviewState(),
+        {
+          headers: { accessToken: accessToken },
+        }
+      );
+      if (resp.data.ok) alert("review suscessed");
+    } catch (err: any) {
+      alert(err.response.data.message);
+    }
   };
 
   const clearReivewStatus = () => {
@@ -169,9 +169,9 @@ const Review: React.FC = () => {
     setIsDataCorrect(false);
   };
 
-  const submitBTN = async () => {
+  const submitBTN = () => {
     if (isDataCorrect) {
-      await callPostReview();
+      callPostReview();
       clearReivewStatus();
     }
   };

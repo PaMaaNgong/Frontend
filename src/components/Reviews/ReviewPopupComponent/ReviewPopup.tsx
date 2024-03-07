@@ -9,7 +9,7 @@ import SubmitBTN from "../ReviewPageComponent/SubmitBTN";
 import RadioSelection from "../RadioSelection";
 import RadioThreeButton from "../RadioThreeButton";
 
-const URL = "https://whale-app-3xvcg.ondigitalocean.app/v2";
+const URL = "https://whale-app-3xvcg.ondigitalocean.app/v1";
 
 interface ReviewPopupProps {
   courseNo: string;
@@ -95,18 +95,6 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({
     };
   };
 
-  // const reviewState = {
-  //   rating: starRating,
-  //   grade: grade,
-  //   content: `${contentValue}`,
-  //   classroom_environment: `${classroomEnvValue}`,
-  //   examination_format: `${examFormatValue}`,
-  //   exercise_format: `${exerFormatValue}`,
-  //   grading_method: examMethod,
-  //   semester: courseSemester,
-  //   year: Number(courseYear),
-  // };
-
   useEffect(() => {
     if (
       courseNo !== "" &&
@@ -142,20 +130,20 @@ const ReviewPopup: React.FC<ReviewPopupProps> = ({
   const callPostReview = async () => {
     console.log(`${URL}/course/${courseNo}/reviews`);
     console.log(createReviewState());
-    const accessToken = "12345";
+    const accessToken = "token-1";
     // const accessToken = localStorage.getItem("accessToken");
-    // try {
-    //   const resp = await axios.post(
-    //     `${URL}/course/${courseNo}/reviews`,
-    //     createReviewState(),
-    //     {
-    //       headers: { Authorization: `Bearer ${accessToken}` },
-    //     }
-    //   );
-    //   if (resp.data.ok) alert("review suscessed");
-    // } catch (err: any) {
-    //   alert(err.response.data.message);
-    // }
+    try {
+      const resp = await axios.post(
+        `${URL}/course/${courseNo}/reviews`,
+        createReviewState(),
+        {
+          headers: { accessToken: accessToken },
+        }
+      );
+      if (resp.data.ok) alert("review suscessed");
+    } catch (err: any) {
+      alert(err.response.data.message);
+    }
   };
 
   const clearReivewStatus = () => {
