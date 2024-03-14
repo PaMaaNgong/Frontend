@@ -38,7 +38,7 @@ const routes: RouteObject[] = [
     element: <LoginPage />,
   },
   {
-    path: "/profile/userId",
+    path: "/profile/:token",
     element: <ProfilePage majorElectiveProgress={0} totalMajorElectives={0} />,
   },
   {

@@ -10,6 +10,7 @@ import CardProfile from "./cardProfile";
 import { CourseOverview } from "../../models";
 import ReviewEditBTN from "../Reviews/ReviewEditBTN";
 import ReviewDeleteBTN from "../Reviews/ReviewDeleteBTN";
+import { getRating, getReviewDetail } from "../../repositories/Course";
 
 interface Props {
   majorElectiveProgress: number;
@@ -21,6 +22,7 @@ const ProfilePage: React.FC<Props> = ({
   totalMajorElectives,
 }) => {
   const [reviewedCourses, setReviewedCourses] = useState<CourseOverview[]>([]);
+  const [reviewID, setReviewedID] = useState<string[]>([]);
 
   useEffect(() => {
     const fetchReviewedCourses = async () => {
@@ -43,6 +45,18 @@ const ProfilePage: React.FC<Props> = ({
 
         const data = await response.json();
         setReviewedCourses(data); // Assuming the response is an array of courses
+
+        // Iterate through each reviewed course to get review ID
+        const reviewIDs = await Promise.all(
+          data.map(async (course) => {
+            const ratingResponse = await getRating(course.id);
+            return ratingResponse.data.map((rating: any) =>
+              rating.id.toString()
+            );
+          })
+        );
+
+        setReviewedID(reviewIDs.flat());
       } catch (error) {
         console.error("Error fetching reviewed courses:", error);
       }
@@ -50,6 +64,9 @@ const ProfilePage: React.FC<Props> = ({
 
     fetchReviewedCourses();
   }, []);
+  console.log(reviewedCourses);
+  console.log("review here " + reviewID);
+  console.log(reviewID);
 
   return (
     <div className="bg-[#F5EBE0]/40 min-h-screen">
@@ -74,7 +91,7 @@ const ProfilePage: React.FC<Props> = ({
             <img src={reviewIcon} alt="Review Icon" className="w-25 h-8" />
           </a>
           {/* Profile icon link */}
-          <a href="/profile/userId" className="text-3xl">
+          <a href="/profile/:token" className="text-3xl">
             <img src={profileIcon} alt="Profile Icon" className="w-15 h-8" />
           </a>
         </section>
@@ -114,33 +131,31 @@ const ProfilePage: React.FC<Props> = ({
           </div>
         </div>
         <div className="w-3/4 ml-12">
-  <div className="bg-bg-[#F5EBE0]/40 p-4 rounded-lg text-4xl h-autp">
-    <div className="mb-4 border-b">วิชาที่เคยรีวิวไปแล้ว</div>
-    <div className="flex flex-wrap border-b border-gray-300 mb-4 text-sm">
-      {reviewedCourses.map((course) => (
-        <CardProfile key={course.id} course={course}>
-          <div className="flex justify-between gap-1">
-            {/* {uniqueReviewId} */}
-            <ReviewEditBTN
-              courseNo={course.id}
-              courseName={course.name_th}
-              reviewId={"14"} // This should be dynamically obtained
-              accessToken={"token-1"}
-            />
-            <ReviewDeleteBTN
-              courseNo={course.id}
-              courseName={course.name_th}
-              reviewId={"14"} // This should also be dynamically obtained
-              accessToken={"token-1"}
-            />
+          <div className="bg-bg-[#F5EBE0]/40 p-4 rounded-lg text-4xl h-autp">
+            <div className="mb-4 border-b">วิชาที่เคยรีวิวไปแล้ว</div>
+            <div className="flex flex-wrap border-b border-gray-300 mb-4 text-sm">
+              {reviewedCourses.map((course, index) => (
+                <CardProfile key={course.id} course={course}>
+                  <div className="flex justify-between gap-1">
+                    {/* {uniqueReviewId} */}
+                    <ReviewEditBTN
+                      courseNo={course.id}
+                      courseName={course.name_th}
+                      reviewId={reviewID[index]} // This should be dynamically obtained
+                      accessToken={"token-1"}
+                    />
+                    <ReviewDeleteBTN
+                      courseNo={course.id}
+                      courseName={course.name_th}
+                      reviewId={reviewID[index]} // This should also be dynamically obtained
+                      accessToken={"token-1"}
+                    />
+                  </div>
+                </CardProfile>
+              ))}
+            </div>
           </div>
-          
-        </CardProfile>
-      ))}
-    </div>
-  </div>
-</div>
-
+        </div>
       </div>
     </div>
   );

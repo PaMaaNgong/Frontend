@@ -7,7 +7,6 @@ export default {
         kanit: ["Kanit"],
       },
     },
-    plugins: [
-    //   require('flowbite/plugin')
-    ],
+    // plugins: [require("flowbite/plugin")],
+  },
 };

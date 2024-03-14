@@ -8,9 +8,9 @@ export default {
         customRed: "#9B2226",
       },
       fontFamily: {
-        kanit: ['Kanit', 'sans-serif'],
+        kanit: ["Kanit", "sans-serif"],
       },
     },
   },
-  plugins: [],
+  plugins: [require("flowbite/plugin")],
 } satisfies Config;
