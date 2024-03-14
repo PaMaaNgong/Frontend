@@ -91,22 +91,22 @@ const ProfilePage: React.FC<Props> = ({
               <div className="flex flex-col gap-4 text-left">
                 <div>Major Elective</div>
                 <div className="flex items-center gap-4 ">
-                  <LoadingBar currentProgress={2} total={4} />
+                  <LoadingBar currentProgress={0} total={0} />
                 </div>
                 <div>General Education</div>
                 <div className="flex items-center gap-4">
                   <LoadingBar
-                    currentProgress={1}
-                    total={1}
+                    currentProgress={2}
+                    total={4}
                     color="bg-yellow-300"
                   />
                 </div>
                 <div>Free Elective</div>
                 <div className="flex items-center gap-4">
                   <LoadingBar
-                    currentProgress={4}
-                    total={5}
-                    color="bg-green-600"
+                    currentProgress={0}
+                    total={0}
+                    color="bg-green-500"
                   />
                 </div>
               </div>
@@ -124,13 +124,13 @@ const ProfilePage: React.FC<Props> = ({
             <ReviewEditBTN
               courseNo={course.id}
               courseName={course.name_th}
-              reviewId={"uniqueReviewId"} // This should be dynamically obtained
+              reviewId={"14"} // This should be dynamically obtained
               accessToken={"token-1"}
             />
             <ReviewDeleteBTN
               courseNo={course.id}
               courseName={course.name_th}
-              reviewId={"13"} // This should also be dynamically obtained
+              reviewId={"14"} // This should also be dynamically obtained
               accessToken={"token-1"}
             />
           </div>

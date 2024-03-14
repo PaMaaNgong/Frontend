@@ -81,4 +81,5 @@ export type ReviewDetail = ReviewOverview & {
   grading_method: GradingMethod[];
   semester: Semester;
   year: number;
+  course_id: string;
 };
